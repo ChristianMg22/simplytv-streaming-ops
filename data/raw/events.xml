@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<events source="Simply.TV public announcements" retrieved="2026-10-15">
+  <event id="E01" date="2021-11-23" kind="customer" region_scope="Turkey / MEA / APAC" url="https://digitaltveurope.com/2021/11/23/vestel-partners-with-simply-tv-for-metadata-services">Vestel signs multi-year EPG contract (50+ countries)</event>
+  <event id="E02" date="2022-08-23" kind="acquisition" region_scope="Benelux" url="https://digitaltveurope.com/2022/08/23/simply-tv-acquires-epg-specialist-gvidi">Acquisition of GVIDI (~25 clients)</event>
+  <event id="E03" date="2023-06-08" kind="expansion" region_scope="Iberia &amp; LATAM-ES|Brazil (LATAM-PT)" url="https://simply.tv/post/simply-tv-is-launching-in-latin-america">Launch of operations in Latin America</event>
+  <event id="E04" date="2023-09-09" kind="customer" region_scope="Other Europe" url="https://www.cbinsights.com/investor/simply-tv">GO Malta chooses Simply.TV (EPG + VOD)</event>
+  <event id="E05" date="2024-07-03" kind="acquisition" region_scope="Nordics" url="https://www.simply.tv/company/simply-acquires-inflow-media">Acquisition of InFlow Media (Nordics)</event>
+  <event id="E06" date="2024-07-09" kind="customer" region_scope="Nordics" url="https://www.cbinsights.com/investor/simply-tv">Allente selects Simply.TV (Nordics)</event>
+  <event id="E07" date="2026-06-18" kind="partnership" region_scope="DACH" url="https://www.simply.tv/insights/simply.tv-joins-deutsche-tv-plattform">Simply.TV joins Deutsche TV-Plattform</event>
+  <event id="E08" date="2026-09-04" kind="corporate" region_scope="ALL" url="https://www.simply.tv/insights/simply.tv-appoints-entertainment-metadata-veteran-richard-cusick-as-chief-executive-officer">New CEO: Richard Cusick</event>
+</events>

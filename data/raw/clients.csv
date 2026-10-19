@@ -1,0 +1,121 @@
+client_id,client_name,segment,region,tier,onboard_date
+C-001,Client 001,TV Operators,Other Europe,Silver,2023-10-24
+C-002,Client 002,Streaming,Iberia & LATAM-ES,Silver,2026-01-18
+C-003,Client 003,Research,Benelux,Silver,2020-01-06
+C-004,Client 004,TV Operators,Iberia & LATAM-ES,Silver,2023-07-16
+C-005,Client 005,TV Operators,Benelux,Silver,2021-10-11
+C-006,Client 006,Streaming,Benelux,Silver,2021-01-13
+C-007,Client 007,TV Operators,Benelux,Bronze,2022-09-10
+C-008,Client 008,TV Operators,Nordics,Gold,2024-09-17
+C-009,Client 009,Broadcasters,Turkey / MEA / APAC,Silver,2022-09-02
+C-010,Client 010,TV Operators,Other Europe,Silver,2020-05-07
+C-011,Client 011,Streaming,Iberia & LATAM-ES,Gold,2024-03-23
+C-012,Client 012,Hospitality,North America,Silver,2025-10-17
+C-013,Client 013,Broadcasters,Other Europe,Bronze,2022-03-15
+C-014,Client 014,Streaming,Brazil (LATAM-PT),Silver,2025-12-26
+C-015,Client 015,Hospitality,Benelux,Silver,2021-09-03
+C-016,Client 016,TV Operators,DACH,Bronze,2022-10-21
+C-017,Client 017,Research,Brazil (LATAM-PT),Silver,2024-06-08
+C-018,Client 018,TV Operators,Iberia & LATAM-ES,Silver,2026-03-11
+C-019,Client 019,Hospitality,Iberia & LATAM-ES,Silver,2024-03-04
+C-020,Client 020,Hospitality,Brazil (LATAM-PT),Bronze,2024-03-02
+C-021,Client 021,Streaming,Other Europe,Bronze,2025-03-13
+C-022,Client 022,Broadcasters,Benelux,Silver,2022-01-01
+C-023,Client 023,TV Operators,Other Europe,Bronze,2023-04-26
+C-024,Client 024,Streaming,North America,Gold,2025-05-13
+C-025,Client 025,TV Operators,Other Europe,Silver,2025-08-09
+C-026,Client 026,TV Operators,Other Europe,Gold,2025-04-24
+C-027,Client 027,TV Operators,Benelux,Gold,2022-10-28
+C-028,Client 028,TV Operators,DACH,Bronze,2024-07-21
+C-029,Client 029,Broadcasters,DACH,Silver,2022-11-22
+C-030,Client 030,TV Operators,Nordics,Bronze,2024-11-27
+C-031,Client 031,TV Operators,Turkey / MEA / APAC,Bronze,2025-06-22
+C-032,Client 032,Streaming,Benelux,Bronze,2023-05-12
+C-033,Client 033,Streaming,North America,Gold,2026-03-29
+C-034,Client 034,Research,Iberia & LATAM-ES,Bronze,2024-09-13
+C-035,Client 035,Streaming,Benelux,Bronze,2021-06-17
+C-036,Client 036,Hospitality,Benelux,Gold,2021-08-15
+C-037,Client 037,Broadcasters,Benelux,Silver,2020-12-08
+C-038,Client 038,Streaming,Nordics,Bronze,2022-08-10
+C-039,Client 039,Streaming,North America,Gold,2025-04-13
+C-040,Client 040,Broadcasters,Turkey / MEA / APAC,Gold,2023-05-05
+C-041,Client 041,Streaming,Other Europe,Bronze,2023-12-29
+C-042,Client 042,TV Operators,Turkey / MEA / APAC,Silver,2025-01-07
+C-043,Client 043,Research,Brazil (LATAM-PT),Silver,2024-04-13
+C-044,Client 044,TV Operators,North America,Gold,2025-11-04
+C-045,Client 045,TV Operators,Iberia & LATAM-ES,Silver,2026-06-20
+C-046,Client 046,Streaming,Benelux,Bronze,2021-08-04
+C-047,Client 047,Broadcasters,Iberia & LATAM-ES,Gold,2026-01-02
+C-048,Client 048,Streaming,Other Europe,Bronze,2022-05-24
+C-049,Client 049,Broadcasters,Benelux,Silver,2020-03-28
+C-050,Client 050,Broadcasters,Benelux,Bronze,2021-01-18
+C-051,Client 051,Research,Benelux,Silver,2022-01-21
+C-052,Client 052,Streaming,Other Europe,Silver,2022-09-22
+C-053,Client 053,Research,Nordics,Silver,2023-04-27
+C-054,Client 054,TV Operators,Other Europe,Bronze,2025-03-31
+C-055,Client 055,Hospitality,North America,Silver,2025-08-29
+C-056,Client 056,Broadcasters,Turkey / MEA / APAC,Silver,2023-04-02
+C-057,Client 057,Streaming,Turkey / MEA / APAC,Gold,2023-09-27
+C-058,Client 058,Streaming,Other Europe,Gold,2025-06-29
+C-059,Client 059,Streaming,Nordics,Bronze,2021-12-01
+C-060,Client 060,TV Operators,Other Europe,Silver,2021-07-03
+C-061,Client 061,Broadcasters,Other Europe,Bronze,2023-01-01
+C-062,Client 062,TV Operators,DACH,Bronze,2024-09-24
+C-063,Client 063,TV Operators,Benelux,Silver,2022-04-14
+C-064,Client 064,TV Operators,Nordics,Gold,2023-08-26
+C-065,Client 065,TV Operators,Other Europe,Silver,2024-08-08
+C-066,Client 066,Hospitality,Turkey / MEA / APAC,Gold,2024-06-20
+C-067,Client 067,Research,North America,Silver,2025-05-04
+C-068,Client 068,Streaming,Other Europe,Gold,2024-02-03
+C-069,Client 069,Streaming,Benelux,Gold,2022-10-01
+C-070,Client 070,TV Operators,Other Europe,Bronze,2025-10-23
+C-071,Client 071,Hospitality,Nordics ,Silver,2024-08-24
+C-072,Client 072,Hospitality,Other Europe,Bronze,2023-01-11
+C-073,Client 073,TV Operators,DACH,Gold,2026-08-09
+C-074,Client 074,TV Operators,Iberia & LATAM-ES,Bronze,2025-07-25
+C-075,Client 075,TV Operators,Nordics,Silver,2023-03-30
+C-076,Client 076,Streaming,Other Europe,Bronze,2024-10-31
+C-077,Client 077,Research,Nordics,Silver,2024-11-14
+C-078,Client 078,Streaming,Iberia & LATAM-ES,Silver,2025-11-07
+C-079,Client 079,TV Operators,Brazil (LATAM-PT),Silver,2024-01-12
+C-080,Client 080,Streaming,Other Europe,Bronze,2024-05-12
+C-081,Client 081,TV Operators,Iberia & LATAM-ES,Silver,2023-12-21
+C-082,Client 082,TV Operators,Other Europe,Silver,2025-01-07
+C-083,Client 083,Broadcasters,Nordics,Silver,2024-09-16
+C-084,Client 084,Hospitality,Brazil (LATAM-PT),Gold,2025-01-03
+C-085,Client 085,TV Operators,Benelux,Silver,2021-10-14
+C-086,Client 086,Streaming,Turkey / MEA / APAC,Bronze,2022-12-05
+C-087,Client 087,Streaming,Other Europe,Silver,2021-12-19
+C-088,Client 088,Research,Turkey / MEA / APAC,Bronze,2024-01-06
+C-089,Client 089,Research,Iberia & LATAM-ES,Bronze,2026-02-21
+C-090,Client 090,Streaming,Brazil (LATAM-PT),Silver,2025-09-26
+C-091,Client 091,TV Operators,Iberia & LATAM-ES,Gold,2026-03-14
+C-092,Client 092,Hospitality,Other Europe,Bronze,2025-01-15
+C-093,Client 093,Hospitality,Other Europe,Bronze,2022-07-01
+C-094,Client 094,Broadcasters,Turkey / MEA / APAC,Silver,2024-08-28
+C-095,Client 095,Hospitality,Other Europe,Bronze,2021-05-09
+C-096,Client 096,Streaming,Iberia & LATAM-ES,bronze,2024-01-24
+C-097,Client 097,Hospitality,Turkey / MEA / APAC,Gold,2023-06-27
+C-098,Client 098,Broadcasters,North America,Silver,2025-05-17
+C-099,Client 099,TV Operators,Other Europe,Silver,2021-12-19
+C-100,Client 100,TV Operators,Benelux,Silver,2022-11-16
+C-101,Client 101,Streaming,Other Europe,Silver,2025-11-18
+C-102,Client 102,TV Operators,Other Europe,Gold,2019-10-25
+C-103,Client 103,TV Operators,Nordics,Silver,2022-08-23
+C-104,Client 104,Research,Iberia & LATAM-ES,Bronze,2026-05-06
+C-105,Client 105,Streaming,Turkey / MEA / APAC,Bronze,2023-07-18
+C-106,Client 106,Broadcasters,DACH,Silver,2021-01-08
+C-107,Client 107,TV Operators,Benelux,Gold,2022-08-06
+C-108,Client 108,TV Operators,Iberia & LATAM-ES,Bronze,2024-11-12
+C-109,Client 109,Streaming,Other Europe,Gold,2026-03-26
+C-110,Client 110,Broadcasters,DACH,Bronze,2026-08-08
+C-111,Client 111,TV Operators,DACH,Gold,2022-08-10
+C-112,Client 112,Streaming,North America,Gold,2026-07-09
+C-113,Client 113,Streaming,Nordics ,Silver,2024-09-17
+C-114,Client 114,Hospitality,Other Europe,Gold,2020-04-03
+C-115,Client 115,Streaming,Nordics,Bronze,2021-04-22
+C-116,Client 116,Streaming,North America,Bronze,2025-08-28
+C-117,Client 117,Streaming,Nordics,Silver,2024-10-25
+C-118,Client 118,TV Operators,Iberia & LATAM-ES,Bronze,2025-03-23
+C-119,Client 119,TV Operators,North America,Silver,2025-05-03
+C-120,Client 120,Hospitality,Nordics,Silver,2024-10-09

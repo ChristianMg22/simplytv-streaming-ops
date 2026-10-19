@@ -1,0 +1,114 @@
+{
+  "n_labeled": 4893,
+  "n_unlabeled": 592,
+  "holdout_accuracy": 0.8472,
+  "holdout_macro_f1": 0.8348,
+  "per_class_f1": {
+    "client_config": 0.619,
+    "delivery_endpoint": 0.901,
+    "duplicate_ids": 0.861,
+    "image_gap": 0.883,
+    "mapping_error": 0.817,
+    "schema_drift": 0.878,
+    "source_outage": 0.89,
+    "stale_schedule": 0.829
+  },
+  "classes": [
+    "client_config",
+    "delivery_endpoint",
+    "duplicate_ids",
+    "image_gap",
+    "mapping_error",
+    "schema_drift",
+    "source_outage",
+    "stale_schedule"
+  ],
+  "confusion": [
+    [
+      56,
+      2,
+      0,
+      0,
+      3,
+      2,
+      0,
+      2
+    ],
+    [
+      5,
+      109,
+      2,
+      0,
+      5,
+      2,
+      0,
+      2
+    ],
+    [
+      5,
+      3,
+      99,
+      1,
+      4,
+      5,
+      1,
+      2
+    ],
+    [
+      11,
+      0,
+      0,
+      113,
+      2,
+      6,
+      0,
+      5
+    ],
+    [
+      9,
+      0,
+      0,
+      2,
+      141,
+      5,
+      3,
+      6
+    ],
+    [
+      10,
+      1,
+      3,
+      2,
+      14,
+      242,
+      2,
+      8
+    ],
+    [
+      10,
+      2,
+      5,
+      1,
+      5,
+      3,
+      153,
+      4
+    ],
+    [
+      10,
+      0,
+      1,
+      0,
+      5,
+      4,
+      2,
+      124
+    ]
+  ],
+  "imputed_confident": 521,
+  "imputed_unclassified": 71,
+  "conf_threshold": 0.45,
+  "acc_vs_truth_all": 0.8547,
+  "acc_vs_truth_confident": 0.9578,
+  "model": "TF-IDF (1-2 gramas) + LogisticRegression (class_weight=balanced)"
+}

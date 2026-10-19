@@ -1,0 +1,92 @@
+[
+ {
+  "step": "deliveries",
+  "metric": "log_lines_total",
+  "value": 162958.0
+ },
+ {
+  "step": "deliveries",
+  "metric": "log_lines_debug_skipped",
+  "value": 1580.0
+ },
+ {
+  "step": "deliveries",
+  "metric": "log_lines_malformed_rejected",
+  "value": 322.0
+ },
+ {
+  "step": "catalog",
+  "metric": "format_fixes_clients",
+  "value": 3.0
+ },
+ {
+  "step": "deliveries",
+  "metric": "duplicate_lines_removed",
+  "value": 529.0
+ },
+ {
+  "step": "deliveries",
+  "metric": "rows_loaded",
+  "value": 160527.0
+ },
+ {
+  "step": "incidents",
+  "metric": "raw_rows",
+  "value": 5581.0
+ },
+ {
+  "step": "incidents",
+  "metric": "duplicates_removed",
+  "value": 96.0
+ },
+ {
+  "step": "incidents",
+  "metric": "opened_format_iso",
+  "value": 3901.0
+ },
+ {
+  "step": "incidents",
+  "metric": "opened_format_dmy",
+  "value": 843.0
+ },
+ {
+  "step": "incidents",
+  "metric": "opened_format_mon_text",
+  "value": 482.0
+ },
+ {
+  "step": "incidents",
+  "metric": "opened_format_epoch",
+  "value": 259.0
+ },
+ {
+  "step": "incidents",
+  "metric": "category_missing_or_unknown",
+  "value": 592.0
+ },
+ {
+  "step": "incidents",
+  "metric": "client_id_recovered_from_feed",
+  "value": 35.0
+ },
+ {
+  "step": "incidents",
+  "metric": "negative_duration_flagged",
+  "value": 69.0
+ },
+ {
+  "step": "incidents",
+  "metric": "still_open_at_cutoff",
+  "value": 12.0
+ },
+ {
+  "step": "incidents",
+  "metric": "orphan_feed_rows_dropped",
+  "value": 0.0
+ },
+ {
+  "step": "incidents",
+  "metric": "rows_loaded",
+  "value": 5485.0
+ }
+]

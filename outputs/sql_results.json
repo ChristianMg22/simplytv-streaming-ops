@@ -1,0 +1,1471 @@
+{
+ "kpi_overview": {
+  "incidents_total": 5485,
+  "incidents_resolved": 5404,
+  "incidents_open": 12,
+  "incidents_invalid_closure": 69,
+  "sla_breach_pct": 24.74,
+  "sla_breaches": 1337,
+  "median_resolution_h": 19.05,
+  "p90_resolution_h": 94.39,
+  "mean_first_response_min": 67.9,
+  "escalation_pct": 36.0,
+  "feed_days": 160527,
+  "clients": 120,
+  "feeds": 191,
+  "bad_delivery_pct": 3.37,
+  "data_from": "2023-06-01",
+  "data_to": "2026-09-30"
+ },
+ "monthly_trend": [
+  {
+   "month": "2023-06",
+   "incidents": 82,
+   "active_feeds": 73,
+   "feed_days": 2164,
+   "incidents_per_1k_feeddays": 37.89,
+   "breach_pct": 26.8,
+   "bad_delivery_pct": 3.74
+  },
+  {
+   "month": "2023-07",
+   "incidents": 74,
+   "active_feeds": 77,
+   "feed_days": 2332,
+   "incidents_per_1k_feeddays": 31.73,
+   "breach_pct": 17.6,
+   "bad_delivery_pct": 2.96
+  },
+  {
+   "month": "2023-08",
+   "incidents": 87,
+   "active_feeds": 81,
+   "feed_days": 2425,
+   "incidents_per_1k_feeddays": 35.88,
+   "breach_pct": 20.7,
+   "bad_delivery_pct": 3.59
+  },
+  {
+   "month": "2023-09",
+   "incidents": 80,
+   "active_feeds": 82,
+   "feed_days": 2434,
+   "incidents_per_1k_feeddays": 32.87,
+   "breach_pct": 21.8,
+   "bad_delivery_pct": 3.25
+  },
+  {
+   "month": "2023-10",
+   "incidents": 79,
+   "active_feeds": 85,
+   "feed_days": 2572,
+   "incidents_per_1k_feeddays": 30.72,
+   "breach_pct": 20.8,
+   "bad_delivery_pct": 3.07
+  },
+  {
+   "month": "2023-11",
+   "incidents": 92,
+   "active_feeds": 86,
+   "feed_days": 2568,
+   "incidents_per_1k_feeddays": 35.83,
+   "breach_pct": 25.0,
+   "bad_delivery_pct": 3.08
+  },
+  {
+   "month": "2023-12",
+   "incidents": 88,
+   "active_feeds": 88,
+   "feed_days": 2680,
+   "incidents_per_1k_feeddays": 32.84,
+   "breach_pct": 21.6,
+   "bad_delivery_pct": 3.36
+  },
+  {
+   "month": "2024-01",
+   "incidents": 93,
+   "active_feeds": 92,
+   "feed_days": 2808,
+   "incidents_per_1k_feeddays": 33.12,
+   "breach_pct": 20.9,
+   "bad_delivery_pct": 3.24
+  },
+  {
+   "month": "2024-02",
+   "incidents": 91,
+   "active_feeds": 94,
+   "feed_days": 2697,
+   "incidents_per_1k_feeddays": 33.74,
+   "breach_pct": 19.5,
+   "bad_delivery_pct": 3.3
+  },
+  {
+   "month": "2024-03",
+   "incidents": 93,
+   "active_feeds": 98,
+   "feed_days": 3012,
+   "incidents_per_1k_feeddays": 30.88,
+   "breach_pct": 13.0,
+   "bad_delivery_pct": 2.82
+  },
+  {
+   "month": "2024-04",
+   "incidents": 131,
+   "active_feeds": 103,
+   "feed_days": 3020,
+   "incidents_per_1k_feeddays": 43.38,
+   "breach_pct": 24.4,
+   "bad_delivery_pct": 4.5
+  },
+  {
+   "month": "2024-05",
+   "incidents": 125,
+   "active_feeds": 105,
+   "feed_days": 3228,
+   "incidents_per_1k_feeddays": 38.72,
+   "breach_pct": 25.6,
+   "bad_delivery_pct": 3.78
+  },
+  {
+   "month": "2024-06",
+   "incidents": 117,
+   "active_feeds": 110,
+   "feed_days": 3206,
+   "incidents_per_1k_feeddays": 36.49,
+   "breach_pct": 13.9,
+   "bad_delivery_pct": 3.71
+  },
+  {
+   "month": "2024-07",
+   "incidents": 117,
+   "active_feeds": 113,
+   "feed_days": 3469,
+   "incidents_per_1k_feeddays": 33.73,
+   "breach_pct": 21.4,
+   "bad_delivery_pct": 3.4
+  },
+  {
+   "month": "2024-08",
+   "incidents": 130,
+   "active_feeds": 116,
+   "feed_days": 3539,
+   "incidents_per_1k_feeddays": 36.73,
+   "breach_pct": 25.8,
+   "bad_delivery_pct": 3.31
+  },
+  {
+   "month": "2024-09",
+   "incidents": 103,
+   "active_feeds": 121,
+   "feed_days": 3548,
+   "incidents_per_1k_feeddays": 29.03,
+   "breach_pct": 16.8,
+   "bad_delivery_pct": 3.02
+  },
+  {
+   "month": "2024-10",
+   "incidents": 137,
+   "active_feeds": 124,
+   "feed_days": 3782,
+   "incidents_per_1k_feeddays": 36.22,
+   "breach_pct": 33.8,
+   "bad_delivery_pct": 3.68
+  },
+  {
+   "month": "2024-11",
+   "incidents": 132,
+   "active_feeds": 129,
+   "feed_days": 3812,
+   "incidents_per_1k_feeddays": 34.63,
+   "breach_pct": 22.9,
+   "bad_delivery_pct": 3.99
+  },
+  {
+   "month": "2024-12",
+   "incidents": 162,
+   "active_feeds": 129,
+   "feed_days": 3999,
+   "incidents_per_1k_feeddays": 40.51,
+   "breach_pct": 29.4,
+   "bad_delivery_pct": 4.03
+  },
+  {
+   "month": "2025-01",
+   "incidents": 148,
+   "active_feeds": 135,
+   "feed_days": 4137,
+   "incidents_per_1k_feeddays": 35.77,
+   "breach_pct": 22.8,
+   "bad_delivery_pct": 3.58
+  },
+  {
+   "month": "2025-02",
+   "incidents": 138,
+   "active_feeds": 135,
+   "feed_days": 3780,
+   "incidents_per_1k_feeddays": 36.51,
+   "breach_pct": 26.7,
+   "bad_delivery_pct": 3.39
+  },
+  {
+   "month": "2025-03",
+   "incidents": 118,
+   "active_feeds": 138,
+   "feed_days": 4214,
+   "incidents_per_1k_feeddays": 28.0,
+   "breach_pct": 22.6,
+   "bad_delivery_pct": 2.78
+  },
+  {
+   "month": "2025-04",
+   "incidents": 120,
+   "active_feeds": 141,
+   "feed_days": 4176,
+   "incidents_per_1k_feeddays": 28.74,
+   "breach_pct": 22.2,
+   "bad_delivery_pct": 2.95
+  },
+  {
+   "month": "2025-05",
+   "incidents": 157,
+   "active_feeds": 146,
+   "feed_days": 4489,
+   "incidents_per_1k_feeddays": 34.97,
+   "breach_pct": 31.8,
+   "bad_delivery_pct": 3.36
+  },
+  {
+   "month": "2025-06",
+   "incidents": 148,
+   "active_feeds": 148,
+   "feed_days": 4391,
+   "incidents_per_1k_feeddays": 33.71,
+   "breach_pct": 20.7,
+   "bad_delivery_pct": 3.55
+  },
+  {
+   "month": "2025-07",
+   "incidents": 170,
+   "active_feeds": 153,
+   "feed_days": 4651,
+   "incidents_per_1k_feeddays": 36.55,
+   "breach_pct": 28.0,
+   "bad_delivery_pct": 3.48
+  },
+  {
+   "month": "2025-08",
+   "incidents": 163,
+   "active_feeds": 156,
+   "feed_days": 4773,
+   "incidents_per_1k_feeddays": 34.15,
+   "breach_pct": 24.1,
+   "bad_delivery_pct": 3.37
+  },
+  {
+   "month": "2025-09",
+   "incidents": 165,
+   "active_feeds": 157,
+   "feed_days": 4685,
+   "incidents_per_1k_feeddays": 35.22,
+   "breach_pct": 27.3,
+   "bad_delivery_pct": 3.52
+  },
+  {
+   "month": "2025-10",
+   "incidents": 187,
+   "active_feeds": 160,
+   "feed_days": 4916,
+   "incidents_per_1k_feeddays": 38.04,
+   "breach_pct": 25.9,
+   "bad_delivery_pct": 3.7
+  },
+  {
+   "month": "2025-11",
+   "incidents": 168,
+   "active_feeds": 164,
+   "feed_days": 4868,
+   "incidents_per_1k_feeddays": 34.51,
+   "breach_pct": 27.3,
+   "bad_delivery_pct": 3.12
+  },
+  {
+   "month": "2025-12",
+   "incidents": 149,
+   "active_feeds": 166,
+   "feed_days": 5115,
+   "incidents_per_1k_feeddays": 29.13,
+   "breach_pct": 20.4,
+   "bad_delivery_pct": 2.85
+  },
+  {
+   "month": "2026-01",
+   "incidents": 173,
+   "active_feeds": 171,
+   "feed_days": 5214,
+   "incidents_per_1k_feeddays": 33.18,
+   "breach_pct": 25.0,
+   "bad_delivery_pct": 3.15
+  },
+  {
+   "month": "2026-02",
+   "incidents": 160,
+   "active_feeds": 173,
+   "feed_days": 4816,
+   "incidents_per_1k_feeddays": 33.22,
+   "breach_pct": 31.0,
+   "bad_delivery_pct": 3.3
+  },
+  {
+   "month": "2026-03",
+   "incidents": 187,
+   "active_feeds": 178,
+   "feed_days": 5440,
+   "incidents_per_1k_feeddays": 34.38,
+   "breach_pct": 31.4,
+   "bad_delivery_pct": 3.44
+  },
+  {
+   "month": "2026-04",
+   "incidents": 185,
+   "active_feeds": 178,
+   "feed_days": 5340,
+   "incidents_per_1k_feeddays": 34.64,
+   "breach_pct": 23.0,
+   "bad_delivery_pct": 3.5
+  },
+  {
+   "month": "2026-05",
+   "incidents": 197,
+   "active_feeds": 181,
+   "feed_days": 5593,
+   "incidents_per_1k_feeddays": 35.22,
+   "breach_pct": 29.4,
+   "bad_delivery_pct": 3.49
+  },
+  {
+   "month": "2026-06",
+   "incidents": 181,
+   "active_feeds": 183,
+   "feed_days": 5455,
+   "incidents_per_1k_feeddays": 33.18,
+   "breach_pct": 26.0,
+   "bad_delivery_pct": 3.43
+  },
+  {
+   "month": "2026-07",
+   "incidents": 175,
+   "active_feeds": 184,
+   "feed_days": 5696,
+   "incidents_per_1k_feeddays": 30.72,
+   "breach_pct": 20.6,
+   "bad_delivery_pct": 2.91
+  },
+  {
+   "month": "2026-08",
+   "incidents": 185,
+   "active_feeds": 188,
+   "feed_days": 5796,
+   "incidents_per_1k_feeddays": 31.92,
+   "breach_pct": 29.3,
+   "bad_delivery_pct": 3.21
+  },
+  {
+   "month": "2026-09",
+   "incidents": 198,
+   "active_feeds": 191,
+   "feed_days": 5687,
+   "incidents_per_1k_feeddays": 34.82,
+   "breach_pct": 24.3,
+   "bad_delivery_pct": 3.32
+  }
+ ],
+ "category_pareto": [
+  {
+   "category": "schema_drift",
+   "n": 1221,
+   "share_pct": 22.3,
+   "cum_share_pct": 22.3,
+   "breach_pct": 40.6,
+   "breach_share_pct": 36.6,
+   "mean_h": 57.1,
+   "esc_pct": 57.2
+  },
+  {
+   "category": "source_outage",
+   "n": 826,
+   "share_pct": 15.1,
+   "cum_share_pct": 37.3,
+   "breach_pct": 28.5,
+   "breach_share_pct": 17.4,
+   "mean_h": 35.2,
+   "esc_pct": 44.7
+  },
+  {
+   "category": "mapping_error",
+   "n": 749,
+   "share_pct": 13.7,
+   "cum_share_pct": 51.0,
+   "breach_pct": 21.2,
+   "breach_share_pct": 11.7,
+   "mean_h": 37.4,
+   "esc_pct": 31.4
+  },
+  {
+   "category": "stale_schedule",
+   "n": 639,
+   "share_pct": 11.6,
+   "cum_share_pct": 62.6,
+   "breach_pct": 15.0,
+   "breach_share_pct": 7.0,
+   "mean_h": 29.6,
+   "esc_pct": 24.9
+  },
+  {
+   "category": "image_gap",
+   "n": 612,
+   "share_pct": 11.2,
+   "cum_share_pct": 73.8,
+   "breach_pct": 14.8,
+   "breach_share_pct": 6.7,
+   "mean_h": 33.6,
+   "esc_pct": 22.5
+  },
+  {
+   "category": "delivery_endpoint",
+   "n": 550,
+   "share_pct": 10.0,
+   "cum_share_pct": 83.8,
+   "breach_pct": 13.3,
+   "breach_share_pct": 5.4,
+   "mean_h": 23.2,
+   "esc_pct": 20.9
+  },
+  {
+   "category": "duplicate_ids",
+   "n": 526,
+   "share_pct": 9.6,
+   "cum_share_pct": 93.4,
+   "breach_pct": 27.2,
+   "breach_share_pct": 10.5,
+   "mean_h": 42.3,
+   "esc_pct": 37.5
+  },
+  {
+   "category": "client_config",
+   "n": 291,
+   "share_pct": 5.3,
+   "cum_share_pct": 98.7,
+   "breach_pct": 17.1,
+   "breach_share_pct": 3.7,
+   "mean_h": 31.1,
+   "esc_pct": 11.7
+  },
+  {
+   "category": "unclassified",
+   "n": 71,
+   "share_pct": 1.3,
+   "cum_share_pct": 100.0,
+   "breach_pct": 20.3,
+   "breach_share_pct": 1.0,
+   "mean_h": 29.8,
+   "esc_pct": 42.3
+  }
+ ],
+ "sla_matrix": [
+  {
+   "severity": "P1",
+   "tier": "Gold",
+   "sla_hours": 4.0,
+   "incidents": 231,
+   "breach_pct": 28.1,
+   "mean_resolution_h": 3.4
+  },
+  {
+   "severity": "P1",
+   "tier": "Silver",
+   "sla_hours": 8.0,
+   "incidents": 232,
+   "breach_pct": 11.6,
+   "mean_resolution_h": 4.0
+  },
+  {
+   "severity": "P1",
+   "tier": "Bronze",
+   "sla_hours": 12.0,
+   "incidents": 195,
+   "breach_pct": 6.7,
+   "mean_resolution_h": 5.0
+  },
+  {
+   "severity": "P2",
+   "tier": "Gold",
+   "sla_hours": 8.0,
+   "incidents": 422,
+   "breach_pct": 44.5,
+   "mean_resolution_h": 9.6
+  },
+  {
+   "severity": "P2",
+   "tier": "Silver",
+   "sla_hours": 16.0,
+   "incidents": 680,
+   "breach_pct": 22.6,
+   "mean_resolution_h": 12.2
+  },
+  {
+   "severity": "P2",
+   "tier": "Bronze",
+   "sla_hours": 24.0,
+   "incidents": 546,
+   "breach_pct": 20.0,
+   "mean_resolution_h": 17.3
+  },
+  {
+   "severity": "P3",
+   "tier": "Gold",
+   "sla_hours": 24.0,
+   "incidents": 438,
+   "breach_pct": 42.0,
+   "mean_resolution_h": 29.1
+  },
+  {
+   "severity": "P3",
+   "tier": "Silver",
+   "sla_hours": 48.0,
+   "incidents": 908,
+   "breach_pct": 23.1,
+   "mean_resolution_h": 35.9
+  },
+  {
+   "severity": "P3",
+   "tier": "Bronze",
+   "sla_hours": 72.0,
+   "incidents": 795,
+   "breach_pct": 18.0,
+   "mean_resolution_h": 49.3
+  },
+  {
+   "severity": "P4",
+   "tier": "Gold",
+   "sla_hours": 72.0,
+   "incidents": 147,
+   "breach_pct": 38.8,
+   "mean_resolution_h": 76.1
+  },
+  {
+   "severity": "P4",
+   "tier": "Silver",
+   "sla_hours": 120.0,
+   "incidents": 453,
+   "breach_pct": 24.3,
+   "mean_resolution_h": 100.3
+  },
+  {
+   "severity": "P4",
+   "tier": "Bronze",
+   "sla_hours": 168.0,
+   "incidents": 357,
+   "breach_pct": 21.6,
+   "mean_resolution_h": 122.8
+  }
+ ],
+ "segment_summary": [
+  {
+   "segment": "TV Operators",
+   "incidents": 2020,
+   "breach_pct": 26.1,
+   "mean_resolution_h": 38.8,
+   "esc_pct": 37.1
+  },
+  {
+   "segment": "Streaming",
+   "incidents": 1916,
+   "breach_pct": 25.7,
+   "mean_resolution_h": 39.2,
+   "esc_pct": 37.1
+  },
+  {
+   "segment": "Broadcasters",
+   "incidents": 688,
+   "breach_pct": 20.2,
+   "mean_resolution_h": 37.5,
+   "esc_pct": 35.0
+  },
+  {
+   "segment": "Hospitality",
+   "incidents": 488,
+   "breach_pct": 24.0,
+   "mean_resolution_h": 37.2,
+   "esc_pct": 31.8
+  },
+  {
+   "segment": "Research",
+   "incidents": 292,
+   "breach_pct": 20.5,
+   "mean_resolution_h": 41.5,
+   "esc_pct": 33.6
+  }
+ ],
+ "region_summary": [
+  {
+   "region": "North America",
+   "clients": 11,
+   "feeds": 19,
+   "feed_days": 6468,
+   "incidents": 321,
+   "incidents_per_1k_feeddays": 49.63,
+   "breach_pct": 31.8,
+   "mean_resolution_h": 31.3,
+   "bad_delivery_pct": 4.75
+  },
+  {
+   "region": "Iberia & LATAM-ES",
+   "clients": 17,
+   "feeds": 27,
+   "feed_days": 15251,
+   "incidents": 677,
+   "incidents_per_1k_feeddays": 44.39,
+   "breach_pct": 31.0,
+   "mean_resolution_h": 39.3,
+   "bad_delivery_pct": 4.35
+  },
+  {
+   "region": "DACH",
+   "clients": 8,
+   "feeds": 11,
+   "feed_days": 7773,
+   "incidents": 333,
+   "incidents_per_1k_feeddays": 42.84,
+   "breach_pct": 19.8,
+   "mean_resolution_h": 41.8,
+   "bad_delivery_pct": 4.28
+  },
+  {
+   "region": "Nordics",
+   "clients": 15,
+   "feeds": 19,
+   "feed_days": 17234,
+   "incidents": 707,
+   "incidents_per_1k_feeddays": 41.02,
+   "breach_pct": 26.3,
+   "mean_resolution_h": 43.9,
+   "bad_delivery_pct": 4.1
+  },
+  {
+   "region": "Brazil (LATAM-PT)",
+   "clients": 7,
+   "feeds": 11,
+   "feed_days": 7882,
+   "incidents": 272,
+   "incidents_per_1k_feeddays": 34.51,
+   "breach_pct": 22.5,
+   "mean_resolution_h": 41.7,
+   "bad_delivery_pct": 3.32
+  },
+  {
+   "region": "Other Europe",
+   "clients": 30,
+   "feeds": 48,
+   "feed_days": 42267,
+   "incidents": 1410,
+   "incidents_per_1k_feeddays": 33.36,
+   "breach_pct": 24.1,
+   "mean_resolution_h": 39.8,
+   "bad_delivery_pct": 3.3
+  },
+  {
+   "region": "Benelux",
+   "clients": 20,
+   "feeds": 36,
+   "feed_days": 43724,
+   "incidents": 1240,
+   "incidents_per_1k_feeddays": 28.36,
+   "breach_pct": 22.0,
+   "mean_resolution_h": 35.7,
+   "bad_delivery_pct": 2.82
+  },
+  {
+   "region": "Turkey / MEA / APAC",
+   "clients": 12,
+   "feeds": 20,
+   "feed_days": 19928,
+   "incidents": 525,
+   "incidents_per_1k_feeddays": 26.34,
+   "breach_pct": 22.8,
+   "mean_resolution_h": 36.7,
+   "bad_delivery_pct": 2.55
+  }
+ ],
+ "feed_type_summary": [
+  {
+   "feed_type": "VOD_CATALOG",
+   "feed_days": 40263,
+   "bad_delivery_pct": 4.52,
+   "incidents": 1848,
+   "incidents_per_1k_feeddays": 45.9,
+   "breach_pct": 26.7
+  },
+  {
+   "feed_type": "SPORTS",
+   "feed_days": 17619,
+   "bad_delivery_pct": 4.24,
+   "incidents": 750,
+   "incidents_per_1k_feeddays": 42.57,
+   "breach_pct": 24.4
+  },
+  {
+   "feed_type": "ARTWORK",
+   "feed_days": 24402,
+   "bad_delivery_pct": 3.02,
+   "incidents": 750,
+   "incidents_per_1k_feeddays": 30.74,
+   "breach_pct": 17.7
+  },
+  {
+   "feed_type": "EPG_LINEAR",
+   "feed_days": 49903,
+   "bad_delivery_pct": 2.89,
+   "incidents": 1464,
+   "incidents_per_1k_feeddays": 29.34,
+   "breach_pct": 25.1
+  },
+  {
+   "feed_type": "KEYWORDS",
+   "feed_days": 28340,
+   "bad_delivery_pct": 2.34,
+   "incidents": 673,
+   "incidents_per_1k_feeddays": 23.75,
+   "breach_pct": 27.1
+  }
+ ],
+ "heatmap_dow_hour": [
+  {
+   "dow": 0,
+   "block": 0,
+   "incidents": 217,
+   "breach_pct": 35.0
+  },
+  {
+   "dow": 0,
+   "block": 1,
+   "incidents": 339,
+   "breach_pct": 29.2
+  },
+  {
+   "dow": 0,
+   "block": 2,
+   "incidents": 82,
+   "breach_pct": 25.6
+  },
+  {
+   "dow": 0,
+   "block": 3,
+   "incidents": 18,
+   "breach_pct": 38.9
+  },
+  {
+   "dow": 0,
+   "block": 4,
+   "incidents": 2,
+   "breach_pct": 0.0
+  },
+  {
+   "dow": 0,
+   "block": 5,
+   "incidents": 5,
+   "breach_pct": 40.0
+  },
+  {
+   "dow": 1,
+   "block": 0,
+   "incidents": 330,
+   "breach_pct": 24.5
+  },
+  {
+   "dow": 1,
+   "block": 1,
+   "incidents": 544,
+   "breach_pct": 24.8
+  },
+  {
+   "dow": 1,
+   "block": 2,
+   "incidents": 120,
+   "breach_pct": 15.8
+  },
+  {
+   "dow": 1,
+   "block": 3,
+   "incidents": 37,
+   "breach_pct": 37.8
+  },
+  {
+   "dow": 1,
+   "block": 4,
+   "incidents": 8,
+   "breach_pct": 25.0
+  },
+  {
+   "dow": 1,
+   "block": 5,
+   "incidents": 2,
+   "breach_pct": 50.0
+  },
+  {
+   "dow": 2,
+   "block": 0,
+   "incidents": 255,
+   "breach_pct": 27.1
+  },
+  {
+   "dow": 2,
+   "block": 1,
+   "incidents": 410,
+   "breach_pct": 20.5
+  },
+  {
+   "dow": 2,
+   "block": 2,
+   "incidents": 86,
+   "breach_pct": 27.9
+  },
+  {
+   "dow": 2,
+   "block": 3,
+   "incidents": 29,
+   "breach_pct": 20.7
+  },
+  {
+   "dow": 2,
+   "block": 4,
+   "incidents": 8,
+   "breach_pct": 12.5
+  },
+  {
+   "dow": 2,
+   "block": 5,
+   "incidents": 2,
+   "breach_pct": 0.0
+  },
+  {
+   "dow": 3,
+   "block": 0,
+   "incidents": 244,
+   "breach_pct": 23.4
+  },
+  {
+   "dow": 3,
+   "block": 1,
+   "incidents": 391,
+   "breach_pct": 19.2
+  },
+  {
+   "dow": 3,
+   "block": 2,
+   "incidents": 80,
+   "breach_pct": 15.0
+  },
+  {
+   "dow": 3,
+   "block": 3,
+   "incidents": 45,
+   "breach_pct": 20.0
+  },
+  {
+   "dow": 3,
+   "block": 4,
+   "incidents": 8,
+   "breach_pct": 37.5
+  },
+  {
+   "dow": 4,
+   "block": 0,
+   "incidents": 244,
+   "breach_pct": 24.6
+  },
+  {
+   "dow": 4,
+   "block": 1,
+   "incidents": 390,
+   "breach_pct": 24.4
+  },
+  {
+   "dow": 4,
+   "block": 2,
+   "incidents": 95,
+   "breach_pct": 17.9
+  },
+  {
+   "dow": 4,
+   "block": 3,
+   "incidents": 46,
+   "breach_pct": 37.0
+  },
+  {
+   "dow": 4,
+   "block": 4,
+   "incidents": 12,
+   "breach_pct": 8.3
+  },
+  {
+   "dow": 4,
+   "block": 5,
+   "incidents": 3,
+   "breach_pct": 0.0
+  },
+  {
+   "dow": 5,
+   "block": 0,
+   "incidents": 225,
+   "breach_pct": 23.6
+  },
+  {
+   "dow": 5,
+   "block": 1,
+   "incidents": 404,
+   "breach_pct": 17.8
+  },
+  {
+   "dow": 5,
+   "block": 2,
+   "incidents": 85,
+   "breach_pct": 20.0
+  },
+  {
+   "dow": 5,
+   "block": 3,
+   "incidents": 37,
+   "breach_pct": 32.4
+  },
+  {
+   "dow": 5,
+   "block": 4,
+   "incidents": 5,
+   "breach_pct": 40.0
+  },
+  {
+   "dow": 5,
+   "block": 5,
+   "incidents": 3,
+   "breach_pct": 66.7
+  },
+  {
+   "dow": 6,
+   "block": 0,
+   "incidents": 206,
+   "breach_pct": 35.9
+  },
+  {
+   "dow": 6,
+   "block": 1,
+   "incidents": 313,
+   "breach_pct": 29.4
+  },
+  {
+   "dow": 6,
+   "block": 2,
+   "incidents": 49,
+   "breach_pct": 28.6
+  },
+  {
+   "dow": 6,
+   "block": 3,
+   "incidents": 21,
+   "breach_pct": 42.9
+  },
+  {
+   "dow": 6,
+   "block": 4,
+   "incidents": 3,
+   "breach_pct": 66.7
+  },
+  {
+   "dow": 6,
+   "block": 5,
+   "incidents": 1,
+   "breach_pct": 100.0
+  }
+ ],
+ "detection_summary": [
+  {
+   "detection": "auto",
+   "incidents": 4566,
+   "mean_first_response_min": 64.3,
+   "mean_resolution_h": 36.7,
+   "breach_pct": 24.2
+  },
+  {
+   "detection": "client",
+   "incidents": 838,
+   "mean_first_response_min": 86.9,
+   "mean_resolution_h": 49.8,
+   "breach_pct": 27.7
+  }
+ ],
+ "detection_delay": [
+  {
+   "detection": "auto",
+   "matched_incidents": 4634,
+   "mean_detection_delay_h": 0.23,
+   "min_h": 0.03,
+   "max_h": 0.42
+  },
+  {
+   "detection": "client",
+   "matched_incidents": 487,
+   "mean_detection_delay_h": 12.72,
+   "min_h": 1.0,
+   "max_h": 84.91
+  }
+ ],
+ "missed_failures": [
+  {
+   "status": "DEGRADED",
+   "bad_deliveries": 3823,
+   "no_incident": 292
+  },
+  {
+   "status": "FAILED",
+   "bad_deliveries": 1588,
+   "no_incident": 24
+  }
+ ],
+ "event_impact": [
+  {
+   "event_id": "E01",
+   "event_date": "2021-11-23",
+   "name": "Vestel signs multi-year EPG contract (50+ countries)",
+   "kind": "customer",
+   "region_scope": "Turkey / MEA / APAC",
+   "fd_before": null,
+   "fd_after": null,
+   "inc_before": 0,
+   "inc_after": 0,
+   "rate_before": null,
+   "rate_after": null
+  },
+  {
+   "event_id": "E02",
+   "event_date": "2022-08-23",
+   "name": "Acquisition of GVIDI (~25 clients)",
+   "kind": "acquisition",
+   "region_scope": "Benelux",
+   "fd_before": null,
+   "fd_after": null,
+   "inc_before": 0,
+   "inc_after": 0,
+   "rate_before": null,
+   "rate_after": null
+  },
+  {
+   "event_id": "E03",
+   "event_date": "2023-06-08",
+   "name": "Launch of operations in Latin America",
+   "kind": "expansion",
+   "region_scope": "Iberia & LATAM-ES|Brazil (LATAM-PT)",
+   "fd_before": null,
+   "fd_after": 7.0,
+   "inc_before": 0,
+   "inc_after": 2,
+   "rate_before": null,
+   "rate_after": 285.71
+  },
+  {
+   "event_id": "E04",
+   "event_date": "2023-09-09",
+   "name": "GO Malta chooses Simply.TV (EPG + VOD)",
+   "kind": "customer",
+   "region_scope": "Other Europe",
+   "fd_before": 990.0,
+   "fd_after": 990.0,
+   "inc_before": 34,
+   "inc_after": 28,
+   "rate_before": 34.34,
+   "rate_after": 28.28
+  },
+  {
+   "event_id": "E05",
+   "event_date": "2024-07-03",
+   "name": "Acquisition of InFlow Media (Nordics)",
+   "kind": "acquisition",
+   "region_scope": "Nordics",
+   "fd_before": 360.0,
+   "fd_after": 360.0,
+   "inc_before": 25,
+   "inc_after": 25,
+   "rate_before": 69.44,
+   "rate_after": 69.44
+  },
+  {
+   "event_id": "E06",
+   "event_date": "2024-07-09",
+   "name": "Allente selects Simply.TV (Nordics)",
+   "kind": "customer",
+   "region_scope": "Nordics",
+   "fd_before": 360.0,
+   "fd_after": 360.0,
+   "inc_before": 25,
+   "inc_after": 26,
+   "rate_before": 69.44,
+   "rate_after": 72.22
+  },
+  {
+   "event_id": "E07",
+   "event_date": "2026-06-18",
+   "name": "Simply.TV joins Deutsche TV-Plattform",
+   "kind": "partnership",
+   "region_scope": "DACH",
+   "fd_before": 315.0,
+   "fd_after": 315.0,
+   "inc_before": 12,
+   "inc_after": 18,
+   "rate_before": 38.1,
+   "rate_after": 57.14
+  },
+  {
+   "event_id": "E08",
+   "event_date": "2026-09-04",
+   "name": "New CEO: Richard Cusick",
+   "kind": "corporate",
+   "region_scope": "ALL",
+   "fd_before": 8384.0,
+   "fd_after": 5123.0,
+   "inc_before": 269,
+   "inc_after": 176,
+   "rate_before": 32.08,
+   "rate_after": 34.35
+  }
+ ],
+ "client_pareto": [
+  {
+   "decile": 1,
+   "clients": 12,
+   "breaches": 433,
+   "share_pct": 32.4,
+   "cum_share_pct": 32.4
+  },
+  {
+   "decile": 2,
+   "clients": 12,
+   "breaches": 233,
+   "share_pct": 17.4,
+   "cum_share_pct": 49.8
+  },
+  {
+   "decile": 3,
+   "clients": 12,
+   "breaches": 180,
+   "share_pct": 13.5,
+   "cum_share_pct": 63.3
+  },
+  {
+   "decile": 4,
+   "clients": 12,
+   "breaches": 131,
+   "share_pct": 9.8,
+   "cum_share_pct": 73.1
+  },
+  {
+   "decile": 5,
+   "clients": 12,
+   "breaches": 108,
+   "share_pct": 8.1,
+   "cum_share_pct": 81.2
+  },
+  {
+   "decile": 6,
+   "clients": 12,
+   "breaches": 87,
+   "share_pct": 6.5,
+   "cum_share_pct": 87.7
+  },
+  {
+   "decile": 7,
+   "clients": 12,
+   "breaches": 72,
+   "share_pct": 5.4,
+   "cum_share_pct": 93.0
+  },
+  {
+   "decile": 8,
+   "clients": 12,
+   "breaches": 50,
+   "share_pct": 3.7,
+   "cum_share_pct": 96.8
+  },
+  {
+   "decile": 9,
+   "clients": 12,
+   "breaches": 33,
+   "share_pct": 2.5,
+   "cum_share_pct": 99.3
+  },
+  {
+   "decile": 10,
+   "clients": 12,
+   "breaches": 10,
+   "share_pct": 0.7,
+   "cum_share_pct": 100.0
+  }
+ ],
+ "top_clients": [
+  {
+   "rank": 1,
+   "client_name": "Client 011",
+   "segment": "Streaming",
+   "region": "Iberia & LATAM-ES",
+   "tier": "Gold",
+   "incidents": 136,
+   "breaches": 63,
+   "breach_pct": 46.3,
+   "mean_h": 19.7
+  },
+  {
+   "rank": 2,
+   "client_name": "Client 064",
+   "segment": "TV Operators",
+   "region": "Nordics",
+   "tier": "Gold",
+   "incidents": 121,
+   "breaches": 54,
+   "breach_pct": 44.6,
+   "mean_h": 23.1
+  },
+  {
+   "rank": 3,
+   "client_name": "Client 024",
+   "segment": "Streaming",
+   "region": "North America",
+   "tier": "Gold",
+   "incidents": 109,
+   "breaches": 42,
+   "breach_pct": 38.5,
+   "mean_h": 18.9
+  },
+  {
+   "rank": 4,
+   "client_name": "Client 004",
+   "segment": "TV Operators",
+   "region": "Iberia & LATAM-ES",
+   "tier": "Silver",
+   "incidents": 174,
+   "breaches": 39,
+   "breach_pct": 22.4,
+   "mean_h": 41.6
+  },
+  {
+   "rank": 4,
+   "client_name": "Client 010",
+   "segment": "TV Operators",
+   "region": "Other Europe",
+   "tier": "Silver",
+   "incidents": 148,
+   "breaches": 39,
+   "breach_pct": 26.4,
+   "mean_h": 39.7
+  },
+  {
+   "rank": 6,
+   "client_name": "Client 069",
+   "segment": "Streaming",
+   "region": "Benelux",
+   "tier": "Gold",
+   "incidents": 88,
+   "breaches": 38,
+   "breach_pct": 43.2,
+   "mean_h": 27.2
+  },
+  {
+   "rank": 7,
+   "client_name": "Client 068",
+   "segment": "Streaming",
+   "region": "Other Europe",
+   "tier": "Gold",
+   "incidents": 92,
+   "breaches": 37,
+   "breach_pct": 40.2,
+   "mean_h": 25.1
+  },
+  {
+   "rank": 8,
+   "client_name": "Client 027",
+   "segment": "TV Operators",
+   "region": "Benelux",
+   "tier": "Gold",
+   "incidents": 62,
+   "breaches": 26,
+   "breach_pct": 41.9,
+   "mean_h": 23.7
+  },
+  {
+   "rank": 9,
+   "client_name": "Client 057",
+   "segment": "Streaming",
+   "region": "Turkey / MEA / APAC",
+   "tier": "Gold",
+   "incidents": 87,
+   "breaches": 25,
+   "breach_pct": 28.7,
+   "mean_h": 20.2
+  },
+  {
+   "rank": 10,
+   "client_name": "Client 022",
+   "segment": "Broadcasters",
+   "region": "Benelux",
+   "tier": "Silver",
+   "incidents": 106,
+   "breaches": 24,
+   "breach_pct": 22.6,
+   "mean_h": 37.2
+  }
+ ],
+ "recurrence": [
+  {
+   "category": "schema_drift",
+   "incidents": 1221,
+   "recurring": 185,
+   "recurring_pct": 15.2
+  },
+  {
+   "category": "image_gap",
+   "incidents": 612,
+   "recurring": 93,
+   "recurring_pct": 15.2
+  },
+  {
+   "category": "stale_schedule",
+   "incidents": 639,
+   "recurring": 87,
+   "recurring_pct": 13.6
+  },
+  {
+   "category": "source_outage",
+   "incidents": 826,
+   "recurring": 106,
+   "recurring_pct": 12.8
+  },
+  {
+   "category": "duplicate_ids",
+   "incidents": 526,
+   "recurring": 50,
+   "recurring_pct": 9.5
+  },
+  {
+   "category": "mapping_error",
+   "incidents": 749,
+   "recurring": 65,
+   "recurring_pct": 8.7
+  },
+  {
+   "category": "delivery_endpoint",
+   "incidents": 550,
+   "recurring": 32,
+   "recurring_pct": 5.8
+  },
+  {
+   "category": "client_config",
+   "incidents": 291,
+   "recurring": 9,
+   "recurring_pct": 3.1
+  },
+  {
+   "category": "unclassified",
+   "incidents": 71,
+   "recurring": 0,
+   "recurring_pct": 0.0
+  }
+ ],
+ "team_summary": [
+  {
+   "team": "Development",
+   "incidents": 2366,
+   "mean_resolution_h": 49.0,
+   "breach_pct": 34.7,
+   "esc_pct": 64.4
+  },
+  {
+   "team": "Streaming",
+   "incidents": 1944,
+   "mean_resolution_h": 31.2,
+   "breach_pct": 15.0,
+   "esc_pct": 11.9
+  },
+  {
+   "team": "Operations",
+   "incidents": 1094,
+   "mean_resolution_h": 30.0,
+   "breach_pct": 20.6,
+   "esc_pct": 18.2
+  }
+ ],
+ "sla_utilization": [
+  {
+   "bucket": "0-25%",
+   "lo": 0.0332986112,
+   "incidents": 794
+  },
+  {
+   "bucket": "25-50%",
+   "lo": 0.2501736113,
+   "incidents": 1492
+  },
+  {
+   "bucket": "50-75%",
+   "lo": 0.5002083331,
+   "incidents": 1086
+  },
+  {
+   "bucket": "75-100%",
+   "lo": 0.7505208333,
+   "incidents": 695
+  },
+  {
+   "bucket": "100-150%",
+   "lo": 1.0005208338,
+   "incidents": 693
+  },
+  {
+   "bucket": "150-200%",
+   "lo": 1.5021015211,
+   "incidents": 282
+  },
+  {
+   "bucket": "200%+",
+   "lo": 2.0024652779,
+   "incidents": 362
+  }
+ ],
+ "feed_age_effect": [
+  {
+   "feed_age": "0-30 d",
+   "lo": 0,
+   "feed_days": 3540,
+   "bad_delivery_pct": 8.84
+  },
+  {
+   "feed_age": "30-90 d",
+   "lo": 30,
+   "feed_days": 7203,
+   "bad_delivery_pct": 6.91
+  },
+  {
+   "feed_age": "90-180 d",
+   "lo": 90,
+   "feed_days": 10717,
+   "bad_delivery_pct": 4.17
+  },
+  {
+   "feed_age": "180-365 d",
+   "lo": 180,
+   "feed_days": 22046,
+   "bad_delivery_pct": 3.36
+  },
+  {
+   "feed_age": ">365 d",
+   "lo": 365,
+   "feed_days": 117021,
+   "bad_delivery_pct": 2.92
+  }
+ ]
+}

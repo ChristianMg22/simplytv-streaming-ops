@@ -1,0 +1,6042 @@
+{
+ "classification": {
+  "n_train": 3791,
+  "n_test": 1613,
+  "breach_rate_train": 0.2393,
+  "breach_rate_test": 0.2666,
+  "split_date": "2026-01-01",
+  "features_cat": [
+   "tier",
+   "segment",
+   "region",
+   "feed_type",
+   "category",
+   "severity",
+   "detection",
+   "last_status"
+  ],
+  "features_num": [
+   "open_hour",
+   "is_weekend",
+   "is_night",
+   "log_feed_age",
+   "client_prev7d",
+   "feed_prev30d",
+   "load_24h",
+   "completeness",
+   "lat_ratio",
+   "checksum_bad",
+   "days_since_event"
+  ],
+  "excluded_leakage": [
+   "escalated",
+   "team",
+   "first_response_min",
+   "closed_at / resolution_hours"
+  ],
+  "baseline": {
+   "name": "Historical rate by severity × tier × category",
+   "auc": 0.6895,
+   "ap": 0.4437
+  },
+  "models": {
+   "Logistic Regression": {
+    "auc": 0.726,
+    "ap": 0.5017,
+    "brier": 0.1701,
+    "precision": 0.3779,
+    "recall": 0.8023,
+    "f1": 0.5138,
+    "threshold": 0.1942,
+    "val_auc": 0.7009
+   },
+   "Random Forest": {
+    "auc": 0.7077,
+    "ap": 0.4643,
+    "brier": 0.1749,
+    "precision": 0.3264,
+    "recall": 0.8791,
+    "f1": 0.4761,
+    "threshold": 0.1758,
+    "val_auc": 0.6882
+   },
+   "Gradient Boosting": {
+    "auc": 0.706,
+    "ap": 0.4827,
+    "brier": 0.1732,
+    "precision": 0.3345,
+    "recall": 0.8605,
+    "f1": 0.4818,
+    "threshold": 0.148,
+    "val_auc": 0.6865
+   }
+  },
+  "best_model": "Logistic Regression",
+  "roc": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.0076,
+    0.0488
+   ],
+   [
+    0.0118,
+    0.0791
+   ],
+   [
+    0.0169,
+    0.1023
+   ],
+   [
+    0.0203,
+    0.1302
+   ],
+   [
+    0.0338,
+    0.1465
+   ],
+   [
+    0.038,
+    0.1628
+   ],
+   [
+    0.0431,
+    0.186
+   ],
+   [
+    0.0516,
+    0.207
+   ],
+   [
+    0.0592,
+    0.2186
+   ],
+   [
+    0.0651,
+    0.2535
+   ],
+   [
+    0.0702,
+    0.2674
+   ],
+   [
+    0.0778,
+    0.2791
+   ],
+   [
+    0.0862,
+    0.2907
+   ],
+   [
+    0.093,
+    0.3093
+   ],
+   [
+    0.0972,
+    0.3233
+   ],
+   [
+    0.1048,
+    0.3419
+   ],
+   [
+    0.1175,
+    0.3628
+   ],
+   [
+    0.1251,
+    0.386
+   ],
+   [
+    0.142,
+    0.4023
+   ],
+   [
+    0.153,
+    0.4209
+   ],
+   [
+    0.1598,
+    0.4326
+   ],
+   [
+    0.164,
+    0.4465
+   ],
+   [
+    0.1724,
+    0.4651
+   ],
+   [
+    0.1809,
+    0.4744
+   ],
+   [
+    0.1868,
+    0.4837
+   ],
+   [
+    0.1936,
+    0.493
+   ],
+   [
+    0.202,
+    0.5116
+   ],
+   [
+    0.2088,
+    0.5209
+   ],
+   [
+    0.2215,
+    0.5372
+   ],
+   [
+    0.2409,
+    0.5512
+   ],
+   [
+    0.2477,
+    0.5651
+   ],
+   [
+    0.2604,
+    0.5767
+   ],
+   [
+    0.2688,
+    0.5907
+   ],
+   [
+    0.2781,
+    0.607
+   ],
+   [
+    0.2874,
+    0.6186
+   ],
+   [
+    0.3009,
+    0.6279
+   ],
+   [
+    0.3119,
+    0.6395
+   ],
+   [
+    0.3305,
+    0.6512
+   ],
+   [
+    0.3407,
+    0.6651
+   ],
+   [
+    0.3533,
+    0.6791
+   ],
+   [
+    0.3626,
+    0.6907
+   ],
+   [
+    0.3728,
+    0.7047
+   ],
+   [
+    0.3838,
+    0.714
+   ],
+   [
+    0.4083,
+    0.7302
+   ],
+   [
+    0.426,
+    0.7395
+   ],
+   [
+    0.4345,
+    0.7488
+   ],
+   [
+    0.4455,
+    0.7628
+   ],
+   [
+    0.4522,
+    0.7837
+   ],
+   [
+    0.4742,
+    0.8
+   ],
+   [
+    0.4861,
+    0.8116
+   ],
+   [
+    0.4954,
+    0.8209
+   ],
+   [
+    0.5224,
+    0.8349
+   ],
+   [
+    0.5402,
+    0.8442
+   ],
+   [
+    0.5554,
+    0.8535
+   ],
+   [
+    0.5773,
+    0.8628
+   ],
+   [
+    0.5968,
+    0.8721
+   ],
+   [
+    0.6112,
+    0.8814
+   ],
+   [
+    0.6306,
+    0.8907
+   ],
+   [
+    0.672,
+    0.9023
+   ],
+   [
+    0.6982,
+    0.9116
+   ],
+   [
+    0.7202,
+    0.9209
+   ],
+   [
+    0.7591,
+    0.9326
+   ],
+   [
+    0.7777,
+    0.9419
+   ],
+   [
+    0.825,
+    0.9512
+   ],
+   [
+    0.8445,
+    0.9605
+   ],
+   [
+    0.8546,
+    0.9721
+   ],
+   [
+    0.9003,
+    0.9814
+   ],
+   [
+    0.9451,
+    0.9907
+   ],
+   [
+    1.0,
+    1.0
+   ]
+  ],
+  "pr": [
+   [
+    0.0,
+    1.0
+   ],
+   [
+    0.0395,
+    0.7391
+   ],
+   [
+    0.0767,
+    0.7174
+   ],
+   [
+    0.114,
+    0.7
+   ],
+   [
+    0.1349,
+    0.6237
+   ],
+   [
+    0.1651,
+    0.6121
+   ],
+   [
+    0.2,
+    0.6143
+   ],
+   [
+    0.2186,
+    0.5767
+   ],
+   [
+    0.2558,
+    0.5882
+   ],
+   [
+    0.2767,
+    0.5667
+   ],
+   [
+    0.3,
+    0.5536
+   ],
+   [
+    0.3279,
+    0.5486
+   ],
+   [
+    0.3465,
+    0.5321
+   ],
+   [
+    0.3744,
+    0.5314
+   ],
+   [
+    0.3977,
+    0.5229
+   ],
+   [
+    0.4163,
+    0.5114
+   ],
+   [
+    0.4326,
+    0.4973
+   ],
+   [
+    0.4605,
+    0.4987
+   ],
+   [
+    0.4767,
+    0.4881
+   ],
+   [
+    0.4977,
+    0.482
+   ],
+   [
+    0.5163,
+    0.4754
+   ],
+   [
+    0.5372,
+    0.4714
+   ],
+   [
+    0.5465,
+    0.4572
+   ],
+   [
+    0.5674,
+    0.4544
+   ],
+   [
+    0.5814,
+    0.4456
+   ],
+   [
+    0.6023,
+    0.4435
+   ],
+   [
+    0.6186,
+    0.4382
+   ],
+   [
+    0.6302,
+    0.4295
+   ],
+   [
+    0.6395,
+    0.4205
+   ],
+   [
+    0.6535,
+    0.4151
+   ],
+   [
+    0.6674,
+    0.4094
+   ],
+   [
+    0.6884,
+    0.4088
+   ],
+   [
+    0.707,
+    0.4064
+   ],
+   [
+    0.714,
+    0.3982
+   ],
+   [
+    0.7279,
+    0.3942
+   ],
+   [
+    0.7349,
+    0.3863
+   ],
+   [
+    0.7512,
+    0.3841
+   ],
+   [
+    0.7744,
+    0.3854
+   ],
+   [
+    0.786,
+    0.3806
+   ],
+   [
+    0.8023,
+    0.3787
+   ],
+   [
+    0.8186,
+    0.3765
+   ],
+   [
+    0.8209,
+    0.3685
+   ],
+   [
+    0.8372,
+    0.367
+   ],
+   [
+    0.8442,
+    0.3612
+   ],
+   [
+    0.8535,
+    0.357
+   ],
+   [
+    0.8605,
+    0.352
+   ],
+   [
+    0.8698,
+    0.3479
+   ],
+   [
+    0.8767,
+    0.3434
+   ],
+   [
+    0.8837,
+    0.3387
+   ],
+   [
+    0.8953,
+    0.3362
+   ],
+   [
+    0.9,
+    0.3313
+   ],
+   [
+    0.9023,
+    0.3255
+   ],
+   [
+    0.9093,
+    0.3218
+   ],
+   [
+    0.9163,
+    0.3183
+   ],
+   [
+    0.9256,
+    0.3154
+   ],
+   [
+    0.9256,
+    0.3097
+   ],
+   [
+    0.9372,
+    0.3079
+   ],
+   [
+    0.9465,
+    0.3056
+   ],
+   [
+    0.9465,
+    0.3004
+   ],
+   [
+    0.9488,
+    0.2959
+   ],
+   [
+    0.9558,
+    0.2932
+   ],
+   [
+    0.9651,
+    0.2912
+   ],
+   [
+    0.9744,
+    0.2892
+   ],
+   [
+    0.9791,
+    0.286
+   ],
+   [
+    0.9837,
+    0.2828
+   ],
+   [
+    0.9884,
+    0.2798
+   ],
+   [
+    0.9884,
+    0.2756
+   ],
+   [
+    0.993,
+    0.2727
+   ],
+   [
+    0.9953,
+    0.2694
+   ],
+   [
+    1.0,
+    0.2666
+   ]
+  ],
+  "confusion": {
+   "tp": 345,
+   "fp": 568,
+   "fn": 85,
+   "tn": 615,
+   "threshold": 0.1942
+  },
+  "gain": [
+   [
+    5,
+    0.1302
+   ],
+   [
+    10,
+    0.2186
+   ],
+   [
+    15,
+    0.3093
+   ],
+   [
+    20,
+    0.3953
+   ],
+   [
+    25,
+    0.4651
+   ],
+   [
+    30,
+    0.5256
+   ],
+   [
+    35,
+    0.5837
+   ],
+   [
+    40,
+    0.6395
+   ],
+   [
+    45,
+    0.6884
+   ],
+   [
+    50,
+    0.7326
+   ],
+   [
+    55,
+    0.786
+   ],
+   [
+    60,
+    0.8256
+   ],
+   [
+    65,
+    0.8605
+   ],
+   [
+    70,
+    0.8907
+   ],
+   [
+    75,
+    0.9093
+   ],
+   [
+    80,
+    0.9279
+   ],
+   [
+    85,
+    0.9488
+   ],
+   [
+    90,
+    0.9744
+   ],
+   [
+    95,
+    0.9884
+   ],
+   [
+    100,
+    1.0
+   ]
+  ],
+  "deciles": [
+   {
+    "decile": 1,
+    "pred": 0.6233,
+    "obs": 0.5802,
+    "n": 162
+   },
+   {
+    "decile": 2,
+    "pred": 0.4417,
+    "obs": 0.4783,
+    "n": 161
+   },
+   {
+    "decile": 3,
+    "pred": 0.3523,
+    "obs": 0.3478,
+    "n": 161
+   },
+   {
+    "decile": 4,
+    "pred": 0.292,
+    "obs": 0.2981,
+    "n": 161
+   },
+   {
+    "decile": 5,
+    "pred": 0.2415,
+    "obs": 0.2469,
+    "n": 162
+   },
+   {
+    "decile": 6,
+    "pred": 0.2004,
+    "obs": 0.2484,
+    "n": 161
+   },
+   {
+    "decile": 7,
+    "pred": 0.1635,
+    "obs": 0.1739,
+    "n": 161
+   },
+   {
+    "decile": 8,
+    "pred": 0.1291,
+    "obs": 0.0994,
+    "n": 161
+   },
+   {
+    "decile": 9,
+    "pred": 0.0986,
+    "obs": 0.1242,
+    "n": 161
+   },
+   {
+    "decile": 10,
+    "pred": 0.0621,
+    "obs": 0.0679,
+    "n": 162
+   }
+  ],
+  "top20_capture": 0.3953,
+  "top20_precision": 0.528,
+  "importance": [
+   {
+    "feature": "category",
+    "auc_drop": 0.0877,
+    "std": 0.0096
+   },
+   {
+    "feature": "tier",
+    "auc_drop": 0.0594,
+    "std": 0.0051
+   },
+   {
+    "feature": "is_night",
+    "auc_drop": 0.0289,
+    "std": 0.0036
+   },
+   {
+    "feature": "is_weekend",
+    "auc_drop": 0.0185,
+    "std": 0.0048
+   },
+   {
+    "feature": "load_24h",
+    "auc_drop": 0.0119,
+    "std": 0.0029
+   },
+   {
+    "feature": "severity",
+    "auc_drop": 0.0107,
+    "std": 0.0018
+   },
+   {
+    "feature": "detection",
+    "auc_drop": 0.009,
+    "std": 0.0022
+   },
+   {
+    "feature": "log_feed_age",
+    "auc_drop": 0.0065,
+    "std": 0.0019
+   },
+   {
+    "feature": "completeness",
+    "auc_drop": 0.0031,
+    "std": 0.0007
+   },
+   {
+    "feature": "open_hour",
+    "auc_drop": 0.0023,
+    "std": 0.0009
+   },
+   {
+    "feature": "feed_type",
+    "auc_drop": 0.0009,
+    "std": 0.0019
+   },
+   {
+    "feature": "feed_prev30d",
+    "auc_drop": 0.0005,
+    "std": 0.0005
+   },
+   {
+    "feature": "segment",
+    "auc_drop": 0.0004,
+    "std": 0.0004
+   },
+   {
+    "feature": "checksum_bad",
+    "auc_drop": 0.0003,
+    "std": 0.0014
+   },
+   {
+    "feature": "region",
+    "auc_drop": 0.0001,
+    "std": 0.0016
+   },
+   {
+    "feature": "days_since_event",
+    "auc_drop": 0.0001,
+    "std": 0.0009
+   },
+   {
+    "feature": "lat_ratio",
+    "auc_drop": -0.0,
+    "std": 0.0
+   },
+   {
+    "feature": "client_prev7d",
+    "auc_drop": -0.0,
+    "std": 0.0
+   },
+   {
+    "feature": "last_status",
+    "auc_drop": -0.0009,
+    "std": 0.0006
+   }
+  ],
+  "whatif": {
+   "test_breaches": 430,
+   "test_incidents": 1613,
+   "grid": [
+    {
+     "topk": 10,
+     "reduction": 10,
+     "avoided": 12,
+     "avoided_pct": 2.7907
+    },
+    {
+     "topk": 10,
+     "reduction": 20,
+     "avoided": 23,
+     "avoided_pct": 5.3488
+    },
+    {
+     "topk": 10,
+     "reduction": 30,
+     "avoided": 32,
+     "avoided_pct": 7.4419
+    },
+    {
+     "topk": 10,
+     "reduction": 40,
+     "avoided": 42,
+     "avoided_pct": 9.7674
+    },
+    {
+     "topk": 10,
+     "reduction": 50,
+     "avoided": 52,
+     "avoided_pct": 12.093
+    },
+    {
+     "topk": 20,
+     "reduction": 10,
+     "avoided": 21,
+     "avoided_pct": 4.8837
+    },
+    {
+     "topk": 20,
+     "reduction": 20,
+     "avoided": 43,
+     "avoided_pct": 10.0
+    },
+    {
+     "topk": 20,
+     "reduction": 30,
+     "avoided": 65,
+     "avoided_pct": 15.1163
+    },
+    {
+     "topk": 20,
+     "reduction": 40,
+     "avoided": 88,
+     "avoided_pct": 20.4651
+    },
+    {
+     "topk": 20,
+     "reduction": 50,
+     "avoided": 109,
+     "avoided_pct": 25.3488
+    },
+    {
+     "topk": 30,
+     "reduction": 10,
+     "avoided": 28,
+     "avoided_pct": 6.5116
+    },
+    {
+     "topk": 30,
+     "reduction": 20,
+     "avoided": 58,
+     "avoided_pct": 13.4884
+    },
+    {
+     "topk": 30,
+     "reduction": 30,
+     "avoided": 87,
+     "avoided_pct": 20.2326
+    },
+    {
+     "topk": 30,
+     "reduction": 40,
+     "avoided": 120,
+     "avoided_pct": 27.907
+    },
+    {
+     "topk": 30,
+     "reduction": 50,
+     "avoided": 149,
+     "avoided_pct": 34.6512
+    }
+   ],
+   "note": "Scenario with an assumption: reduce the resolution time of flagged incidents by X%."
+  },
+  "eta": {
+   "mae_h": 19.8912,
+   "mae_h_baseline": 21.0836,
+   "r2_log": 0.6907,
+   "r2_log_baseline": 0.6472,
+   "baseline": "Historical median by severity × tier"
+  },
+  "simulator": {
+   "intercept": -0.5477,
+   "cat": {
+    "tier": {
+     "Bronze": -0.7234,
+     "Gold": 0.5727,
+     "Silver": -0.3377
+    },
+    "severity": {
+     "P1": -0.3369,
+     "P2": 0.0543,
+     "P3": -0.1276,
+     "P4": -0.0781
+    },
+    "category": {
+     "client_config": -0.4072,
+     "delivery_endpoint": -0.5611,
+     "duplicate_ids": 0.3127,
+     "image_gap": -0.5888,
+     "mapping_error": -0.0813,
+     "schema_drift": 0.9837,
+     "source_outage": 0.4205,
+     "stale_schedule": -0.5739,
+     "unclassified": 0.0069
+    },
+    "detection": {
+     "auto": -0.6485,
+     "client": 0.1601
+    }
+   },
+   "num": {
+    "is_weekend": {
+     "mean": 0.23,
+     "scale": 0.4208,
+     "coef": 0.2498
+    },
+    "is_night": {
+     "mean": 0.6584,
+     "scale": 0.4742,
+     "coef": 0.258
+    },
+    "log_feed_age": {
+     "mean": 5.8403,
+     "scale": 1.3662,
+     "coef": -0.1754
+    },
+    "load_24h": {
+     "mean": 4.3838,
+     "scale": 2.4319,
+     "coef": 0.2266
+    }
+   },
+   "auc_test": 0.7257,
+   "load_24h_range": [
+    1.0,
+    9.0
+   ],
+   "feed_age_choices": {
+    "new (<30 d)": 20,
+    "young (~90 d)": 90,
+    "mature (~1 yr)": 365
+   }
+  }
+ },
+ "forecast": {
+  "history": [
+   {
+    "week": "2023-06-05",
+    "incidents": 20,
+    "rate": 39.6825,
+    "feed_days": 504,
+    "event": 0.0008
+   },
+   {
+    "week": "2023-06-12",
+    "incidents": 17,
+    "rate": 33.7302,
+    "feed_days": 504,
+    "event": 0.0007
+   },
+   {
+    "week": "2023-06-19",
+    "incidents": 12,
+    "rate": 23.8095,
+    "feed_days": 504,
+    "event": 0.0006
+   },
+   {
+    "week": "2023-06-26",
+    "incidents": 20,
+    "rate": 39.2157,
+    "feed_days": 510,
+    "event": 0.0005
+   },
+   {
+    "week": "2023-07-03",
+    "incidents": 18,
+    "rate": 34.749,
+    "feed_days": 518,
+    "event": 0.0004
+   },
+   {
+    "week": "2023-07-10",
+    "incidents": 16,
+    "rate": 30.8285,
+    "feed_days": 519,
+    "event": 0.0012
+   },
+   {
+    "week": "2023-07-17",
+    "incidents": 16,
+    "rate": 30.0188,
+    "feed_days": 533,
+    "event": 0.0055
+   },
+   {
+    "week": "2023-07-24",
+    "incidents": 21,
+    "rate": 38.961,
+    "feed_days": 539,
+    "event": 0.0046
+   },
+   {
+    "week": "2023-07-31",
+    "incidents": 13,
+    "rate": 24.1187,
+    "feed_days": 539,
+    "event": 0.004
+   },
+   {
+    "week": "2023-08-07",
+    "incidents": 12,
+    "rate": 22.2222,
+    "feed_days": 540,
+    "event": 0.0034
+   },
+   {
+    "week": "2023-08-14",
+    "incidents": 22,
+    "rate": 40.293,
+    "feed_days": 546,
+    "event": 0.0029
+   },
+   {
+    "week": "2023-08-21",
+    "incidents": 24,
+    "rate": 43.2432,
+    "feed_days": 555,
+    "event": 0.0024
+   },
+   {
+    "week": "2023-08-28",
+    "incidents": 25,
+    "rate": 44.2478,
+    "feed_days": 565,
+    "event": 0.0034
+   },
+   {
+    "week": "2023-09-04",
+    "incidents": 17,
+    "rate": 29.9824,
+    "feed_days": 567,
+    "event": 0.0034
+   },
+   {
+    "week": "2023-09-11",
+    "incidents": 18,
+    "rate": 31.746,
+    "feed_days": 567,
+    "event": 0.2459
+   },
+   {
+    "week": "2023-09-18",
+    "incidents": 16,
+    "rate": 28.2187,
+    "feed_days": 567,
+    "event": 0.2105
+   },
+   {
+    "week": "2023-09-25",
+    "incidents": 22,
+    "rate": 38.4615,
+    "feed_days": 572,
+    "event": 0.1786
+   },
+   {
+    "week": "2023-10-02",
+    "incidents": 16,
+    "rate": 27.8746,
+    "feed_days": 574,
+    "event": 0.1523
+   },
+   {
+    "week": "2023-10-09",
+    "incidents": 16,
+    "rate": 27.8746,
+    "feed_days": 574,
+    "event": 0.1304
+   },
+   {
+    "week": "2023-10-16",
+    "incidents": 22,
+    "rate": 38.0623,
+    "feed_days": 578,
+    "event": 0.1108
+   },
+   {
+    "week": "2023-10-23",
+    "incidents": 17,
+    "rate": 28.6195,
+    "feed_days": 594,
+    "event": 0.0959
+   },
+   {
+    "week": "2023-10-30",
+    "incidents": 22,
+    "rate": 36.9748,
+    "feed_days": 595,
+    "event": 0.0824
+   },
+   {
+    "week": "2023-11-06",
+    "incidents": 20,
+    "rate": 33.6134,
+    "feed_days": 595,
+    "event": 0.0705
+   },
+   {
+    "week": "2023-11-13",
+    "incidents": 25,
+    "rate": 41.5282,
+    "feed_days": 602,
+    "event": 0.0597
+   },
+   {
+    "week": "2023-11-20",
+    "incidents": 21,
+    "rate": 34.8837,
+    "feed_days": 602,
+    "event": 0.0511
+   },
+   {
+    "week": "2023-11-27",
+    "incidents": 19,
+    "rate": 31.5615,
+    "feed_days": 602,
+    "event": 0.0437
+   },
+   {
+    "week": "2023-12-04",
+    "incidents": 14,
+    "rate": 23.2558,
+    "feed_days": 602,
+    "event": 0.0374
+   },
+   {
+    "week": "2023-12-11",
+    "incidents": 24,
+    "rate": 39.8671,
+    "feed_days": 602,
+    "event": 0.032
+   },
+   {
+    "week": "2023-12-18",
+    "incidents": 22,
+    "rate": 36.3036,
+    "feed_days": 606,
+    "event": 0.0273
+   },
+   {
+    "week": "2023-12-25",
+    "incidents": 20,
+    "rate": 32.6797,
+    "feed_days": 612,
+    "event": 0.0236
+   },
+   {
+    "week": "2024-01-01",
+    "incidents": 22,
+    "rate": 35.4839,
+    "feed_days": 620,
+    "event": 0.0207
+   },
+   {
+    "week": "2024-01-08",
+    "incidents": 25,
+    "rate": 39.4945,
+    "feed_days": 633,
+    "event": 0.0179
+   },
+   {
+    "week": "2024-01-15",
+    "incidents": 21,
+    "rate": 32.967,
+    "feed_days": 637,
+    "event": 0.0153
+   },
+   {
+    "week": "2024-01-22",
+    "incidents": 20,
+    "rate": 31.1526,
+    "feed_days": 642,
+    "event": 0.013
+   },
+   {
+    "week": "2024-01-29",
+    "incidents": 17,
+    "rate": 26.3158,
+    "feed_days": 646,
+    "event": 0.0112
+   },
+   {
+    "week": "2024-02-05",
+    "incidents": 19,
+    "rate": 29.1859,
+    "feed_days": 651,
+    "event": 0.0098
+   },
+   {
+    "week": "2024-02-12",
+    "incidents": 24,
+    "rate": 36.8664,
+    "feed_days": 651,
+    "event": 0.0084
+   },
+   {
+    "week": "2024-02-19",
+    "incidents": 21,
+    "rate": 32.2581,
+    "feed_days": 651,
+    "event": 0.0072
+   },
+   {
+    "week": "2024-02-26",
+    "incidents": 23,
+    "rate": 34.7958,
+    "feed_days": 661,
+    "event": 0.0061
+   },
+   {
+    "week": "2024-03-04",
+    "incidents": 21,
+    "rate": 30.9278,
+    "feed_days": 679,
+    "event": 0.0053
+   },
+   {
+    "week": "2024-03-11",
+    "incidents": 22,
+    "rate": 32.4006,
+    "feed_days": 679,
+    "event": 0.0045
+   },
+   {
+    "week": "2024-03-18",
+    "incidents": 22,
+    "rate": 32.3054,
+    "feed_days": 681,
+    "event": 0.0039
+   },
+   {
+    "week": "2024-03-25",
+    "incidents": 20,
+    "rate": 29.1545,
+    "feed_days": 686,
+    "event": 0.0033
+   },
+   {
+    "week": "2024-04-01",
+    "incidents": 28,
+    "rate": 40.8163,
+    "feed_days": 686,
+    "event": 0.0028
+   },
+   {
+    "week": "2024-04-08",
+    "incidents": 27,
+    "rate": 38.8489,
+    "feed_days": 695,
+    "event": 0.0024
+   },
+   {
+    "week": "2024-04-15",
+    "incidents": 38,
+    "rate": 53.3708,
+    "feed_days": 712,
+    "event": 0.002
+   },
+   {
+    "week": "2024-04-22",
+    "incidents": 29,
+    "rate": 40.2219,
+    "feed_days": 721,
+    "event": 0.0017
+   },
+   {
+    "week": "2024-04-29",
+    "incidents": 28,
+    "rate": 38.835,
+    "feed_days": 721,
+    "event": 0.0015
+   },
+   {
+    "week": "2024-05-06",
+    "incidents": 22,
+    "rate": 30.4709,
+    "feed_days": 722,
+    "event": 0.0013
+   },
+   {
+    "week": "2024-05-13",
+    "incidents": 42,
+    "rate": 57.4555,
+    "feed_days": 731,
+    "event": 0.0011
+   },
+   {
+    "week": "2024-05-20",
+    "incidents": 27,
+    "rate": 36.7347,
+    "feed_days": 735,
+    "event": 0.001
+   },
+   {
+    "week": "2024-05-27",
+    "incidents": 24,
+    "rate": 32.6531,
+    "feed_days": 735,
+    "event": 0.0008
+   },
+   {
+    "week": "2024-06-03",
+    "incidents": 27,
+    "rate": 36.635,
+    "feed_days": 737,
+    "event": 0.0007
+   },
+   {
+    "week": "2024-06-10",
+    "incidents": 32,
+    "rate": 43.1267,
+    "feed_days": 742,
+    "event": 0.0006
+   },
+   {
+    "week": "2024-06-17",
+    "incidents": 27,
+    "rate": 36.0,
+    "feed_days": 750,
+    "event": 0.0005
+   },
+   {
+    "week": "2024-06-24",
+    "incidents": 22,
+    "rate": 28.6832,
+    "feed_days": 767,
+    "event": 0.0004
+   },
+   {
+    "week": "2024-07-01",
+    "incidents": 25,
+    "rate": 32.3415,
+    "feed_days": 773,
+    "event": 0.0712
+   },
+   {
+    "week": "2024-07-08",
+    "incidents": 22,
+    "rate": 28.169,
+    "feed_days": 781,
+    "event": 0.1289
+   },
+   {
+    "week": "2024-07-15",
+    "incidents": 40,
+    "rate": 50.9554,
+    "feed_days": 785,
+    "event": 0.1098
+   },
+   {
+    "week": "2024-07-22",
+    "incidents": 21,
+    "rate": 26.5487,
+    "feed_days": 791,
+    "event": 0.0933
+   },
+   {
+    "week": "2024-07-29",
+    "incidents": 27,
+    "rate": 34.134,
+    "feed_days": 791,
+    "event": 0.0798
+   },
+   {
+    "week": "2024-08-05",
+    "incidents": 29,
+    "rate": 36.478,
+    "feed_days": 795,
+    "event": 0.068
+   },
+   {
+    "week": "2024-08-12",
+    "incidents": 31,
+    "rate": 38.8471,
+    "feed_days": 798,
+    "event": 0.058
+   },
+   {
+    "week": "2024-08-19",
+    "incidents": 24,
+    "rate": 30.0,
+    "feed_days": 800,
+    "event": 0.0513
+   },
+   {
+    "week": "2024-08-26",
+    "incidents": 34,
+    "rate": 41.9753,
+    "feed_days": 810,
+    "event": 0.0471
+   },
+   {
+    "week": "2024-09-02",
+    "incidents": 19,
+    "rate": 23.399,
+    "feed_days": 812,
+    "event": 0.0402
+   },
+   {
+    "week": "2024-09-09",
+    "incidents": 21,
+    "rate": 25.7669,
+    "feed_days": 815,
+    "event": 0.0343
+   },
+   {
+    "week": "2024-09-16",
+    "incidents": 29,
+    "rate": 34.6062,
+    "feed_days": 838,
+    "event": 0.0371
+   },
+   {
+    "week": "2024-09-23",
+    "incidents": 23,
+    "rate": 27.1868,
+    "feed_days": 846,
+    "event": 0.0322
+   },
+   {
+    "week": "2024-09-30",
+    "incidents": 29,
+    "rate": 34.2385,
+    "feed_days": 847,
+    "event": 0.0276
+   },
+   {
+    "week": "2024-10-07",
+    "incidents": 37,
+    "rate": 43.4272,
+    "feed_days": 852,
+    "event": 0.0248
+   },
+   {
+    "week": "2024-10-14",
+    "incidents": 31,
+    "rate": 36.2998,
+    "feed_days": 854,
+    "event": 0.0217
+   },
+   {
+    "week": "2024-10-21",
+    "incidents": 26,
+    "rate": 30.3384,
+    "feed_days": 857,
+    "event": 0.0191
+   },
+   {
+    "week": "2024-10-28",
+    "incidents": 31,
+    "rate": 35.7968,
+    "feed_days": 866,
+    "event": 0.017
+   },
+   {
+    "week": "2024-11-04",
+    "incidents": 31,
+    "rate": 35.2673,
+    "feed_days": 879,
+    "event": 0.0152
+   },
+   {
+    "week": "2024-11-11",
+    "incidents": 33,
+    "rate": 36.9955,
+    "feed_days": 892,
+    "event": 0.0133
+   },
+   {
+    "week": "2024-11-18",
+    "incidents": 33,
+    "rate": 36.8304,
+    "feed_days": 896,
+    "event": 0.0117
+   },
+   {
+    "week": "2024-11-25",
+    "incidents": 31,
+    "rate": 34.4062,
+    "feed_days": 901,
+    "event": 0.0104
+   },
+   {
+    "week": "2024-12-02",
+    "incidents": 32,
+    "rate": 35.4374,
+    "feed_days": 903,
+    "event": 0.009
+   },
+   {
+    "week": "2024-12-09",
+    "incidents": 41,
+    "rate": 45.4042,
+    "feed_days": 903,
+    "event": 0.0077
+   },
+   {
+    "week": "2024-12-16",
+    "incidents": 46,
+    "rate": 50.9413,
+    "feed_days": 903,
+    "event": 0.0066
+   },
+   {
+    "week": "2024-12-23",
+    "incidents": 24,
+    "rate": 26.5781,
+    "feed_days": 903,
+    "event": 0.0057
+   },
+   {
+    "week": "2024-12-30",
+    "incidents": 32,
+    "rate": 35.2035,
+    "feed_days": 909,
+    "event": 0.0049
+   },
+   {
+    "week": "2025-01-06",
+    "incidents": 32,
+    "rate": 34.4456,
+    "feed_days": 929,
+    "event": 0.0043
+   },
+   {
+    "week": "2025-01-13",
+    "incidents": 32,
+    "rate": 34.1515,
+    "feed_days": 937,
+    "event": 0.0037
+   },
+   {
+    "week": "2025-01-20",
+    "incidents": 48,
+    "rate": 50.7937,
+    "feed_days": 945,
+    "event": 0.0032
+   },
+   {
+    "week": "2025-01-27",
+    "incidents": 25,
+    "rate": 26.455,
+    "feed_days": 945,
+    "event": 0.0028
+   },
+   {
+    "week": "2025-02-03",
+    "incidents": 39,
+    "rate": 41.2698,
+    "feed_days": 945,
+    "event": 0.0024
+   },
+   {
+    "week": "2025-02-10",
+    "incidents": 30,
+    "rate": 31.746,
+    "feed_days": 945,
+    "event": 0.002
+   },
+   {
+    "week": "2025-02-17",
+    "incidents": 37,
+    "rate": 39.1534,
+    "feed_days": 945,
+    "event": 0.0017
+   },
+   {
+    "week": "2025-02-24",
+    "incidents": 27,
+    "rate": 28.5714,
+    "feed_days": 945,
+    "event": 0.0015
+   },
+   {
+    "week": "2025-03-03",
+    "incidents": 32,
+    "rate": 33.8624,
+    "feed_days": 945,
+    "event": 0.0013
+   },
+   {
+    "week": "2025-03-10",
+    "incidents": 31,
+    "rate": 32.666,
+    "feed_days": 949,
+    "event": 0.0011
+   },
+   {
+    "week": "2025-03-17",
+    "incidents": 27,
+    "rate": 28.3316,
+    "feed_days": 953,
+    "event": 0.0009
+   },
+   {
+    "week": "2025-03-24",
+    "incidents": 20,
+    "rate": 20.8551,
+    "feed_days": 959,
+    "event": 0.0008
+   },
+   {
+    "week": "2025-03-31",
+    "incidents": 20,
+    "rate": 20.7039,
+    "feed_days": 966,
+    "event": 0.0007
+   },
+   {
+    "week": "2025-04-07",
+    "incidents": 27,
+    "rate": 27.9214,
+    "feed_days": 967,
+    "event": 0.0006
+   },
+   {
+    "week": "2025-04-14",
+    "incidents": 29,
+    "rate": 29.7741,
+    "feed_days": 974,
+    "event": 0.0005
+   },
+   {
+    "week": "2025-04-21",
+    "incidents": 35,
+    "rate": 35.5691,
+    "feed_days": 984,
+    "event": 0.0004
+   },
+   {
+    "week": "2025-04-28",
+    "incidents": 29,
+    "rate": 29.2929,
+    "feed_days": 990,
+    "event": 0.0004
+   },
+   {
+    "week": "2025-05-05",
+    "incidents": 41,
+    "rate": 40.6746,
+    "feed_days": 1008,
+    "event": 0.0003
+   },
+   {
+    "week": "2025-05-12",
+    "incidents": 35,
+    "rate": 34.4488,
+    "feed_days": 1016,
+    "event": 0.0003
+   },
+   {
+    "week": "2025-05-19",
+    "incidents": 39,
+    "rate": 38.1605,
+    "feed_days": 1022,
+    "event": 0.0002
+   },
+   {
+    "week": "2025-05-26",
+    "incidents": 29,
+    "rate": 28.3757,
+    "feed_days": 1022,
+    "event": 0.0002
+   },
+   {
+    "week": "2025-06-02",
+    "incidents": 32,
+    "rate": 31.3112,
+    "feed_days": 1022,
+    "event": 0.0002
+   },
+   {
+    "week": "2025-06-09",
+    "incidents": 29,
+    "rate": 28.3757,
+    "feed_days": 1022,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-06-16",
+    "incidents": 39,
+    "rate": 38.1232,
+    "feed_days": 1023,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-06-23",
+    "incidents": 36,
+    "rate": 34.9515,
+    "feed_days": 1030,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-06-30",
+    "incidents": 30,
+    "rate": 28.9296,
+    "feed_days": 1037,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-07-07",
+    "incidents": 45,
+    "rate": 43.1034,
+    "feed_days": 1044,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-07-14",
+    "incidents": 36,
+    "rate": 34.2857,
+    "feed_days": 1050,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-07-21",
+    "incidents": 40,
+    "rate": 37.8788,
+    "feed_days": 1056,
+    "event": 0.0001
+   },
+   {
+    "week": "2025-07-28",
+    "incidents": 40,
+    "rate": 37.3483,
+    "feed_days": 1071,
+    "event": 0.0
+   },
+   {
+    "week": "2025-08-04",
+    "incidents": 32,
+    "rate": 29.8229,
+    "feed_days": 1073,
+    "event": 0.0
+   },
+   {
+    "week": "2025-08-11",
+    "incidents": 50,
+    "rate": 46.3822,
+    "feed_days": 1078,
+    "event": 0.0
+   },
+   {
+    "week": "2025-08-18",
+    "incidents": 42,
+    "rate": 38.961,
+    "feed_days": 1078,
+    "event": 0.0
+   },
+   {
+    "week": "2025-08-25",
+    "incidents": 26,
+    "rate": 23.9631,
+    "feed_days": 1085,
+    "event": 0.0
+   },
+   {
+    "week": "2025-09-01",
+    "incidents": 34,
+    "rate": 31.1355,
+    "feed_days": 1092,
+    "event": 0.0
+   },
+   {
+    "week": "2025-09-08",
+    "incidents": 37,
+    "rate": 33.8828,
+    "feed_days": 1092,
+    "event": 0.0
+   },
+   {
+    "week": "2025-09-15",
+    "incidents": 39,
+    "rate": 35.7143,
+    "feed_days": 1092,
+    "event": 0.0
+   },
+   {
+    "week": "2025-09-22",
+    "incidents": 38,
+    "rate": 34.7032,
+    "feed_days": 1095,
+    "event": 0.0
+   },
+   {
+    "week": "2025-09-29",
+    "incidents": 49,
+    "rate": 44.586,
+    "feed_days": 1099,
+    "event": 0.0
+   },
+   {
+    "week": "2025-10-06",
+    "incidents": 47,
+    "rate": 42.5339,
+    "feed_days": 1105,
+    "event": 0.0
+   },
+   {
+    "week": "2025-10-13",
+    "incidents": 44,
+    "rate": 39.6754,
+    "feed_days": 1109,
+    "event": 0.0
+   },
+   {
+    "week": "2025-10-20",
+    "incidents": 38,
+    "rate": 34.0197,
+    "feed_days": 1117,
+    "event": 0.0
+   },
+   {
+    "week": "2025-10-27",
+    "incidents": 31,
+    "rate": 27.6786,
+    "feed_days": 1120,
+    "event": 0.0
+   },
+   {
+    "week": "2025-11-03",
+    "incidents": 41,
+    "rate": 36.3153,
+    "feed_days": 1129,
+    "event": 0.0
+   },
+   {
+    "week": "2025-11-10",
+    "incidents": 41,
+    "rate": 36.1552,
+    "feed_days": 1134,
+    "event": 0.0
+   },
+   {
+    "week": "2025-11-17",
+    "incidents": 49,
+    "rate": 42.9825,
+    "feed_days": 1140,
+    "event": 0.0
+   },
+   {
+    "week": "2025-11-24",
+    "incidents": 32,
+    "rate": 27.9476,
+    "feed_days": 1145,
+    "event": 0.0
+   },
+   {
+    "week": "2025-12-01",
+    "incidents": 28,
+    "rate": 24.369,
+    "feed_days": 1149,
+    "event": 0.0
+   },
+   {
+    "week": "2025-12-08",
+    "incidents": 35,
+    "rate": 30.303,
+    "feed_days": 1155,
+    "event": 0.0
+   },
+   {
+    "week": "2025-12-15",
+    "incidents": 32,
+    "rate": 27.7056,
+    "feed_days": 1155,
+    "event": 0.0
+   },
+   {
+    "week": "2025-12-22",
+    "incidents": 32,
+    "rate": 27.6339,
+    "feed_days": 1158,
+    "event": 0.0
+   },
+   {
+    "week": "2025-12-29",
+    "incidents": 40,
+    "rate": 34.3348,
+    "feed_days": 1165,
+    "event": 0.0
+   },
+   {
+    "week": "2026-01-05",
+    "incidents": 45,
+    "rate": 38.4944,
+    "feed_days": 1169,
+    "event": 0.0
+   },
+   {
+    "week": "2026-01-12",
+    "incidents": 31,
+    "rate": 26.4731,
+    "feed_days": 1171,
+    "event": 0.0
+   },
+   {
+    "week": "2026-01-19",
+    "incidents": 43,
+    "rate": 36.3483,
+    "feed_days": 1183,
+    "event": 0.0
+   },
+   {
+    "week": "2026-01-26",
+    "incidents": 40,
+    "rate": 33.4728,
+    "feed_days": 1195,
+    "event": 0.0
+   },
+   {
+    "week": "2026-02-02",
+    "incidents": 34,
+    "rate": 28.4043,
+    "feed_days": 1197,
+    "event": 0.0
+   },
+   {
+    "week": "2026-02-09",
+    "incidents": 45,
+    "rate": 37.3754,
+    "feed_days": 1204,
+    "event": 0.0
+   },
+   {
+    "week": "2026-02-16",
+    "incidents": 33,
+    "rate": 27.3632,
+    "feed_days": 1206,
+    "event": 0.0
+   },
+   {
+    "week": "2026-02-23",
+    "incidents": 49,
+    "rate": 40.4624,
+    "feed_days": 1211,
+    "event": 0.0
+   },
+   {
+    "week": "2026-03-02",
+    "incidents": 46,
+    "rate": 37.7979,
+    "feed_days": 1217,
+    "event": 0.0
+   },
+   {
+    "week": "2026-03-09",
+    "incidents": 45,
+    "rate": 36.7347,
+    "feed_days": 1225,
+    "event": 0.0
+   },
+   {
+    "week": "2026-03-16",
+    "incidents": 42,
+    "rate": 34.0909,
+    "feed_days": 1232,
+    "event": 0.0
+   },
+   {
+    "week": "2026-03-23",
+    "incidents": 40,
+    "rate": 32.3363,
+    "feed_days": 1237,
+    "event": 0.0
+   },
+   {
+    "week": "2026-03-30",
+    "incidents": 42,
+    "rate": 33.7079,
+    "feed_days": 1246,
+    "event": 0.0
+   },
+   {
+    "week": "2026-04-06",
+    "incidents": 43,
+    "rate": 34.5104,
+    "feed_days": 1246,
+    "event": 0.0
+   },
+   {
+    "week": "2026-04-13",
+    "incidents": 38,
+    "rate": 30.4976,
+    "feed_days": 1246,
+    "event": 0.0
+   },
+   {
+    "week": "2026-04-20",
+    "incidents": 46,
+    "rate": 36.9181,
+    "feed_days": 1246,
+    "event": 0.0
+   },
+   {
+    "week": "2026-04-27",
+    "incidents": 49,
+    "rate": 39.2628,
+    "feed_days": 1248,
+    "event": 0.0
+   },
+   {
+    "week": "2026-05-04",
+    "incidents": 46,
+    "rate": 36.566,
+    "feed_days": 1258,
+    "event": 0.0
+   },
+   {
+    "week": "2026-05-11",
+    "incidents": 38,
+    "rate": 30.0395,
+    "feed_days": 1265,
+    "event": 0.0
+   },
+   {
+    "week": "2026-05-18",
+    "incidents": 46,
+    "rate": 36.3062,
+    "feed_days": 1267,
+    "event": 0.0
+   },
+   {
+    "week": "2026-05-25",
+    "incidents": 43,
+    "rate": 33.9384,
+    "feed_days": 1267,
+    "event": 0.0
+   },
+   {
+    "week": "2026-06-01",
+    "incidents": 41,
+    "rate": 32.3599,
+    "feed_days": 1267,
+    "event": 0.0
+   },
+   {
+    "week": "2026-06-08",
+    "incidents": 34,
+    "rate": 26.835,
+    "feed_days": 1267,
+    "event": 0.0
+   },
+   {
+    "week": "2026-06-15",
+    "incidents": 43,
+    "rate": 33.752,
+    "feed_days": 1274,
+    "event": 0.0385
+   },
+   {
+    "week": "2026-06-22",
+    "incidents": 47,
+    "rate": 36.6901,
+    "feed_days": 1281,
+    "event": 0.0327
+   },
+   {
+    "week": "2026-06-29",
+    "incidents": 40,
+    "rate": 31.2256,
+    "feed_days": 1281,
+    "event": 0.028
+   },
+   {
+    "week": "2026-07-06",
+    "incidents": 36,
+    "rate": 28.0156,
+    "feed_days": 1285,
+    "event": 0.0239
+   },
+   {
+    "week": "2026-07-13",
+    "incidents": 45,
+    "rate": 34.9379,
+    "feed_days": 1288,
+    "event": 0.0204
+   },
+   {
+    "week": "2026-07-20",
+    "incidents": 38,
+    "rate": 29.5031,
+    "feed_days": 1288,
+    "event": 0.0175
+   },
+   {
+    "week": "2026-07-27",
+    "incidents": 44,
+    "rate": 34.1615,
+    "feed_days": 1288,
+    "event": 0.015
+   },
+   {
+    "week": "2026-08-03",
+    "incidents": 43,
+    "rate": 33.256,
+    "feed_days": 1293,
+    "event": 0.0135
+   },
+   {
+    "week": "2026-08-10",
+    "incidents": 29,
+    "rate": 22.0532,
+    "feed_days": 1315,
+    "event": 0.0138
+   },
+   {
+    "week": "2026-08-17",
+    "incidents": 40,
+    "rate": 30.3951,
+    "feed_days": 1316,
+    "event": 0.0118
+   },
+   {
+    "week": "2026-08-24",
+    "incidents": 50,
+    "rate": 37.9939,
+    "feed_days": 1316,
+    "event": 0.0101
+   },
+   {
+    "week": "2026-08-31",
+    "incidents": 58,
+    "rate": 44.0729,
+    "feed_days": 1316,
+    "event": 0.0086
+   },
+   {
+    "week": "2026-09-07",
+    "incidents": 33,
+    "rate": 25.0,
+    "feed_days": 1320,
+    "event": 0.0078
+   },
+   {
+    "week": "2026-09-14",
+    "incidents": 48,
+    "rate": 36.1174,
+    "feed_days": 1329,
+    "event": 0.0076
+   },
+   {
+    "week": "2026-09-21",
+    "incidents": 37,
+    "rate": 27.6739,
+    "feed_days": 1337,
+    "event": 0.0065
+   }
+  ],
+  "forecast": [
+   {
+    "week": "2026-09-28",
+    "forecast": 46.8482,
+    "lo": 39.2783,
+    "hi": 55.8771,
+    "rate": 35.3438
+   },
+   {
+    "week": "2026-10-05",
+    "forecast": 42.9252,
+    "lo": 35.5859,
+    "hi": 51.7781,
+    "rate": 32.3841
+   },
+   {
+    "week": "2026-10-12",
+    "forecast": 45.5049,
+    "lo": 37.8975,
+    "hi": 54.6393,
+    "rate": 34.3303
+   },
+   {
+    "week": "2026-10-19",
+    "forecast": 43.4992,
+    "lo": 36.0314,
+    "hi": 52.5147,
+    "rate": 32.8172
+   },
+   {
+    "week": "2026-10-26",
+    "forecast": 44.8264,
+    "lo": 36.3144,
+    "hi": 55.3337,
+    "rate": 33.8185
+   },
+   {
+    "week": "2026-11-02",
+    "forecast": 44.0578,
+    "lo": 34.9815,
+    "hi": 55.489,
+    "rate": 33.2386
+   },
+   {
+    "week": "2026-11-09",
+    "forecast": 44.2393,
+    "lo": 34.4824,
+    "hi": 56.7571,
+    "rate": 33.3756
+   },
+   {
+    "week": "2026-11-16",
+    "forecast": 43.7646,
+    "lo": 33.5305,
+    "hi": 57.1224,
+    "rate": 33.0174
+   },
+   {
+    "week": "2026-11-23",
+    "forecast": 43.8911,
+    "lo": 33.0884,
+    "hi": 58.2206,
+    "rate": 33.1129
+   },
+   {
+    "week": "2026-11-30",
+    "forecast": 43.79,
+    "lo": 32.5116,
+    "hi": 58.9811,
+    "rate": 33.0366
+   },
+   {
+    "week": "2026-12-07",
+    "forecast": 43.6305,
+    "lo": 31.9257,
+    "hi": 59.6267,
+    "rate": 32.9163
+   },
+   {
+    "week": "2026-12-14",
+    "forecast": 43.5037,
+    "lo": 31.3938,
+    "hi": 60.2849,
+    "rate": 32.8206
+   },
+   {
+    "week": "2026-12-21",
+    "forecast": 43.3575,
+    "lo": 30.8743,
+    "hi": 60.888,
+    "rate": 32.7103
+   }
+  ],
+  "backtest": {
+   "Naive": {
+    "mae": 5.8445,
+    "mae_by_h": [
+     5.6049,
+     6.7803,
+     5.73,
+     5.263
+    ]
+   },
+   "4-wk mean": {
+    "mae": 4.7668,
+    "mae_by_h": [
+     4.6394,
+     4.8686,
+     4.6618,
+     4.8976
+    ]
+   },
+   "Ridge": {
+    "mae": 4.5093,
+    "mae_by_h": [
+     4.2849,
+     4.5433,
+     4.4532,
+     4.7557
+    ]
+   },
+   "Gradient Boosting": {
+    "mae": 5.2053,
+    "mae_by_h": [
+     5.2147,
+     5.1058,
+     5.5026,
+     4.9983
+    ]
+   }
+  },
+  "best_model": "Ridge",
+  "backtest_weeks": 26,
+  "horizon_bt": 4,
+  "h1_backtest": [
+   {
+    "week": "2026-03-09",
+    "pred": 41.3569
+   },
+   {
+    "week": "2026-03-16",
+    "pred": 39.8917
+   },
+   {
+    "week": "2026-03-23",
+    "pred": 41.585
+   },
+   {
+    "week": "2026-03-30",
+    "pred": 41.2199
+   },
+   {
+    "week": "2026-04-06",
+    "pred": 41.4521
+   },
+   {
+    "week": "2026-04-13",
+    "pred": 41.5764
+   },
+   {
+    "week": "2026-04-20",
+    "pred": 41.4989
+   },
+   {
+    "week": "2026-04-27",
+    "pred": 41.7265
+   },
+   {
+    "week": "2026-05-04",
+    "pred": 42.9266
+   },
+   {
+    "week": "2026-05-11",
+    "pred": 42.8318
+   },
+   {
+    "week": "2026-05-18",
+    "pred": 43.0852
+   },
+   {
+    "week": "2026-05-25",
+    "pred": 43.4665
+   },
+   {
+    "week": "2026-06-01",
+    "pred": 44.207
+   },
+   {
+    "week": "2026-06-08",
+    "pred": 43.1434
+   },
+   {
+    "week": "2026-06-15",
+    "pred": 42.2499
+   },
+   {
+    "week": "2026-06-22",
+    "pred": 42.0368
+   },
+   {
+    "week": "2026-06-29",
+    "pred": 43.2921
+   },
+   {
+    "week": "2026-07-06",
+    "pred": 42.7347
+   },
+   {
+    "week": "2026-07-13",
+    "pred": 43.0565
+   },
+   {
+    "week": "2026-07-20",
+    "pred": 43.9138
+   },
+   {
+    "week": "2026-07-27",
+    "pred": 43.8277
+   },
+   {
+    "week": "2026-08-03",
+    "pred": 43.0373
+   },
+   {
+    "week": "2026-08-10",
+    "pred": 44.5295
+   },
+   {
+    "week": "2026-08-17",
+    "pred": 43.142
+   },
+   {
+    "week": "2026-08-24",
+    "pred": 43.0752
+   },
+   {
+    "week": "2026-08-31",
+    "pred": 44.6469
+   }
+  ],
+  "expected_incidents_13w": 573.8385,
+  "recent_breach_rate": 0.2482,
+  "expected_breaches_13w": 142.4048,
+  "last_13w_actual": 541,
+  "interval_note": "Intervalo 80% aproximado: error log-normal del backtest, ampliado con √horizonte."
+ },
+ "anomaly": {
+  "ok_days": 155116,
+  "silent_total": 638,
+  "rows": [
+   {
+    "method": "IsolationForest",
+    "flag_rate": 0.004,
+    "flagged": 621,
+    "tp": 458,
+    "precision": 0.7375,
+    "recall": 0.7179
+   },
+   {
+    "method": "IsolationForest",
+    "flag_rate": 0.008,
+    "flagged": 1241,
+    "tp": 529,
+    "precision": 0.4263,
+    "recall": 0.8292
+   },
+   {
+    "method": "IsolationForest",
+    "flag_rate": 0.015,
+    "flagged": 2327,
+    "tp": 578,
+    "precision": 0.2484,
+    "recall": 0.906
+   },
+   {
+    "method": "Completeness rule < 97%",
+    "flag_rate": 0.0691,
+    "flagged": 10723,
+    "tp": 636,
+    "precision": 0.0593,
+    "recall": 0.9969
+   },
+   {
+    "method": "Completeness rule < 95%",
+    "flag_rate": 0.0099,
+    "flagged": 1528,
+    "tp": 609,
+    "precision": 0.3986,
+    "recall": 0.9545
+   },
+   {
+    "method": "Completeness rule < 92%",
+    "flag_rate": 0.0034,
+    "flagged": 535,
+    "tp": 528,
+    "precision": 0.9869,
+    "recall": 0.8276
+   },
+   {
+    "method": "Hybrid: rule <92% + IsolationForest",
+    "flag_rate": 0.0046,
+    "flagged": 710,
+    "tp": 543,
+    "precision": 0.7648,
+    "recall": 0.8511
+   }
+  ],
+  "operating_point": {
+   "method": "Hybrid",
+   "iso_flag_rate": 0.004,
+   "iso_threshold": 0.6523,
+   "rule_cut": 0.92
+  },
+  "latest_flags": [
+   {
+    "feed": "F-0161",
+    "client": "Client 100",
+    "date": "2026-07-28",
+    "feed_type": "EPG_LINEAR",
+    "completeness": 0.8001,
+    "c_adj": 0.7997,
+    "score": 0.8264
+   },
+   {
+    "feed": "F-0068",
+    "client": "Client 039",
+    "date": "2026-07-02",
+    "feed_type": "KEYWORDS",
+    "completeness": 0.7806,
+    "c_adj": 0.7806,
+    "score": 0.8144
+   },
+   {
+    "feed": "F-0096",
+    "client": "Client 059",
+    "date": "2026-08-13",
+    "feed_type": "VOD_CATALOG",
+    "completeness": 0.8038,
+    "c_adj": 0.804,
+    "score": 0.8126
+   },
+   {
+    "feed": "F-0159",
+    "client": "Client 099",
+    "date": "2026-08-17",
+    "feed_type": "VOD_CATALOG",
+    "completeness": 0.7993,
+    "c_adj": 0.7987,
+    "score": 0.8111
+   },
+   {
+    "feed": "F-0113",
+    "client": "Client 070",
+    "date": "2026-07-14",
+    "feed_type": "VOD_CATALOG",
+    "completeness": 0.8209,
+    "c_adj": 0.8231,
+    "score": 0.8047
+   },
+   {
+    "feed": "F-0025",
+    "client": "Client 013",
+    "date": "2026-08-14",
+    "feed_type": "VOD_CATALOG",
+    "completeness": 0.8467,
+    "c_adj": 0.8451,
+    "score": 0.8005
+   },
+   {
+    "feed": "F-0105",
+    "client": "Client 065",
+    "date": "2026-09-24",
+    "feed_type": "KEYWORDS",
+    "completeness": 0.8381,
+    "c_adj": 0.8373,
+    "score": 0.799
+   },
+   {
+    "feed": "F-0090",
+    "client": "Client 056",
+    "date": "2026-07-24",
+    "feed_type": "ARTWORK",
+    "completeness": 0.7921,
+    "c_adj": 0.7921,
+    "score": 0.7967
+   }
+  ],
+  "flags_last_90d": 86,
+  "feed_series": {
+   "feed": "F-0168",
+   "points": [
+    {
+     "d": "2026-05-04",
+     "c": 0.992,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-05",
+     "c": 1.018,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-06",
+     "c": 0.9774,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-07",
+     "c": 0.9931,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-08",
+     "c": 0.9969,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-09",
+     "c": 0.9961,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-10",
+     "c": 1.0112,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-11",
+     "c": 0.9876,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-12",
+     "c": 0.9744,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-13",
+     "c": 1.0062,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-14",
+     "c": 1.0105,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-15",
+     "c": 1.0176,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-16",
+     "c": 1.0028,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-17",
+     "c": 1.0154,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-18",
+     "c": 1.002,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-19",
+     "c": 1.0186,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-20",
+     "c": 0.0318,
+     "st": "FAILED",
+     "flag": false
+    },
+    {
+     "d": "2026-05-21",
+     "c": 1.0133,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-22",
+     "c": 0.9782,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-23",
+     "c": 0.9835,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-24",
+     "c": 0.9873,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-25",
+     "c": 0.9892,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-26",
+     "c": 1.0053,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-27",
+     "c": 0.9876,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-28",
+     "c": 0.9936,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-29",
+     "c": 1.0071,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-30",
+     "c": 1.0009,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-05-31",
+     "c": 0.9985,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-01",
+     "c": 1.0319,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-02",
+     "c": 1.0504,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-03",
+     "c": 0.9852,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-04",
+     "c": 1.023,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-05",
+     "c": 0.9914,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-06",
+     "c": 0.995,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-07",
+     "c": 0.9847,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-08",
+     "c": 1.0064,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-09",
+     "c": 0.995,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-10",
+     "c": 1.0294,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-11",
+     "c": 0.6459,
+     "st": "DEGRADED",
+     "flag": false
+    },
+    {
+     "d": "2026-06-12",
+     "c": 0.9939,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-13",
+     "c": 1.024,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-14",
+     "c": 1.0438,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-15",
+     "c": 0.9698,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-16",
+     "c": 1.0249,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-17",
+     "c": 1.0392,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-18",
+     "c": 0.9604,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-19",
+     "c": 0.9896,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-20",
+     "c": 0.9877,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-21",
+     "c": 0.9562,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-22",
+     "c": 1.0196,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-23",
+     "c": 1.0262,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-24",
+     "c": 1.003,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-25",
+     "c": 1.0205,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-26",
+     "c": 0.9963,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-27",
+     "c": 1.0147,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-28",
+     "c": 1.01,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-29",
+     "c": 1.0266,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-06-30",
+     "c": 1.0082,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-01",
+     "c": 1.0002,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-02",
+     "c": 0.9975,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-03",
+     "c": 0.9989,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-04",
+     "c": 0.988,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-05",
+     "c": 1.0072,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-06",
+     "c": 0.9911,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-07",
+     "c": 0.9782,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-08",
+     "c": 0.9622,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-09",
+     "c": 0.9925,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-10",
+     "c": 1.0052,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-11",
+     "c": 0.9891,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-12",
+     "c": 1.0141,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-13",
+     "c": 1.0249,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-14",
+     "c": 1.0139,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-15",
+     "c": 1.0019,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-16",
+     "c": 0.9749,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-17",
+     "c": 0.9693,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-18",
+     "c": 0.996,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-19",
+     "c": 0.9968,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-20",
+     "c": 0.8996,
+     "st": "OK",
+     "flag": true
+    },
+    {
+     "d": "2026-07-21",
+     "c": 1.0176,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-22",
+     "c": 0.9884,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-23",
+     "c": 0.9689,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-24",
+     "c": 1.0119,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-25",
+     "c": 1.0207,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-26",
+     "c": 1.0178,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-27",
+     "c": 0.9913,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-28",
+     "c": 1.0155,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-29",
+     "c": 0.9771,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-30",
+     "c": 1.028,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-07-31",
+     "c": 0.9608,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-01",
+     "c": 1.0197,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-02",
+     "c": 0.995,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-03",
+     "c": 1.0105,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-04",
+     "c": 0.9729,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-05",
+     "c": 0.9915,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-06",
+     "c": 0.985,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-07",
+     "c": 1.0255,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-08",
+     "c": 1.0225,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-09",
+     "c": 0.9734,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-10",
+     "c": 0.99,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-11",
+     "c": 1.0452,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-12",
+     "c": 0.9879,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-13",
+     "c": 0.517,
+     "st": "DEGRADED",
+     "flag": false
+    },
+    {
+     "d": "2026-08-14",
+     "c": 0.9954,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-15",
+     "c": 1.0225,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-16",
+     "c": 0.996,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-17",
+     "c": 1.0201,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-18",
+     "c": 1.0098,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-19",
+     "c": 0.9703,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-20",
+     "c": 1.0049,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-21",
+     "c": 0.9963,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-22",
+     "c": 1.0072,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-23",
+     "c": 0.5909,
+     "st": "DEGRADED",
+     "flag": false
+    },
+    {
+     "d": "2026-08-24",
+     "c": 1.0139,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-25",
+     "c": 1.0224,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-26",
+     "c": 0.9819,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-27",
+     "c": 0.9624,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-28",
+     "c": 1.0104,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-29",
+     "c": 0.982,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-30",
+     "c": 1.0092,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-08-31",
+     "c": 0.9912,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-01",
+     "c": 1.0039,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-02",
+     "c": 0.9804,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-03",
+     "c": 0.9687,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-04",
+     "c": 0.9896,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-05",
+     "c": 0.9881,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-06",
+     "c": 0.9879,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-07",
+     "c": 1.0159,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-08",
+     "c": 0.9955,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-09",
+     "c": 1.0284,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-10",
+     "c": 1.0052,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-11",
+     "c": 1.0145,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-12",
+     "c": 1.0035,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-13",
+     "c": 1.0127,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-14",
+     "c": 0.9763,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-15",
+     "c": 0.9882,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-16",
+     "c": 0.9764,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-17",
+     "c": 0.9899,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-18",
+     "c": 0.9677,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-19",
+     "c": 0.9942,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-20",
+     "c": 0.9998,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-21",
+     "c": 0.9903,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-22",
+     "c": 1.007,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-23",
+     "c": 1.0016,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-24",
+     "c": 1.0148,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-25",
+     "c": 1.0001,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-26",
+     "c": 1.011,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-27",
+     "c": 1.0112,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-28",
+     "c": 1.0072,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-29",
+     "c": 1.0193,
+     "st": "OK",
+     "flag": false
+    },
+    {
+     "d": "2026-09-30",
+     "c": 0.9905,
+     "st": "OK",
+     "flag": false
+    }
+   ]
+  },
+  "scatter": [
+   [
+    0.806,
+    -0.099,
+    1,
+    1
+   ],
+   [
+    0.862,
+    0.394,
+    1,
+    1
+   ],
+   [
+    1.059,
+    0.072,
+    1,
+    0
+   ],
+   [
+    0.898,
+    -0.113,
+    1,
+    1
+   ],
+   [
+    0.932,
+    0.354,
+    1,
+    0
+   ],
+   [
+    0.931,
+    0.782,
+    1,
+    1
+   ],
+   [
+    0.879,
+    0.631,
+    1,
+    1
+   ],
+   [
+    0.803,
+    0.116,
+    1,
+    1
+   ],
+   [
+    0.875,
+    0.263,
+    1,
+    1
+   ],
+   [
+    0.918,
+    -0.218,
+    1,
+    1
+   ],
+   [
+    1.049,
+    -0.586,
+    1,
+    0
+   ],
+   [
+    0.957,
+    -0.632,
+    1,
+    0
+   ],
+   [
+    0.907,
+    0.715,
+    1,
+    1
+   ],
+   [
+    0.91,
+    0.534,
+    1,
+    1
+   ],
+   [
+    0.879,
+    0.446,
+    1,
+    1
+   ],
+   [
+    0.796,
+    0.176,
+    1,
+    1
+   ],
+   [
+    0.903,
+    0.341,
+    1,
+    1
+   ],
+   [
+    0.841,
+    0.29,
+    1,
+    1
+   ],
+   [
+    0.837,
+    0.518,
+    1,
+    1
+   ],
+   [
+    0.846,
+    0.74,
+    1,
+    1
+   ],
+   [
+    0.827,
+    -0.046,
+    1,
+    1
+   ],
+   [
+    0.88,
+    -0.299,
+    1,
+    1
+   ],
+   [
+    0.877,
+    -0.022,
+    1,
+    1
+   ],
+   [
+    1.073,
+    -0.268,
+    1,
+    0
+   ],
+   [
+    0.917,
+    -0.06,
+    1,
+    1
+   ],
+   [
+    0.806,
+    0.249,
+    1,
+    1
+   ],
+   [
+    0.943,
+    0.837,
+    1,
+    1
+   ],
+   [
+    0.842,
+    0.299,
+    1,
+    1
+   ],
+   [
+    0.84,
+    0.018,
+    1,
+    1
+   ],
+   [
+    0.905,
+    0.518,
+    1,
+    1
+   ],
+   [
+    0.819,
+    0.865,
+    1,
+    1
+   ],
+   [
+    0.833,
+    0.073,
+    1,
+    1
+   ],
+   [
+    0.953,
+    -0.829,
+    1,
+    0
+   ],
+   [
+    1.062,
+    -0.023,
+    1,
+    0
+   ],
+   [
+    0.866,
+    -0.02,
+    1,
+    1
+   ],
+   [
+    0.816,
+    0.527,
+    1,
+    1
+   ],
+   [
+    0.9,
+    -0.251,
+    1,
+    1
+   ],
+   [
+    0.809,
+    0.156,
+    1,
+    1
+   ],
+   [
+    0.907,
+    -0.261,
+    1,
+    1
+   ],
+   [
+    0.833,
+    -0.176,
+    1,
+    1
+   ],
+   [
+    0.895,
+    -0.194,
+    1,
+    1
+   ],
+   [
+    0.844,
+    0.541,
+    1,
+    1
+   ],
+   [
+    0.83,
+    0.052,
+    1,
+    1
+   ],
+   [
+    0.874,
+    0.0,
+    1,
+    1
+   ],
+   [
+    1.063,
+    -0.042,
+    1,
+    0
+   ],
+   [
+    0.849,
+    0.298,
+    1,
+    1
+   ],
+   [
+    0.866,
+    -0.1,
+    1,
+    1
+   ],
+   [
+    0.833,
+    0.011,
+    1,
+    1
+   ],
+   [
+    0.829,
+    -0.404,
+    1,
+    1
+   ],
+   [
+    0.891,
+    0.085,
+    1,
+    1
+   ],
+   [
+    0.916,
+    0.302,
+    1,
+    1
+   ],
+   [
+    0.896,
+    -0.12,
+    1,
+    1
+   ],
+   [
+    0.819,
+    0.111,
+    1,
+    1
+   ],
+   [
+    0.804,
+    -0.093,
+    1,
+    1
+   ],
+   [
+    0.912,
+    0.241,
+    1,
+    1
+   ],
+   [
+    0.927,
+    0.477,
+    1,
+    0
+   ],
+   [
+    0.924,
+    0.08,
+    1,
+    1
+   ],
+   [
+    0.844,
+    -0.054,
+    1,
+    1
+   ],
+   [
+    0.822,
+    0.676,
+    1,
+    1
+   ],
+   [
+    0.837,
+    0.561,
+    1,
+    1
+   ],
+   [
+    0.805,
+    0.559,
+    1,
+    1
+   ],
+   [
+    0.86,
+    0.138,
+    1,
+    1
+   ],
+   [
+    0.769,
+    -0.194,
+    1,
+    1
+   ],
+   [
+    0.831,
+    0.707,
+    1,
+    1
+   ],
+   [
+    0.902,
+    -0.225,
+    1,
+    1
+   ],
+   [
+    0.856,
+    -0.283,
+    1,
+    1
+   ],
+   [
+    0.87,
+    0.388,
+    1,
+    1
+   ],
+   [
+    1.054,
+    -0.26,
+    1,
+    0
+   ],
+   [
+    0.801,
+    0.259,
+    1,
+    1
+   ],
+   [
+    0.846,
+    0.571,
+    1,
+    1
+   ],
+   [
+    0.852,
+    0.331,
+    1,
+    1
+   ],
+   [
+    1.059,
+    -0.009,
+    1,
+    0
+   ],
+   [
+    0.873,
+    -0.255,
+    1,
+    1
+   ],
+   [
+    1.061,
+    0.379,
+    1,
+    0
+   ],
+   [
+    0.827,
+    0.44,
+    1,
+    1
+   ],
+   [
+    0.894,
+    0.377,
+    1,
+    1
+   ],
+   [
+    0.891,
+    0.268,
+    1,
+    1
+   ],
+   [
+    1.072,
+    0.281,
+    1,
+    0
+   ],
+   [
+    1.049,
+    -0.643,
+    1,
+    0
+   ],
+   [
+    1.04,
+    0.029,
+    1,
+    0
+   ],
+   [
+    0.855,
+    0.496,
+    1,
+    1
+   ],
+   [
+    0.825,
+    0.289,
+    1,
+    1
+   ],
+   [
+    1.064,
+    0.465,
+    1,
+    0
+   ],
+   [
+    1.06,
+    -0.242,
+    1,
+    0
+   ],
+   [
+    0.838,
+    0.304,
+    1,
+    1
+   ],
+   [
+    0.893,
+    -0.296,
+    1,
+    1
+   ],
+   [
+    0.818,
+    0.148,
+    1,
+    1
+   ],
+   [
+    0.843,
+    0.413,
+    1,
+    1
+   ],
+   [
+    0.919,
+    0.162,
+    1,
+    1
+   ],
+   [
+    0.922,
+    -0.779,
+    1,
+    1
+   ],
+   [
+    1.067,
+    0.051,
+    1,
+    0
+   ],
+   [
+    0.822,
+    0.612,
+    1,
+    1
+   ],
+   [
+    1.056,
+    -0.032,
+    1,
+    0
+   ],
+   [
+    0.813,
+    0.135,
+    1,
+    1
+   ],
+   [
+    1.047,
+    0.056,
+    1,
+    0
+   ],
+   [
+    1.047,
+    0.211,
+    1,
+    0
+   ],
+   [
+    0.821,
+    -0.239,
+    1,
+    1
+   ],
+   [
+    0.912,
+    0.69,
+    1,
+    1
+   ],
+   [
+    0.846,
+    0.302,
+    1,
+    1
+   ],
+   [
+    0.837,
+    0.297,
+    1,
+    1
+   ],
+   [
+    0.886,
+    0.437,
+    1,
+    1
+   ],
+   [
+    0.931,
+    0.341,
+    1,
+    0
+   ],
+   [
+    1.071,
+    0.502,
+    1,
+    0
+   ],
+   [
+    0.911,
+    0.436,
+    1,
+    1
+   ],
+   [
+    0.914,
+    0.426,
+    1,
+    1
+   ],
+   [
+    0.822,
+    0.229,
+    1,
+    1
+   ],
+   [
+    0.847,
+    -0.036,
+    1,
+    1
+   ],
+   [
+    0.839,
+    0.47,
+    1,
+    1
+   ],
+   [
+    0.912,
+    -0.119,
+    1,
+    1
+   ],
+   [
+    0.852,
+    -0.029,
+    1,
+    1
+   ],
+   [
+    0.819,
+    0.514,
+    1,
+    1
+   ],
+   [
+    1.05,
+    0.681,
+    1,
+    0
+   ],
+   [
+    0.855,
+    0.305,
+    1,
+    1
+   ],
+   [
+    0.824,
+    0.465,
+    1,
+    1
+   ],
+   [
+    0.968,
+    -0.816,
+    1,
+    0
+   ],
+   [
+    0.894,
+    -0.425,
+    1,
+    1
+   ],
+   [
+    0.864,
+    0.325,
+    1,
+    1
+   ],
+   [
+    0.84,
+    0.34,
+    1,
+    1
+   ],
+   [
+    0.898,
+    0.044,
+    1,
+    1
+   ],
+   [
+    0.903,
+    0.267,
+    1,
+    1
+   ],
+   [
+    0.918,
+    0.159,
+    1,
+    1
+   ],
+   [
+    0.956,
+    -1.076,
+    1,
+    0
+   ],
+   [
+    0.909,
+    0.18,
+    1,
+    1
+   ],
+   [
+    0.808,
+    0.15,
+    1,
+    1
+   ],
+   [
+    0.865,
+    -0.269,
+    1,
+    1
+   ],
+   [
+    0.844,
+    0.143,
+    1,
+    1
+   ],
+   [
+    0.81,
+    0.146,
+    1,
+    1
+   ],
+   [
+    0.83,
+    0.351,
+    1,
+    1
+   ],
+   [
+    1.052,
+    -0.859,
+    1,
+    0
+   ],
+   [
+    0.83,
+    -0.036,
+    1,
+    1
+   ],
+   [
+    0.978,
+    0.336,
+    0,
+    0
+   ],
+   [
+    0.981,
+    0.485,
+    0,
+    0
+   ],
+   [
+    1.008,
+    -0.123,
+    0,
+    0
+   ],
+   [
+    0.992,
+    -0.187,
+    0,
+    0
+   ],
+   [
+    1.003,
+    0.191,
+    0,
+    0
+   ],
+   [
+    0.968,
+    0.307,
+    0,
+    0
+   ],
+   [
+    1.04,
+    0.097,
+    0,
+    0
+   ],
+   [
+    0.99,
+    -0.05,
+    0,
+    0
+   ],
+   [
+    1.028,
+    -0.47,
+    0,
+    0
+   ],
+   [
+    0.984,
+    0.126,
+    0,
+    0
+   ],
+   [
+    0.993,
+    -0.178,
+    0,
+    0
+   ],
+   [
+    1.004,
+    -0.374,
+    0,
+    0
+   ],
+   [
+    0.994,
+    0.236,
+    0,
+    0
+   ],
+   [
+    1.013,
+    0.156,
+    0,
+    0
+   ],
+   [
+    0.977,
+    0.274,
+    0,
+    0
+   ],
+   [
+    0.979,
+    -0.063,
+    0,
+    0
+   ],
+   [
+    0.986,
+    -0.349,
+    0,
+    0
+   ],
+   [
+    0.985,
+    -0.037,
+    0,
+    0
+   ],
+   [
+    0.995,
+    -0.223,
+    0,
+    0
+   ],
+   [
+    1.0,
+    -0.211,
+    0,
+    0
+   ],
+   [
+    0.986,
+    0.136,
+    0,
+    0
+   ],
+   [
+    0.968,
+    0.552,
+    0,
+    0
+   ],
+   [
+    0.996,
+    -0.321,
+    0,
+    0
+   ],
+   [
+    0.991,
+    0.166,
+    0,
+    0
+   ],
+   [
+    0.963,
+    -0.087,
+    0,
+    0
+   ],
+   [
+    0.985,
+    0.463,
+    0,
+    0
+   ],
+   [
+    0.995,
+    0.132,
+    0,
+    0
+   ],
+   [
+    1.022,
+    -0.245,
+    0,
+    0
+   ],
+   [
+    1.018,
+    0.003,
+    0,
+    0
+   ],
+   [
+    0.996,
+    -0.041,
+    0,
+    0
+   ],
+   [
+    1.033,
+    -0.009,
+    0,
+    0
+   ],
+   [
+    1.002,
+    -0.3,
+    0,
+    0
+   ],
+   [
+    1.003,
+    0.025,
+    0,
+    0
+   ],
+   [
+    0.969,
+    0.082,
+    0,
+    0
+   ],
+   [
+    0.975,
+    -0.014,
+    0,
+    0
+   ],
+   [
+    0.982,
+    0.103,
+    0,
+    0
+   ],
+   [
+    0.972,
+    -0.369,
+    0,
+    0
+   ],
+   [
+    1.007,
+    0.198,
+    0,
+    0
+   ],
+   [
+    1.018,
+    -0.069,
+    0,
+    0
+   ],
+   [
+    1.014,
+    0.216,
+    0,
+    0
+   ],
+   [
+    1.032,
+    -0.137,
+    0,
+    0
+   ],
+   [
+    1.053,
+    -0.259,
+    0,
+    0
+   ],
+   [
+    1.005,
+    0.254,
+    0,
+    0
+   ],
+   [
+    1.006,
+    -0.101,
+    0,
+    0
+   ],
+   [
+    1.005,
+    0.226,
+    0,
+    0
+   ],
+   [
+    1.01,
+    0.333,
+    0,
+    0
+   ],
+   [
+    0.982,
+    -0.187,
+    0,
+    0
+   ],
+   [
+    1.0,
+    -0.062,
+    0,
+    0
+   ],
+   [
+    0.995,
+    0.07,
+    0,
+    0
+   ],
+   [
+    1.018,
+    -0.493,
+    0,
+    0
+   ],
+   [
+    1.001,
+    -0.394,
+    0,
+    0
+   ],
+   [
+    1.006,
+    -0.057,
+    0,
+    0
+   ],
+   [
+    1.009,
+    -0.273,
+    0,
+    0
+   ],
+   [
+    0.991,
+    -0.149,
+    0,
+    0
+   ],
+   [
+    1.033,
+    -0.085,
+    0,
+    0
+   ],
+   [
+    1.016,
+    -0.262,
+    0,
+    0
+   ],
+   [
+    1.007,
+    0.576,
+    0,
+    0
+   ],
+   [
+    1.013,
+    -0.167,
+    0,
+    0
+   ],
+   [
+    0.993,
+    -0.11,
+    0,
+    0
+   ],
+   [
+    1.025,
+    -0.305,
+    0,
+    0
+   ],
+   [
+    1.016,
+    0.366,
+    0,
+    0
+   ],
+   [
+    1.001,
+    -0.43,
+    0,
+    0
+   ],
+   [
+    1.009,
+    0.015,
+    0,
+    0
+   ],
+   [
+    1.001,
+    -0.07,
+    0,
+    0
+   ],
+   [
+    0.991,
+    -0.45,
+    0,
+    0
+   ],
+   [
+    0.986,
+    -0.364,
+    0,
+    0
+   ],
+   [
+    1.004,
+    0.186,
+    0,
+    0
+   ],
+   [
+    0.975,
+    -0.067,
+    0,
+    0
+   ],
+   [
+    0.98,
+    -0.024,
+    0,
+    0
+   ],
+   [
+    1.003,
+    -0.335,
+    0,
+    0
+   ],
+   [
+    1.029,
+    0.617,
+    0,
+    0
+   ],
+   [
+    0.992,
+    0.382,
+    0,
+    0
+   ],
+   [
+    1.036,
+    0.169,
+    0,
+    0
+   ],
+   [
+    1.002,
+    0.27,
+    0,
+    0
+   ],
+   [
+    1.024,
+    0.248,
+    0,
+    0
+   ],
+   [
+    0.989,
+    0.221,
+    0,
+    0
+   ],
+   [
+    0.987,
+    -0.156,
+    0,
+    0
+   ],
+   [
+    0.999,
+    -0.438,
+    0,
+    0
+   ],
+   [
+    1.026,
+    0.305,
+    0,
+    0
+   ],
+   [
+    0.997,
+    -0.011,
+    0,
+    0
+   ],
+   [
+    0.987,
+    0.315,
+    0,
+    0
+   ],
+   [
+    0.988,
+    0.214,
+    0,
+    0
+   ],
+   [
+    1.038,
+    -0.055,
+    0,
+    0
+   ],
+   [
+    1.03,
+    -0.381,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.116,
+    0,
+    0
+   ],
+   [
+    1.026,
+    -0.006,
+    0,
+    0
+   ],
+   [
+    1.004,
+    0.247,
+    0,
+    0
+   ],
+   [
+    0.978,
+    -0.393,
+    0,
+    0
+   ],
+   [
+    0.982,
+    0.248,
+    0,
+    0
+   ],
+   [
+    1.0,
+    -0.342,
+    0,
+    0
+   ],
+   [
+    1.027,
+    -0.148,
+    0,
+    0
+   ],
+   [
+    1.001,
+    0.351,
+    0,
+    0
+   ],
+   [
+    1.05,
+    0.234,
+    0,
+    0
+   ],
+   [
+    1.01,
+    -0.165,
+    0,
+    0
+   ],
+   [
+    1.011,
+    -0.499,
+    0,
+    0
+   ],
+   [
+    1.011,
+    0.035,
+    0,
+    0
+   ],
+   [
+    1.002,
+    -0.004,
+    0,
+    0
+   ],
+   [
+    1.0,
+    0.051,
+    0,
+    0
+   ],
+   [
+    0.952,
+    0.067,
+    0,
+    0
+   ],
+   [
+    0.993,
+    -0.059,
+    0,
+    0
+   ],
+   [
+    0.974,
+    -0.013,
+    0,
+    0
+   ],
+   [
+    0.968,
+    0.278,
+    0,
+    0
+   ],
+   [
+    1.004,
+    0.64,
+    0,
+    0
+   ],
+   [
+    0.977,
+    0.27,
+    0,
+    0
+   ],
+   [
+    0.963,
+    0.011,
+    0,
+    0
+   ],
+   [
+    0.995,
+    -0.254,
+    0,
+    0
+   ],
+   [
+    1.019,
+    0.203,
+    0,
+    0
+   ],
+   [
+    0.974,
+    -0.004,
+    0,
+    0
+   ],
+   [
+    1.039,
+    0.15,
+    0,
+    0
+   ],
+   [
+    1.001,
+    0.266,
+    0,
+    0
+   ],
+   [
+    1.022,
+    0.542,
+    0,
+    0
+   ],
+   [
+    1.019,
+    0.254,
+    0,
+    0
+   ],
+   [
+    1.024,
+    0.395,
+    0,
+    0
+   ],
+   [
+    1.0,
+    -0.143,
+    0,
+    0
+   ],
+   [
+    0.996,
+    0.04,
+    0,
+    0
+   ],
+   [
+    0.991,
+    -0.405,
+    0,
+    0
+   ],
+   [
+    1.005,
+    -0.477,
+    0,
+    0
+   ],
+   [
+    1.009,
+    -0.703,
+    0,
+    0
+   ],
+   [
+    1.018,
+    -0.368,
+    0,
+    0
+   ],
+   [
+    1.005,
+    0.121,
+    0,
+    0
+   ],
+   [
+    0.979,
+    -0.398,
+    0,
+    0
+   ],
+   [
+    0.985,
+    -0.23,
+    0,
+    0
+   ],
+   [
+    0.986,
+    0.121,
+    0,
+    0
+   ],
+   [
+    0.947,
+    0.067,
+    0,
+    0
+   ],
+   [
+    1.017,
+    0.454,
+    0,
+    0
+   ],
+   [
+    1.002,
+    0.368,
+    0,
+    0
+   ],
+   [
+    1.001,
+    0.007,
+    0,
+    0
+   ],
+   [
+    1.006,
+    -0.034,
+    0,
+    0
+   ],
+   [
+    1.008,
+    0.342,
+    0,
+    0
+   ],
+   [
+    0.948,
+    0.114,
+    0,
+    0
+   ],
+   [
+    1.012,
+    0.308,
+    0,
+    0
+   ],
+   [
+    1.001,
+    -0.097,
+    0,
+    0
+   ],
+   [
+    1.001,
+    0.205,
+    0,
+    0
+   ],
+   [
+    1.0,
+    0.123,
+    0,
+    0
+   ],
+   [
+    0.959,
+    0.084,
+    0,
+    0
+   ],
+   [
+    0.951,
+    0.236,
+    0,
+    0
+   ],
+   [
+    1.018,
+    -0.264,
+    0,
+    0
+   ],
+   [
+    0.988,
+    -0.405,
+    0,
+    0
+   ],
+   [
+    1.009,
+    0.064,
+    0,
+    0
+   ],
+   [
+    1.007,
+    0.204,
+    0,
+    0
+   ],
+   [
+    1.016,
+    0.151,
+    0,
+    0
+   ],
+   [
+    1.001,
+    -0.269,
+    0,
+    0
+   ],
+   [
+    0.95,
+    0.032,
+    0,
+    0
+   ],
+   [
+    1.004,
+    -0.035,
+    0,
+    0
+   ],
+   [
+    0.99,
+    -0.285,
+    0,
+    0
+   ],
+   [
+    0.97,
+    0.101,
+    0,
+    0
+   ],
+   [
+    0.989,
+    0.112,
+    0,
+    0
+   ],
+   [
+    0.962,
+    0.314,
+    0,
+    0
+   ],
+   [
+    1.035,
+    -0.115,
+    0,
+    0
+   ],
+   [
+    0.979,
+    0.008,
+    0,
+    0
+   ],
+   [
+    0.986,
+    0.31,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.368,
+    0,
+    0
+   ],
+   [
+    0.974,
+    0.068,
+    0,
+    0
+   ],
+   [
+    1.028,
+    -0.035,
+    0,
+    0
+   ],
+   [
+    1.022,
+    -0.121,
+    0,
+    0
+   ],
+   [
+    1.002,
+    0.404,
+    0,
+    0
+   ],
+   [
+    0.99,
+    -0.211,
+    0,
+    0
+   ],
+   [
+    1.019,
+    0.56,
+    0,
+    0
+   ],
+   [
+    1.01,
+    0.301,
+    0,
+    0
+   ],
+   [
+    1.006,
+    -0.117,
+    0,
+    0
+   ],
+   [
+    0.99,
+    0.022,
+    0,
+    0
+   ],
+   [
+    0.988,
+    -0.461,
+    0,
+    0
+   ],
+   [
+    0.989,
+    -0.056,
+    0,
+    0
+   ],
+   [
+    1.01,
+    0.037,
+    0,
+    0
+   ],
+   [
+    0.965,
+    0.525,
+    0,
+    0
+   ],
+   [
+    1.006,
+    -0.088,
+    0,
+    0
+   ],
+   [
+    1.016,
+    -0.271,
+    0,
+    0
+   ],
+   [
+    1.02,
+    -0.301,
+    0,
+    0
+   ],
+   [
+    1.002,
+    0.655,
+    0,
+    0
+   ],
+   [
+    0.989,
+    -0.578,
+    0,
+    0
+   ],
+   [
+    0.971,
+    -0.073,
+    0,
+    0
+   ],
+   [
+    1.031,
+    0.018,
+    0,
+    0
+   ],
+   [
+    0.983,
+    0.008,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.071,
+    0,
+    0
+   ],
+   [
+    0.988,
+    0.131,
+    0,
+    0
+   ],
+   [
+    0.995,
+    -0.213,
+    0,
+    0
+   ],
+   [
+    1.004,
+    0.216,
+    0,
+    0
+   ],
+   [
+    0.994,
+    0.023,
+    0,
+    0
+   ],
+   [
+    1.045,
+    0.323,
+    0,
+    0
+   ],
+   [
+    0.972,
+    0.217,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.4,
+    0,
+    0
+   ],
+   [
+    0.976,
+    0.433,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.295,
+    0,
+    0
+   ],
+   [
+    1.017,
+    -0.498,
+    0,
+    0
+   ],
+   [
+    1.014,
+    1.019,
+    0,
+    0
+   ],
+   [
+    1.02,
+    0.247,
+    0,
+    0
+   ],
+   [
+    1.025,
+    0.111,
+    0,
+    0
+   ],
+   [
+    1.024,
+    -0.423,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.073,
+    0,
+    0
+   ],
+   [
+    0.984,
+    -0.397,
+    0,
+    0
+   ],
+   [
+    0.983,
+    0.06,
+    0,
+    0
+   ],
+   [
+    1.001,
+    0.079,
+    0,
+    0
+   ],
+   [
+    1.008,
+    -0.305,
+    0,
+    0
+   ],
+   [
+    1.008,
+    -0.102,
+    0,
+    0
+   ],
+   [
+    1.009,
+    -0.07,
+    0,
+    0
+   ],
+   [
+    1.048,
+    -0.309,
+    0,
+    0
+   ],
+   [
+    0.98,
+    -0.099,
+    0,
+    0
+   ],
+   [
+    0.992,
+    -0.318,
+    0,
+    0
+   ],
+   [
+    0.964,
+    -0.095,
+    0,
+    0
+   ],
+   [
+    0.995,
+    -0.092,
+    0,
+    0
+   ],
+   [
+    0.999,
+    -0.398,
+    0,
+    0
+   ],
+   [
+    1.008,
+    -0.054,
+    0,
+    0
+   ],
+   [
+    1.006,
+    0.322,
+    0,
+    0
+   ],
+   [
+    1.001,
+    0.043,
+    0,
+    0
+   ],
+   [
+    1.007,
+    -0.087,
+    0,
+    0
+   ],
+   [
+    0.988,
+    -0.335,
+    0,
+    0
+   ],
+   [
+    0.991,
+    -0.192,
+    0,
+    0
+   ],
+   [
+    0.959,
+    -0.41,
+    0,
+    0
+   ],
+   [
+    0.991,
+    -0.237,
+    0,
+    0
+   ],
+   [
+    0.997,
+    0.211,
+    0,
+    0
+   ],
+   [
+    1.018,
+    0.342,
+    0,
+    0
+   ],
+   [
+    1.017,
+    -0.096,
+    0,
+    0
+   ],
+   [
+    0.992,
+    0.211,
+    0,
+    0
+   ],
+   [
+    0.965,
+    -0.27,
+    0,
+    0
+   ],
+   [
+    1.005,
+    0.225,
+    0,
+    0
+   ],
+   [
+    1.016,
+    0.411,
+    0,
+    0
+   ],
+   [
+    0.999,
+    -0.277,
+    0,
+    0
+   ],
+   [
+    1.032,
+    0.733,
+    0,
+    0
+   ],
+   [
+    0.967,
+    -0.062,
+    0,
+    0
+   ],
+   [
+    1.017,
+    0.065,
+    0,
+    0
+   ],
+   [
+    1.048,
+    -0.283,
+    0,
+    0
+   ],
+   [
+    1.023,
+    -0.113,
+    0,
+    0
+   ],
+   [
+    0.978,
+    0.482,
+    0,
+    0
+   ],
+   [
+    1.004,
+    -0.168,
+    0,
+    0
+   ],
+   [
+    0.97,
+    -0.045,
+    0,
+    0
+   ],
+   [
+    0.995,
+    0.282,
+    0,
+    0
+   ],
+   [
+    0.999,
+    0.869,
+    0,
+    0
+   ],
+   [
+    0.968,
+    0.386,
+    0,
+    0
+   ],
+   [
+    1.007,
+    0.131,
+    0,
+    0
+   ],
+   [
+    0.993,
+    -0.05,
+    0,
+    0
+   ],
+   [
+    0.991,
+    -0.189,
+    0,
+    0
+   ],
+   [
+    0.972,
+    -0.294,
+    0,
+    0
+   ],
+   [
+    0.996,
+    -0.275,
+    0,
+    0
+   ],
+   [
+    0.971,
+    -0.116,
+    0,
+    0
+   ],
+   [
+    1.004,
+    -0.233,
+    0,
+    0
+   ],
+   [
+    0.984,
+    0.196,
+    0,
+    0
+   ],
+   [
+    1.0,
+    -0.006,
+    0,
+    0
+   ],
+   [
+    1.02,
+    0.303,
+    0,
+    0
+   ],
+   [
+    1.019,
+    -0.226,
+    0,
+    0
+   ],
+   [
+    0.985,
+    0.615,
+    0,
+    0
+   ],
+   [
+    0.973,
+    0.19,
+    0,
+    0
+   ],
+   [
+    0.995,
+    0.228,
+    0,
+    0
+   ],
+   [
+    1.0,
+    0.319,
+    0,
+    0
+   ],
+   [
+    1.012,
+    0.083,
+    0,
+    0
+   ],
+   [
+    0.959,
+    -0.277,
+    0,
+    0
+   ],
+   [
+    0.998,
+    -0.405,
+    0,
+    0
+   ],
+   [
+    1.002,
+    0.022,
+    0,
+    0
+   ],
+   [
+    0.97,
+    0.19,
+    0,
+    0
+   ],
+   [
+    1.004,
+    -0.345,
+    0,
+    0
+   ],
+   [
+    0.974,
+    0.229,
+    0,
+    0
+   ],
+   [
+    1.02,
+    -0.231,
+    0,
+    0
+   ],
+   [
+    0.982,
+    0.176,
+    0,
+    0
+   ],
+   [
+    1.038,
+    0.212,
+    0,
+    0
+   ],
+   [
+    1.007,
+    0.402,
+    0,
+    0
+   ],
+   [
+    1.0,
+    0.347,
+    0,
+    0
+   ],
+   [
+    1.033,
+    -0.113,
+    0,
+    0
+   ],
+   [
+    0.972,
+    -0.112,
+    0,
+    0
+   ],
+   [
+    0.984,
+    -0.602,
+    0,
+    0
+   ],
+   [
+    0.985,
+    -0.057,
+    0,
+    0
+   ],
+   [
+    1.016,
+    -0.342,
+    0,
+    0
+   ]
+  ],
+  "status_counts": {
+   "OK": 155116,
+   "DEGRADED": 3823,
+   "FAILED": 1588
+  }
+ },
+ "event_stats": [
+  {
+   "event_id": "E01",
+   "event_date": "2021-11-23",
+   "name": "Vestel signs multi-year EPG contract (50+ countries)",
+   "kind": "customer",
+   "region_scope": "Turkey / MEA / APAC",
+   "fd_before": null,
+   "fd_after": null,
+   "inc_before": 0,
+   "inc_after": 0,
+   "rate_before": null,
+   "rate_after": null,
+   "ratio": null,
+   "p": null,
+   "status": "no baseline"
+  },
+  {
+   "event_id": "E02",
+   "event_date": "2022-08-23",
+   "name": "Acquisition of GVIDI (~25 clients)",
+   "kind": "acquisition",
+   "region_scope": "Benelux",
+   "fd_before": null,
+   "fd_after": null,
+   "inc_before": 0,
+   "inc_after": 0,
+   "rate_before": null,
+   "rate_after": null,
+   "ratio": null,
+   "p": null,
+   "status": "no baseline"
+  },
+  {
+   "event_id": "E03",
+   "event_date": "2023-06-08",
+   "name": "Launch of operations in Latin America",
+   "kind": "expansion",
+   "region_scope": "Iberia & LATAM-ES|Brazil (LATAM-PT)",
+   "fd_before": null,
+   "fd_after": 7.0,
+   "inc_before": 0,
+   "inc_after": 2,
+   "rate_before": null,
+   "rate_after": 285.71,
+   "ratio": null,
+   "p": null,
+   "status": "no baseline"
+  },
+  {
+   "event_id": "E04",
+   "event_date": "2023-09-09",
+   "name": "GO Malta chooses Simply.TV (EPG + VOD)",
+   "kind": "customer",
+   "region_scope": "Other Europe",
+   "fd_before": 990.0,
+   "fd_after": 990.0,
+   "inc_before": 34,
+   "inc_after": 28,
+   "rate_before": 34.34,
+   "rate_after": 28.28,
+   "ratio": 0.8235,
+   "p": 0.5258,
+   "status": "no sig"
+  },
+  {
+   "event_id": "E05",
+   "event_date": "2024-07-03",
+   "name": "Acquisition of InFlow Media (Nordics)",
+   "kind": "acquisition",
+   "region_scope": "Nordics",
+   "fd_before": 360.0,
+   "fd_after": 360.0,
+   "inc_before": 25,
+   "inc_after": 25,
+   "rate_before": 69.44,
+   "rate_after": 69.44,
+   "ratio": 1.0,
+   "p": 1.0,
+   "status": "no sig"
+  },
+  {
+   "event_id": "E06",
+   "event_date": "2024-07-09",
+   "name": "Allente selects Simply.TV (Nordics)",
+   "kind": "customer",
+   "region_scope": "Nordics",
+   "fd_before": 360.0,
+   "fd_after": 360.0,
+   "inc_before": 25,
+   "inc_after": 26,
+   "rate_before": 69.44,
+   "rate_after": 72.22,
+   "ratio": 1.04,
+   "p": 1.0,
+   "status": "no sig"
+  },
+  {
+   "event_id": "E07",
+   "event_date": "2026-06-18",
+   "name": "Simply.TV joins Deutsche TV-Plattform",
+   "kind": "partnership",
+   "region_scope": "DACH",
+   "fd_before": 315.0,
+   "fd_after": 315.0,
+   "inc_before": 12,
+   "inc_after": 18,
+   "rate_before": 38.1,
+   "rate_after": 57.14,
+   "ratio": 1.5,
+   "p": 0.3616,
+   "status": "no sig"
+  },
+  {
+   "event_id": "E08",
+   "event_date": "2026-09-04",
+   "name": "New CEO: Richard Cusick",
+   "kind": "corporate",
+   "region_scope": "ALL",
+   "fd_before": 8384.0,
+   "fd_after": 5123.0,
+   "inc_before": 269,
+   "inc_after": 176,
+   "rate_before": 32.08,
+   "rate_after": 34.35,
+   "ratio": 1.0707,
+   "p": 0.4941,
+   "status": "no sig"
+  }
+ ]
+}

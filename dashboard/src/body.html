@@ -1,0 +1,313 @@
+<nav class="nav" aria-label="Sections">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span>Streaming Ops · Simply.TV case</span></a>
+    <div class="links">
+      <a href="#explorador">Explorer</a><a href="#contexto">Context</a><a href="#diagnostico">Diagnosis</a><a href="#riesgo">Risk model</a>
+      <a href="#pronostico">Forecast</a><a href="#anomalias">Anomalies</a><a href="#acciones">Actions</a>
+    </div>
+    <div class="xmenu-wrap"><button class="iconbtn" id="exportBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="exportMenu">Export</button>
+      <div class="xmenu" id="exportMenu" role="menu" hidden></div></div>
+    <div class="xmenu-wrap"><button class="iconbtn" id="palBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="palMenu">Palette</button>
+      <div class="xmenu pmenu" id="palMenu" role="menu" hidden></div></div>
+    <button class="iconbtn" id="presentBtn" type="button" aria-label="Presentation mode: one section per screen">Present</button>
+    <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">Theme</button>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Streaming Data &amp; Operations · case study</div>
+      <h1>What makes a feed incident end in an <em>SLA breach</em>?</h1>
+      <p class="lede">Simply.TV delivers metadata and EPG to platforms on every continent. When a feed arrives incomplete, late or with a changed schema, someone has to diagnose it before the SLA expires. This analysis measures how often that happens, why, and what can be anticipated.</p>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="ringbox">
+      <div class="ring" id="heroRing" role="img" aria-label="Percentage of incidents that breach the SLA"></div>
+      <p class="ringnote" id="ringNote"></p>
+    </div>
+  </header>
+  <section class="kpis" id="kpis" aria-label="Key indicators"></section>
+
+  <!-- ===================== EXPLORER ===================== -->
+  <section class="sec" id="explorador">
+    <div class="sec-h">
+      <div class="eyebrow">Interactive explorer · filters</div>
+      <h2>Filter the operation and watch the map, the causes and the incident journey move</h2>
+      <p>Filters recalculate in your browser over the 5,485 incidents of the <code>v_incident</code> view. Click a point on the map to filter by region. The other sections of the dashboard always show the full total.</p>
+    </div>
+    <div class="card filters" id="filters" aria-label="Explorer filters"></div>
+    <div class="xbar" id="xbar"><span class="fl">Export this slice</span>
+      <button type="button" class="xbtn" data-exp="x-incidents">Filtered incidents · CSV</button>
+      <button type="button" class="xbtn" data-exp="x-flow">Sankey flow · CSV</button>
+      <button type="button" class="xbtn" data-exp="x-causes">Root causes · CSV</button></div>
+    <div class="kpis" id="xKpis" aria-live="polite" style="margin-top:14px"></div>
+    <div class="grid" style="margin-top:16px">
+      <div class="card s12 sky" id="skyCard">
+        <div class="sky-h"><div><h3 id="skyT"></h3>
+          <p class="sub">One box per day over the last 12 months of data. The flat heat map folds into a 3D skyline: height and color show how many incidents opened that day. It follows the filters above.</p></div>
+          <div class="sky-tg" role="group" aria-label="Chart view"><i></i><button type="button" data-v="2d" aria-label="Flat heat map" data-tip="Flat heat map">▦</button><button type="button" data-v="3d" aria-label="3D skyline" data-tip="3D skyline">◈</button></div></div>
+        <div class="sky-stage" id="skyStage"><canvas id="skyCv" tabindex="0" role="img" aria-label="Daily incidents as a heat map or 3D skyline"></canvas><div class="sky-tip" id="skyTip" role="tooltip"></div></div>
+        <div class="sky-stats" id="skyStats"></div>
+        <div class="sky-ft"><span id="skyHint"></span><span class="sky-lg" id="skyLg"></span></div>
+      </div>
+      <div class="card s7">
+        <h3 id="mapT"></h3>
+        <p class="sub">Size is incident volume; color is the % that breach the SLA; the pulse is faster where more breaches occur. Lines travel to Copenhagen (diamond), Simply.TV's public headquarters. The "Turkey / MEA / APAC" region is placed in Turkey.</p>
+        <div class="map" id="xMap"></div>
+        <div class="legend" id="mapLeg"></div>
+      </div>
+      <div class="card s5">
+        <h3 id="causeT"></h3>
+        <p class="sub"><span class="lg"><i style="background:var(--s1)"></i>% of incidents</span> <span class="lg"><i style="background:var(--s2)"></i>% of breaches</span></p>
+        <div id="xCause"></div>
+      </div>
+      <div class="card s12">
+        <h3 id="sankT"></h3>
+        <p class="sub">Each band is a group of incidents: root cause on the left, severity in the middle and the SLA outcome on the right. Hover over a band to see its size.</p>
+        <div class="sankey" id="xSankey"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTEXT ===================== -->
+  <section class="sec" id="contexto">
+    <div class="sec-h">
+      <div class="eyebrow">Context · data · ETL</div>
+      <h2>A data-quality problem with four questions</h2>
+      <p>A company's operational logs are not public, so they were simulated using the structure and milestones that Simply.TV has published. Every table goes through a Python and SQL ETL before reaching the models.</p>
+    </div>
+    <div class="grid">
+      <div class="card s5">
+        <h3>The problem</h3>
+        <div id="problem"></div>
+      </div>
+      <div class="card s7">
+        <h3>The public facts that anchor the simulation</h3>
+        <p class="sub">Sources: Simply.TV press releases and website, trade press. The dataset's clients are anonymous (Client-001 to 120): no incident is attributed to a real company.</p>
+        <div id="pubfacts"></div>
+      </div>
+      <div class="card s12">
+        <h3>From four messy sources to a dimensional model</h3>
+        <p class="sub">CSV · XML · compressed text log · JSON lines. The numbers below come from this project's actual ETL run.</p>
+        <div class="pipe" id="pipeline"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DIAGNOSIS ===================== -->
+  <section class="sec" id="diagnostico">
+    <div class="sec-h">
+      <div class="eyebrow">Diagnosis · SQL queries</div>
+      <h2>Where and why SLAs break</h2>
+      <p>Every figure in this section comes from SQL queries on the warehouse (CTEs, window functions, anti-joins) with a single definition of "breach": resolution time greater than the SLA for its severity and tier.</p>
+    </div>
+    <div class="grid">
+      <div class="card s12">
+        <h3 id="trendT"></h3>
+        <p class="sub">Incidents per 1,000 feed-days (normalizes for growth in the feed base). The dots are public Simply.TV milestones; hover or tap to see the source.</p>
+        <div class="chart" id="chTrend1"></div>
+        <div class="sub" style="margin-top:2px">% of resolved incidents outside SLA, by opening month</div>
+        <div class="chart" id="chTrend2"></div>
+        <div class="legend" id="evLegend"></div>
+      </div>
+      <div class="card s7">
+        <h3 id="paretoT"></h3>
+        <p class="sub">Share of each root cause in total incidents and in total breaches. Root cause filled in by NLP triage when missing (11% of tickets).</p>
+        <div class="legend"><span><i style="background:var(--s1)"></i>% of incidents</span><span><i style="background:var(--s2)"></i>% of breaches</span></div>
+        <div id="pareto"></div>
+      </div>
+      <div class="card s5">
+        <h3 id="heatT"></h3>
+        <p class="sub">Breach % by day and opening time block (UTC). Each cell holds about 130 incidents.</p>
+        <div class="heat" id="heat"></div>
+        <div class="scale"><span id="hLo"></span><i></i><span id="hHi"></span></div>
+      </div>
+      <div class="card s6">
+        <h3 id="regionT"></h3>
+        <p class="sub">Incidents per 1,000 feed-days and breach %, by client region.</p>
+        <div id="region"></div>
+      </div>
+      <div class="card s6">
+        <h3 id="clientT"></h3>
+        <p class="sub">Cumulative breach curve when the 120 clients are ordered from most to least problematic (deciles via NTILE).</p>
+        <div class="chart" id="chClient"></div>
+        <div class="legend"><span><i class="ln" style="background:var(--brand)"></i>Observed concentration</span><span><i class="ln" style="background:var(--muted)"></i>If uniform</span></div>
+      </div>
+      <div class="card s5">
+        <h3 id="ageT"></h3>
+        <p class="sub">% of daily deliveries with DEGRADED or FAILED status by feed age.</p>
+        <div id="age"></div>
+      </div>
+      <div class="card s7">
+        <h3 id="detT"></h3>
+        <p class="sub">Time between the faulty delivery and the ticket opening, by who detected it.</p>
+        <div class="stats" id="det"></div>
+      </div>
+      <div class="card s12">
+        <h3 id="evT"></h3>
+        <p class="sub">Incidents per 1,000 feed-days in the affected regions, 45 days before vs 45 days after each milestone. Exact binomial test on the counts. The CEO appointment is included as a control event: it should not move operations.</p>
+        <div class="tw"><table id="evTable"></table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RISK MODEL ===================== -->
+  <section class="sec" id="riesgo">
+    <div class="sec-h">
+      <div class="eyebrow">Machine learning · classification</div>
+      <h2>Can we tell when the ticket opens whether it will breach?</h2>
+      <p>Trained on incidents before 2026 and evaluated on January–September 2026 (time-based split, not random). Only data known at triage time is used: escalation, assigned team and first response were excluded because they happen later.</p>
+    </div>
+    <div class="grid">
+      <div class="card s4">
+        <h3 id="cmpT"></h3>
+        <p class="sub">AUC on the test period. The bar starts at 0.50 (chance).</p>
+        <div id="modelCmp"></div>
+        <div class="sub" id="confT" style="margin-top:6px"></div>
+        <div id="conf"></div>
+      </div>
+      <div class="card s4">
+        <h3>ROC curve</h3>
+        <p class="sub">How well the model separates incidents that breach from those that do not.</p>
+        <div class="chart" id="chRoc"></div>
+      </div>
+      <div class="card s4">
+        <h3 id="gainT"></h3>
+        <p class="sub">Percentage of breaches captured by reviewing the top X% highest-risk incidents first.</p>
+        <div class="chart" id="chGain"></div>
+      </div>
+      <div class="card s6">
+        <h3>Which variables matter most</h3>
+        <p class="sub">AUC drop when each variable is shuffled on the test period (permutation importance).</p>
+        <div id="imp"></div>
+      </div>
+      <div class="card s6">
+        <h3>Are the probabilities reliable?</h3>
+        <p class="sub">Test incidents split into 10 risk groups: predicted probability vs actual breach rate.</p>
+        <div class="legend"><span><i class="ln" style="background:var(--s1)"></i>Predicted</span><span><i class="ln" style="background:var(--s2)"></i>Observed</span></div>
+        <div class="chart" id="chCal"></div>
+      </div>
+      <div class="card s7">
+        <h3>Risk simulator</h3>
+        <p class="sub">Logistic regression with 8 variables, exported to this browser. Change an incident's details and watch the probability.</p>
+        <div class="sim">
+          <div>
+            <div class="fields" id="simFields"></div>
+            <div class="presets" id="simPresets"></div>
+          </div>
+          <div class="riskbox">
+            <div class="ring" id="simRing" role="img" aria-label="Estimated probability of breaching the SLA"></div>
+            <div id="simVerdict"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card s5">
+        <h3 id="wiT"></h3>
+        <p class="sub">Scenario with an assumption: if flagged incidents receive proactive attention that shortens their resolution time, we compute how many breaches in the test period would have been avoided.</p>
+        <div class="field"><label>Flagged incidents (highest risk)</label>
+          <div class="seg" id="wiTop" role="group" aria-label="Percentage of flagged incidents"></div></div>
+        <div class="field"><label for="wiRed">Resolution-time reduction: <span id="wiRedV" class="mono"></span></label>
+          <input type="range" id="wiRed" min="10" max="50" step="10" value="30"></div>
+        <div class="stats" id="wiOut"></div>
+      </div>
+      <div class="card s6">
+        <h3>Expected resolution time</h3>
+        <p class="sub">Gradient-boosting regression on the log of hours. Compared with the historical median by severity and tier.</p>
+        <div class="stats" id="eta"></div>
+      </div>
+      <div class="card s6">
+        <h3>Automatic root-cause triage</h3>
+        <p class="sub">TF-IDF + logistic regression on the ticket's free text in English, Spanish and Portuguese. Fills in the categories that arrived empty.</p>
+        <div class="stats" id="nlp"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FORECAST ===================== -->
+  <section class="sec" id="pronostico">
+    <div class="sec-h">
+      <div class="eyebrow">Time series</div>
+      <h2 id="fcH"></h2>
+      <p>The weekly rate per 1,000 feed-days is modeled with lags, annual seasonality and the intensity of recent milestones; the forecast is rolled forward week by week. The band is an approximate 80% interval.</p>
+    </div>
+    <div class="grid">
+      <div class="card s8">
+        <h3 id="fcT"></h3>
+        <div class="legend"><span><i class="ln" style="background:var(--brand)"></i>Incidents per week</span><span><i class="ln" style="background:var(--brand2)"></i>Forecast (13 weeks)</span><span><i class="ln" style="background:var(--muted)"></i>1-week backtest</span></div>
+        <div class="chart" id="chFc"></div>
+      </div>
+      <div class="card s4">
+        <h3>What to expect through year-end</h3>
+        <div class="stats" id="fcStats" style="grid-template-columns:1fr 1fr"></div>
+        <h3 style="margin-top:6px;font-size:14px">Backtest error (26 weeks)</h3>
+        <p class="sub">Mean absolute error in incidents per week, forecasting 1 to 4 weeks ahead.</p>
+        <div id="fcBt"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ANOMALIES ===================== -->
+  <section class="sec" id="anomalias">
+    <div class="sec-h">
+      <div class="eyebrow">Anomaly detection</div>
+      <h2 id="anH"></h2>
+      <p>A feed can deliver "OK" and still arrive truncated. That case was hunted with IsolationForest and a completeness rule adjusted for each feed's weekly pattern, and validated against the simulation ground truth.</p>
+    </div>
+    <div class="grid">
+      <div class="card s5">
+        <h3>Completeness vs latency</h3>
+        <p class="sub">Sample of deliveries with OK status. Adjusted completeness: records received ÷ typical records for that feed on that type of day.</p>
+        <div class="legend" id="scLeg"></div>
+        <div class="chart" id="chScatter"></div>
+      </div>
+      <div class="card s7">
+        <h3 id="feedT"></h3>
+        <p class="sub">Last 150 days of a feed with several silent degradations.</p>
+        <div class="legend"><span><i class="ln" style="background:var(--brand)"></i>Adjusted completeness</span><span><i class="ring-i" style="border-color:var(--s3)"></i>Detector alert (OK status)</span><span><i style="background:var(--bad);border-radius:50%"></i>DEGRADED / FAILED status</span></div>
+        <div class="chart" id="chFeed"></div>
+      </div>
+      <div class="card s7">
+        <h3>Rules vs model</h3>
+        <p class="sub" id="anSub"></p>
+        <div class="tw"><table id="anTable"></table></div>
+      </div>
+      <div class="card s5">
+        <h3>Recent alerts with no incident</h3>
+        <p class="sub" id="flSub"></p>
+        <div class="tw"><table id="flags"></table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ACTIONS ===================== -->
+  <section class="sec" id="acciones">
+    <div class="sec-h">
+      <div class="eyebrow">Recommendations</div>
+      <h2>Four actions backed by the data</h2>
+    </div>
+    <div class="acts" id="acts"></div>
+
+    <div class="grid" style="margin-top:28px">
+      <div class="card s6">
+        <h3>What this analysis does not show</h3>
+        <ul class="plain" id="limits"></ul>
+      </div>
+      <div class="card s6">
+        <h3>What the job posting asks for and where it shows</h3>
+        <div class="tw"><table id="jd"></table></div>
+      </div>
+      <div class="card s12">
+        <h3>Public sources</h3>
+        <ul class="src" id="sources"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div id="foot1"></div>
+    <div>Independent portfolio project. It is not affiliated with Simply.TV and does not use its logo; the colors are an approximation of its style.</div>
+  </footer>
+</main>
+
+<div class="pbar" id="pbar" hidden><button type="button" id="pPrev" aria-label="Previous section">←</button><div class="pdots" id="pDots"></div><button type="button" id="pNext" aria-label="Next section">→</button><button type="button" id="pExit" class="pexit">Exit (Esc)</button></div>
