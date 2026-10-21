@@ -1,0 +1,52 @@
+{
+  "n": 400,
+  "detected": 0.772,
+  "symptomatic_share": 0.772,
+  "family_accuracy_when_symptomatic": 0.531,
+  "majority_family_baseline": 0.453,
+  "precision_by_family": {
+    "schema": 0.74,
+    "transport": 0.42,
+    "content": 0.56
+  },
+  "recall_by_family": {
+    "schema": 0.49,
+    "transport": 0.68,
+    "content": 0.46
+  },
+  "exact_cause_in_candidates": 0.479,
+  "by_category": {
+    "client_config": {
+      "n": 21,
+      "family_accuracy": 0.19
+    },
+    "delivery_endpoint": {
+      "n": 41,
+      "family_accuracy": 0.68
+    },
+    "duplicate_ids": {
+      "n": 37,
+      "family_accuracy": 0.32
+    },
+    "image_gap": {
+      "n": 57,
+      "family_accuracy": 0.33
+    },
+    "mapping_error": {
+      "n": 48,
+      "family_accuracy": 0.31
+    },
+    "schema_drift": {
+      "n": 93,
+      "family_accuracy": 0.43
+    },
+    "source_outage": {
+      "n": 60,
+      "family_accuracy": 0.52
+    },
+    "stale_schedule": {
+      "n": 43,
+      "family_accuracy": 0.35
+    }
+  }
+}

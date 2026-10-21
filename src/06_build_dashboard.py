@@ -10,6 +10,7 @@ Generates:
   dashboard/data.json      -> the same data, in case you want to use it in another tool
 """
 import json
+import re
 import sqlite3
 from pathlib import Path
 
@@ -49,10 +50,28 @@ def main():
     rows = [[months.index(r[0]), dims["region"].index(r[1]), dims["segment"].index(r[2]), dims["tier"].index(r[3]),
              dims["category"].index(r[4]), dims["severity"].index(r[5]),
              (1 if r[7] else 0) if r[6] == "resolved" else 2, r[8]] for r in inc]
+    # "Lab": real code shown in the dashboard (SQL blocks + Python functions) and the investigator's case files
+    import ast
+    atext = (ROOT / "sql" / "analytics.sql").read_text(encoding="utf-8")
+    blocks = dict(re.findall(r"^-- name:\s*(\w+)\s*\n(.*?)(?=^-- name:|\Z)", atext, flags=re.M | re.S))
+    lab_sql = [dict(name=n, code=blocks[n].strip(), rows=[r for r in sql[n] if r.get("rate_before") is not None][:6] if n == "event_impact" else sql[n][:8], title=t, why=w) for n, t, w in [
+        ("recurrence", "Recurring failures (window function LAG)", "Which causes keep coming back on the same feed within 14 days?"),
+        ("missed_failures", "Bad deliveries nobody noticed (EXISTS anti-join)", "Deliveries that FAILED or DEGRADED and never produced an incident: the silent failures."),
+        ("event_impact", "Before / after a public milestone (CTEs)", "Incidents per 1,000 feed-days in the 45 days around each milestone, affected regions only.")]]
+    def py_src(file, names):
+        t = (ROOT / "src" / file).read_text(encoding="utf-8"); tree = ast.parse(t)
+        return "\n\n".join(ast.get_source_segment(t, n) for n in tree.body if isinstance(n, (ast.FunctionDef, ast.Assign)) and (getattr(n, "name", None) in names or (isinstance(n, ast.Assign) and getattr(n.targets[0], "id", None) in names)))
+    lab_py = [dict(file="src/07_investigate.py", title="Tolerant log parser", why="The raw delivery log mixes real lines with heartbeats, truncated lines and noise. One regex, no crash.", code=py_src("07_investigate.py", {"LINE", "parse_line", "read_feed_log"}), run="python src/07_investigate.py F-0062 --as-of 2026-08-29"),
+              dict(file="src/07_investigate.py", title="Symptom detection against a baseline", why="Compares the last days with the feed's own healthy history, not with a fixed threshold.", code=py_src("07_investigate.py", {"baseline", "detect"}), run="python src/07_investigate.py --top 4"),
+              dict(file="src/07_investigate.py", title="Root-cause ranking with evidence", why="Every hypothesis carries the evidence that supports it, so the escalation is a diagnosis, not a guess.", code=py_src("07_investigate.py", {"FAMILY", "RULES", "diagnose"}), run="python src/08_validate_investigator.py"),
+              dict(file="src/02_etl.py", title="Cleaning messy ticket JSON", why="Dates, severities and teams arrive in many formats; the ETL normalizes them and logs every fix in dq_log.", code=py_src("02_etl.py", {"parse_ts", "norm_cat", "norm_sev", "norm_team"}), run="python src/02_etl.py")]
+    inv_p, ev_p = ROOT / "outputs" / "investigations.json", ROOT / "outputs" / "investigator_eval.json"
+    lab = dict(sql=lab_sql, py=lab_py, cases=json.loads(inv_p.read_text(encoding="utf-8")) if inv_p.exists() else [],
+               eval=json.loads(ev_p.read_text(encoding="utf-8")) if ev_p.exists() else None)
     world = json.loads((src_dir / "worlddots.json").read_text(encoding="utf-8"))
 
     data = dict(
-        explorer=dict(day0="2023-06-01", dims=dims, months=months, rows=rows, world=world),
+        lab=lab, explorer=dict(day0="2023-06-01", dims=dims, months=months, rows=rows, world=world),
         meta=dict(generated="2026-10-15", cutoff=sql["kpi_overview"]["data_to"],
                   from_=sql["kpi_overview"]["data_from"]),
         kpi=sql["kpi_overview"], monthly=sql["monthly_trend"], pareto=sql["category_pareto"],
@@ -71,7 +90,7 @@ def main():
     src = DASH / "src"
     css = (src / "style.css").read_text(encoding="utf-8")
     html = (src / "body.html").read_text(encoding="utf-8")
-    js = (src / "lib.js").read_text(encoding="utf-8") + "\n" + (src / "sections.js").read_text(encoding="utf-8") + "\n" + (src / "palettes.js").read_text(encoding="utf-8") + "\n" + (src / "particles.js").read_text(encoding="utf-8") + "\n" + (src / "skyline.js").read_text(encoding="utf-8") + "\n" + (src / "explorer.js").read_text(encoding="utf-8") + "\n" + (src / "present.js").read_text(encoding="utf-8") + "\n" + (src / "export.js").read_text(encoding="utf-8")
+    js = (src / "lib.js").read_text(encoding="utf-8") + "\n" + (src / "sections.js").read_text(encoding="utf-8") + "\n" + (src / "palettes.js").read_text(encoding="utf-8") + "\n" + (src / "particles.js").read_text(encoding="utf-8") + "\n" + (src / "skyline.js").read_text(encoding="utf-8") + "\n" + (src / "lab.js").read_text(encoding="utf-8") + "\n" + (src / "explorer.js").read_text(encoding="utf-8") + "\n" + (src / "present.js").read_text(encoding="utf-8") + "\n" + (src / "export.js").read_text(encoding="utf-8")
     safe = payload.replace("</", "<\\/")
     head = ('<title>Streaming Ops Simply.TV</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
             f'<link rel="stylesheet" href="{FONTS}">\n<style>\n{css}\n</style>')

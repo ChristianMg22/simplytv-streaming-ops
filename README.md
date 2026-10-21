@@ -21,6 +21,17 @@ Four questions:
 3. How much volume is coming?
 4. Are there degradations nobody is seeing?
 
+## Investigation lab (what the Streaming Data & Operations Analyst role does day to day)
+
+The dashboard has an **Investigation lab** section that shows the Python and SQL behind the analysis, with a table mapping every requirement of the vacancy to where it is demonstrated.
+
+| Script | What it shows |
+|---|---|
+|  `python src/07_investigate.py F-0062` | Investigates one feed end to end: tolerant parsing of the raw `.log.gz`, baseline from SQL, symptom detection, ranked root-cause hypotheses with evidence, resolve-vs-escalate decision, an escalation ticket and a plain-language client message (`outputs/investigations/*.md`). |
+| `python src/08_validate_investigator.py` | Measures the investigator against 400 incidents with known cause. Honest result: delivery telemetry flags schema changes with about 74% precision (about 49% recall) but cannot tell mapping, artwork, schedule and duplicate-ID problems apart; that is why the NLP triage exists. |
+| `python -m pytest tests -q` (or `python tests/test_investigate.py`) | Unit tests for the parser (junk lines, zero division) and the diagnosis rules. |
+
+
 ## Findings (on simulated data)
 
 | Question | Result |
