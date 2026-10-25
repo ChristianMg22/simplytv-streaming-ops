@@ -116,7 +116,7 @@ Project facts to keep in your head: 120 clients, 191 feeds, 160,527 feed-days, 5
 *Answer:* Role + context + data shape + exact task + output format + "ask me if unclear". *Example:* "I have a gzipped log with lines like `... feed=F-0062 status=DEGRADED records=41017 expected=61105 schema=v3.2 checksum=MISMATCH` and junk heartbeat lines. Write a Python function that parses valid lines into a dict and returns `None` otherwise; include unit tests."
 
 **30. How do you avoid trusting a wrong AI answer?**
-*Answer:* Reproduce on a small sample, write a test, compare with an independent calculation. *Project:* when I validated my investigator, the first version looked fine on three examples but scored only 17% on 60 incidents; I redesigned it to report a family of causes and measured 53% vs a 45% baseline. Testing changed the design.
+*Answer:* Reproduce on a small sample, write a test, compare with an independent calculation. *Project:* when I validated my investigator, the first version read well on the cases I looked at but scored only 17% (exact cause) on 60 incidents; I redesigned it to report a family of causes and measured 53% vs a 45% baseline. Testing changed the design.
 
 **31. How does your ticket classifier work and how good is it?**
 *Project:* TF-IDF (1-2 grams) + logistic regression with balanced classes, in English, Spanish and Portuguese. Hold-out accuracy 84.7%, macro F1 0.835. Predictions above a 0.45 confidence threshold are 95.8% accurate, and low-confidence ones are left "unclassified" (71 tickets) instead of forced.
