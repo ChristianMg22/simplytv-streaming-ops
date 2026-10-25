@@ -66,7 +66,19 @@ def main():
               dict(file="src/07_investigate.py", title="Root-cause ranking with evidence", why="Every hypothesis carries the evidence that supports it, so the escalation is a diagnosis, not a guess.", code=py_src("07_investigate.py", {"FAMILY", "RULES", "diagnose"}), run="python src/08_validate_investigator.py"),
               dict(file="src/02_etl.py", title="Cleaning messy ticket JSON", why="Dates, severities and teams arrive in many formats; the ETL normalizes them and logs every fix in dq_log.", code=py_src("02_etl.py", {"parse_ts", "norm_cat", "norm_sev", "norm_team"}), run="python src/02_etl.py")]
     inv_p, ev_p = ROOT / "outputs" / "investigations.json", ROOT / "outputs" / "investigator_eval.json"
-    lab = dict(sql=lab_sql, py=lab_py, cases=json.loads(inv_p.read_text(encoding="utf-8")) if inv_p.exists() else [],
+    # interview bank (docs/interview_bank.md) -> sections of questions
+    qa, cur = [], None
+    for ln in (ROOT / "docs" / "interview_bank.md").read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^## (?:\d+\.\s*)?(.+)$", ln)
+        if m: cur = dict(title=m.group(1).strip(), items=[]); qa.append(cur); continue
+        if cur is None: continue
+        q = re.match(r"^\*\*(\d+)\.\s*(.+?)\*\*\s*$", ln)
+        if q: cur["items"].append(dict(n=int(q.group(1)), q=q.group(2), a="")); continue
+        b = re.match(r"^- \*\*(.+?)\*\*\s*(.+)$", ln)
+        if b: cur["items"].append(dict(n=0, q=b.group(1).strip('"“”'), a=b.group(2))); continue
+        if ln.strip() and cur["items"] and not ln.startswith("---") and not ln.startswith("#"): cur["items"][-1]["a"] += (" " if cur["items"][-1]["a"] else "") + ln.strip()
+    qa = [x for x in qa if x["items"]]
+    lab = dict(qa=qa, sql=lab_sql, py=lab_py, cases=json.loads(inv_p.read_text(encoding="utf-8")) if inv_p.exists() else [],
                eval=json.loads(ev_p.read_text(encoding="utf-8")) if ev_p.exists() else None)
     world = json.loads((src_dir / "worlddots.json").read_text(encoding="utf-8"))
 

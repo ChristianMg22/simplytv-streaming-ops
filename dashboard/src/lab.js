@@ -28,7 +28,8 @@
     ['Use AI tools and effective prompting', 'TF-IDF triage in EN/ES/PT + prompt playbook in docs/prompt_playbook.md', null],
     ['Meet SLA deadlines, manage priorities', 'SLA-breach risk model, 13-week forecast, anomaly detection (sections above)', null],
     ['Data accuracy and attention to detail', 'One SLA definition (v_incident), data-quality log, unit tests, a measured validation', 'val'],
-    ['Document findings and recurring problems', 'Case files as .md, README, playbook, recurrence query', 'sql']];
+    ['Document findings and recurring problems', 'Case files as .md, README, playbook, recurrence query', 'sql'],
+    ['Be ready to explain all of this in a technical interview', '44 likely questions answered with examples from this project', 'qa']];
   document.getElementById('labCov').innerHTML = COV.map(c => `<div class="cv"><b>${c[0]}</b><span>${c[1]}</span>${c[2] ? `<button type="button" class="link" data-go="${c[2]}">See it →</button>` : ''}</div>`).join('');
   function caseView(i) {
     const c = L.cases[i]; if (!c) return '<p class="sub">Run <code>python src/07_investigate.py --top 4</code> to generate case files.</p>';
@@ -50,6 +51,7 @@
       <textarea id="lineIn" rows="3" spellcheck="false" aria-label="Log line">2026-08-29T03:12:44Z INFO feed=F-0062 client=C-035 status=DEGRADED records=41017 expected=61105 latency_s=1108 schema=v3.2 checksum=MISMATCH</textarea>
       <div class="seg" id="samples" style="margin:8px 0"><button type="button" data-s="0">Healthy line</button><button type="button" data-s="1">Schema change</button><button type="button" data-s="2">Heartbeat (junk)</button><button type="button" data-s="3">Truncated line</button></div>
       <div id="lineOut" class="doc"></div>`,
+    qa: () => qaView(),
     val: () => { const e = L.eval; if (!e) return '<p class="sub">Run <code>python src/08_validate_investigator.py</code>.</p>';
       const bars = (o, t) => `<div class="vb"><b>${t}</b>${Object.entries(o).map(([k, v]) => `<div class="vrow"><span>${k}</span><div class="vbar"><i style="width:${Math.round(v * 100)}%"></i></div><em>${Math.round(v * 100)}%</em></div>`).join('')}</div>`;
       return `<p class="sub">I tested the investigator against the ${nf(e.n)} sampled incidents whose real cause is known (simulation ground truth). Honest result:</p>
@@ -58,6 +60,14 @@
       <div class="two">${bars(e.precision_by_family, 'Precision by family')}${bars(e.recall_by_family, 'Recall by family')}</div>
       <p class="take"><b>What I take from it:</b> delivery telemetry flags <em>schema changes</em> with ${Math.round(e.precision_by_family.schema * 100)}% precision (it catches about ${Math.round(e.recall_by_family.schema * 100)}% of them) and separates transport from content problems only partly. Telling mapping, artwork, schedule and duplicate-ID problems apart needs the payload or the ticket text, which is exactly why the NLP triage exists. So the investigator names a family and its candidates instead of pretending to certainty.</p>`; }
   };
+  const md = t => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*(Tests|Answer|Project|Example|Honest note|Honest limit):\*/g, '<b class="lbl">$1</b>').replace(/\*(.+?)\*/g, '<i>$1</i>');
+  function qaView() {
+    const secs = L.qa, f = pane.dataset.f || 'all', term = (pane.dataset.q || '').toLowerCase(), total = secs.reduce((a, s) => a + s.items.filter(i => i.n).length, 0);
+    const list = secs.filter(s => f === 'all' || s.title === f).map(s => ({ ...s, items: s.items.filter(i => !term || (i.q + ' ' + i.a).toLowerCase().includes(term)) })).filter(s => s.items.length);
+    return `<p class="sub">${total} questions a technical interviewer could ask for this vacancy, each answered with a real example from this project (file, query or number). Practice saying the one-line answer first, then the example. The data is synthetic: say so up front.</p>
+    <div class="qa-bar"><input id="qaQ" type="search" placeholder="Search a question or a keyword (SQL, schema, prompt...)" aria-label="Search questions" value="${esc(pane.dataset.q || '')}"><div class="seg" id="qaF"><button type="button" data-f="all" aria-pressed="${f === 'all'}">All</button>${secs.map(s => `<button type="button" data-f="${esc(s.title)}" aria-pressed="${f === s.title}">${esc(s.title.split(' and ')[0].split(',')[0])}</button>`).join('')}</div></div>
+    ${list.map(s => `<h4 class="qa-h">${esc(s.title)}</h4>` + s.items.map(i => `<details class="qa"${term ? ' open' : ''}><summary>${i.n ? `<span class="qn">${i.n}</span>` : ''}${esc(i.q)}</summary><div class="qa-a">${md(i.a)}</div></details>`).join('')).join('') || '<p class="sub">No question matches that search.</p>'}`;
+  }
   const SAMPLES = ['2026-06-01T01:04:23Z INFO feed=F-0165 client=C-103 status=OK records=17169 expected=16968 latency_s=232 schema=v3.1 checksum=ok',
     '2026-08-29T03:12:44Z INFO feed=F-0062 client=C-035 status=DEGRADED records=41017 expected=61105 latency_s=1108 schema=v3.2 checksum=MISMATCH',
     '2026-06-01T01:09:05Z DEBUG scheduler heartbeat ok', '2026-06-01T01:12:15Z INFO feed=F-0010 client=C-005 status=OK records=559'];
@@ -71,10 +81,12 @@
     pane.dataset.t = t; tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.t === t)); pane.innerHTML = view[t]();
     if (t === 'try') { parse(); document.getElementById('lineIn').addEventListener('input', parse); document.getElementById('samples').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { document.getElementById('lineIn').value = SAMPLES[+b.dataset.s]; parse(); } }); }
   }
+  pane.addEventListener('input', e => { if (e.target.id === 'qaQ') { pane.dataset.q = e.target.value; const p = e.target.selectionStart; pane.innerHTML = qaView(); const n = document.getElementById('qaQ'); n.focus(); n.setSelectionRange(p, p); } });
   tabs.addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(b.dataset.t); });
   document.getElementById('lab').addEventListener('click', e => {
     const g = e.target.closest('[data-go]'); if (g) { show(g.dataset.go); document.getElementById('labTabs').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     const c = e.target.closest('.copy'); if (c) { const t = decodeURIComponent(c.dataset.code); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { c.textContent = 'Copied'; setTimeout(() => c.textContent = 'Copy', 1500); }, () => { c.textContent = 'Select & copy'; }); return; }
+    const qf = e.target.closest('#qaF button'); if (qf) { pane.dataset.f = qf.dataset.f; pane.innerHTML = qaView(); return; }
     const k = e.target.closest('#caseSel button'); if (k) { pane.dataset.i = k.dataset.i; pane.innerHTML = view.case(); }
   });
   show('case');

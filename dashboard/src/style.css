@@ -374,3 +374,16 @@ body.present #palBtn { display: none; }
 .vbar { height: 8px; border-radius: 4px; background: var(--grid); overflow: hidden; } .vbar i { display: block; height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand2)); border-radius: 4px; }
 .take { margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--line); font-size: 13.5px; line-height: 1.6; color: var(--ink2); }
 .code code, .code pre code { background: none; padding: 0; border: 0; border-radius: 0; color: inherit; font: inherit; }
+.qa-bar { display: grid; gap: 10px; margin: 12px 0 6px; }
+.qa-bar input { width: 100%; box-sizing: border-box; background: var(--bg2); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: 400 13.5px var(--body); }
+.qa-bar .seg { flex-wrap: wrap; }
+.qa-h { margin: 22px 0 8px !important; font: 600 11.5px var(--mono) !important; letter-spacing: .09em; text-transform: uppercase; color: var(--brand) !important; }
+.qa { border: 1px solid var(--line); border-radius: 12px; background: var(--surface2); margin: 6px 0; }
+.qa summary { cursor: pointer; padding: 11px 14px; font-size: 14px; font-weight: 500; list-style: none; display: flex; gap: 10px; align-items: baseline; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::after { content: '+'; margin-left: auto; color: var(--muted); font: 500 16px var(--mono); }
+.qa[open] summary::after { content: '–'; }
+.qn { flex: none; font: 600 11px var(--mono); color: var(--on-brand); background: linear-gradient(135deg, var(--brand), var(--brand2)); border-radius: 6px; padding: 2px 7px; }
+.qa-a { padding: 2px 16px 14px; font-size: 13.5px; line-height: 1.65; color: var(--ink2); }
+.qa-a b.lbl { display: inline-block; margin: 6px 6px 0 0; font: 600 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--brand); }
+.qa-a code { font: 500 12px var(--mono); background: var(--bg2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: var(--ink); }
