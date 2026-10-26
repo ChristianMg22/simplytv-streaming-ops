@@ -63,6 +63,15 @@
         <div id="xCause"></div>
       </div>
       <div class="card s12">
+        <h3 id="compT">Composition of the slice</h3>
+        <p class="sub">How the filtered incidents split by SLA outcome, severity and client tier. Hover a segment or a legend row to read it; the donuts follow the filters above.</p>
+        <div class="dn3">
+          <div class="dnb"><h4>SLA outcome</h4><div class="ring" id="dnOut"></div><div class="dnl" id="dnOutL"></div></div>
+          <div class="dnb"><h4>Severity</h4><div class="ring" id="dnSev"></div><div class="dnl" id="dnSevL"></div></div>
+          <div class="dnb"><h4>Client tier</h4><div class="ring" id="dnTier"></div><div class="dnl" id="dnTierL"></div></div>
+        </div>
+      </div>
+      <div class="card s12">
         <h3 id="sankT"></h3>
         <p class="sub">Each band is a group of incidents: root cause on the left, severity in the middle and the SLA outcome on the right. Hover over a band to see its size.</p>
         <div class="sankey" id="xSankey"></div>

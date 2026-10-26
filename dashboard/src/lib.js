@@ -149,6 +149,57 @@ function barRows(el, rows, o = {}) {
   onVisible(el, () => playBars(el));
 }
 
+/* ===== animated donut (vanilla port of the "DonutChart" React component) =====
+   Segments draw in one after another, hovering a segment (or its legend row) lifts it with a glow and swaps the
+   center text; set() tweens to new values, so it follows the explorer filters. */
+function donut(el, o) {
+  const id = 'dn' + (++RID), R = 46, SW = o.sw || 15, C = 2 * Math.PI * R, GAP = 1.6;
+  let segs = o.segs, center = o.center, active = -1, shown = false;
+  el.classList.add('dn');
+  el.innerHTML = `<svg viewBox="0 0 120 120" role="img" aria-label="${esc(o.aria || 'Donut chart')}"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--brand)"/><stop offset="1" style="stop-color:var(--brand2)"/></linearGradient></defs>
+    <circle cx="60" cy="60" r="${R}" fill="none" style="stroke:var(--line);stroke-width:${SW};opacity:.5"/>${segs.map((g, i) => `<circle class="dseg" data-i="${i}" cx="60" cy="60" r="${R}" fill="none" stroke-width="${SW}" style="stroke:${g.grad ? `url(#${id})` : g.color};color:${g.grad ? 'var(--brand)' : g.color}"/>`).join('')}</svg>
+    <div class="ctr"><div class="big"></div><div class="cap"></div></div>`;
+  const circles = $$('.dseg', el), big = $('.big', el), cap = $('.cap', el);
+  const total = () => segs.reduce((a, g) => a + g.value, 0);
+  function geom() {
+    const T = total() || 1; let acc = 0;
+    return segs.map(g => {
+      const L = g.value / T * C, st = acc; acc += L;
+      const round = L > 2.4 * SW, trim = round ? SW : 0, dash = Math.max(0, L - trim - GAP), off = -(st + (round ? SW / 2 : 0) + GAP / 2);
+      return { dash: g.value > 0 ? dash : 0, off, round, vis: g.value > 0 };
+    });
+  }
+  function paint(first) {
+    const G = geom();
+    circles.forEach((c, i) => {
+      const g = G[i], sg = segs[i];
+      c.style.stroke = sg.grad ? `url(#${id})` : sg.color; c.style.color = sg.grad ? 'var(--brand)' : sg.color;
+      c.style.strokeLinecap = g.round ? 'round' : 'butt'; c.style.opacity = g.vis ? 1 : 0;
+      c.style.transition = RM ? 'none' : `stroke-dasharray 1.1s cubic-bezier(.2,.7,.2,1) ${first ? i * 70 : 0}ms, stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1) ${first ? i * 70 : 0}ms, filter .2s, transform .2s, opacity .3s`;
+      c.setAttribute('stroke-dasharray', `${g.dash.toFixed(2)} ${C.toFixed(2)}`); c.setAttribute('stroke-dashoffset', g.off.toFixed(2));
+    });
+  }
+  function text() {
+    const g = segs[active], T = total();
+    if (g) { big.textContent = o.fmt ? o.fmt(g.value) : nf(g.value); cap.textContent = `${g.label} · ${T ? nf(g.value / T * 100, 0) : 0}%`; }
+    else { big.textContent = center.big; cap.textContent = center.cap || ''; }
+  }
+  function setActive(i) {
+    active = i; circles.forEach((c, k) => c.classList.toggle('on', k === i)); text();
+    if (o.legendEl) $$('.dl', o.legendEl).forEach((r, k) => r.classList.toggle('on', k === i));
+  }
+  function legend() {
+    if (!o.legendEl) return; const T = total();
+    o.legendEl.innerHTML = segs.map((g, i) => `<div class="dl" data-i="${i}"><i style="background:${g.grad ? 'var(--brand)' : g.color}"></i><span>${esc(g.label)}</span><b>${o.fmt ? o.fmt(g.value) : nf(g.value)}</b><em>${T ? nf(g.value / T * 100, 0) : 0}%</em></div>`).join('');
+    $$('.dl', o.legendEl).forEach((r, i) => { r.addEventListener('mouseenter', () => setActive(i)); r.addEventListener('mouseleave', () => setActive(-1)); if (!RM) r.animate([{ opacity: 0, transform: 'translateX(-14px)' }, { opacity: 1, transform: 'none' }], { duration: 400, delay: shown ? 0 : 900 + i * 90, easing: 'ease-out', fill: 'backwards' }); });
+  }
+  circles.forEach((c, i) => { c.addEventListener('mouseenter', () => setActive(i)); c.addEventListener('mouseleave', () => setActive(-1)); });
+  text(); legend();
+  if (RM || !io) { shown = true; paint(false); }
+  else { circles.forEach(c => { c.style.transition = 'none'; c.setAttribute('stroke-dasharray', `0 ${C.toFixed(2)}`); c.setAttribute('stroke-dashoffset', 0); }); onVisible(el, () => { shown = true; paint(true); }); }
+  return { set(ns, nc) { segs = ns; if (nc) center = nc; setActive(-1); legend(); if (shown || RM || !io) paint(false); } };
+}
+
 /* ===== progress ring ===== */
 let RID = 0;
 function ring(el, p, o = {}) {

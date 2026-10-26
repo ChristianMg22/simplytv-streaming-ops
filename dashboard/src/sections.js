@@ -22,7 +22,7 @@ $('#chips').innerHTML = [
   `<span class="chip">${fdate(K.data_from)} → ${fdate(K.data_to)}</span>`,
   `<span class="chip">${nf(K.clients)} clients · ${nf(K.feeds)} feeds</span>`,
   `<span class="chip">${nf(K.feed_days)} feed-days</span>`].join('');
-ring($('#heroRing'), K.sla_breach_pct, { big: pct(K.sla_breach_pct), cap: 'outside SLA' });
+donut($('#heroRing'), { sw: 13, aria: 'Share of resolved incidents outside the SLA', segs: [{ label: 'Outside SLA', value: K.sla_breaches, grad: true }, { label: 'Within SLA', value: K.incidents_resolved - K.sla_breaches, color: 'var(--surface2)' }], center: { big: pct(K.sla_breach_pct), cap: 'outside SLA' } });
 $('#ringNote').textContent = `${nf(K.sla_breaches)} of ${nf(K.incidents_resolved)} resolved incidents took longer than the SLA for their severity and tier.`;
 $('#kpis').innerHTML = [
   ['Incidents', cnt(K.incidents_total), '', `${nf(K.incidents_open)} still open at cutoff`, 'ks0'],

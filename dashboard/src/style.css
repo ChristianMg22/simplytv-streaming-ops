@@ -387,3 +387,16 @@ body.present #palBtn { display: none; }
 .qa-a { padding: 2px 16px 14px; font-size: 13.5px; line-height: 1.65; color: var(--ink2); }
 .qa-a b.lbl { display: inline-block; margin: 6px 6px 0 0; font: 600 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--brand); }
 .qa-a code { font: 500 12px var(--mono); background: var(--bg2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: var(--ink); }
+
+/* ===== animated donuts ===== */
+.dseg { transform-origin: 60px 60px; cursor: pointer; transform-box: view-box; }
+.dseg.on { filter: drop-shadow(0 0 5px currentColor) brightness(1.12); transform: scale(1.035); }
+.dn .ctr { pointer-events: none; padding: 0 22%; }
+.dn .big { font-size: clamp(24px, 3.2vw, 38px); } .dn .cap { text-align: center; line-height: 1.3; }
+.dn3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; margin-top: 8px; }
+.dnb { display: grid; justify-items: center; gap: 12px; align-content: start; } .dnb h4 { margin: 0; font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.dnb .ring { width: min(100%, 190px); }
+.dnl { width: 100%; display: grid; gap: 2px; border-top: 1px solid var(--line); padding-top: 8px; }
+.dl { display: grid; grid-template-columns: 12px 1fr auto 42px; gap: 8px; align-items: center; padding: 5px 8px; border-radius: 8px; font-size: 12.5px; color: var(--ink2); cursor: pointer; transition: background .2s; }
+.dl i { width: 9px; height: 9px; border-radius: 50%; } .dl b { color: var(--ink); font-variant-numeric: tabular-nums; } .dl em { font-style: normal; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+.dl.on { background: var(--surface2); }

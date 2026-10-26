@@ -13,3 +13,7 @@ Sin dependencias extra: solo `react`.
 
 ## contribution-skyline.tsx
 Original React component. In the dashboard it is ported to vanilla canvas (`dashboard/src/skyline.js`) and fed with daily incident counts; it reacts to the explorer filters.
+
+
+## donut-chart.tsx
+Original React component (framer-motion). In the dashboard it is ported to vanilla SVG (`donut()` in `dashboard/src/lib.js`): the hero SLA donut and the three "Composition of the slice" donuts in the Explorer use the same staggered draw-in, hover glow and live center text.

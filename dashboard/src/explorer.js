@@ -181,11 +181,21 @@
     }
   }
 
+  /* ---------- donuts: composition of the slice ---------- */
+  const SEVC = ['var(--s8)', 'var(--s4)', 'var(--s1)', 'var(--s3)'], TIERC = ['var(--s4)', 'var(--s1)', 'var(--s2)'];
+  const mkDn = (id, aria, n) => donut($('#' + id), { aria, sw: 14, legendEl: $('#' + id + 'L'), segs: Array.from({ length: n }, () => ({ label: '', value: 0, color: 'var(--line)' })), center: { big: '', cap: '' } });
+  const DN = { out: mkDn('dnOut', 'SLA outcome of the filtered incidents', 3), sev: mkDn('dnSev', 'Severity of the filtered incidents', 4), tier: mkDn('dnTier', 'Client tier of the filtered incidents', 3) };
+  function renderDonuts(rs) {
+    const c = (idx, n) => Array.from({ length: n }, (_, k) => rs.filter(r => r[idx] === k).length), ctr = { big: nf(rs.length), cap: 'incidents' };
+    DN.out.set(OUT.map((o, k) => ({ label: o.label, value: c(6, 3)[k], color: o.color })), ctr);
+    DN.sev.set(dims.severity.map((l, k) => ({ label: l, value: c(5, 4)[k], color: SEVC[k] })), ctr);
+    DN.tier.set(dims.tier.map((l, k) => ({ label: l, value: c(3, 3)[k], color: TIERC[k] })), ctr);
+  }
   function update() {
     renderFilters();
     const rs = inRows(), rsMap = inRows('region');
     window.STV_SKY && window.STV_SKY.set(rs);
-    renderKpis(rs); renderCauses(rs); renderMap(rsMap); renderSankey(rs);
+    renderKpis(rs); renderDonuts(rs); renderCauses(rs); renderMap(rsMap); renderSankey(rs);
   }
   window.STV_X = { rows: () => inRows(), dims, months: X.months, filters: () => ({ ...f }), outcomes: OUT.map(o => o.label) };
   update();
