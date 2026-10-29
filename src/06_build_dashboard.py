@@ -102,7 +102,7 @@ def main():
     src = DASH / "src"
     css = (src / "style.css").read_text(encoding="utf-8")
     html = (src / "body.html").read_text(encoding="utf-8")
-    js = (src / "lib.js").read_text(encoding="utf-8") + "\n" + (src / "sections.js").read_text(encoding="utf-8") + "\n" + (src / "palettes.js").read_text(encoding="utf-8") + "\n" + (src / "particles.js").read_text(encoding="utf-8") + "\n" + (src / "skyline.js").read_text(encoding="utf-8") + "\n" + (src / "lab.js").read_text(encoding="utf-8") + "\n" + (src / "explorer.js").read_text(encoding="utf-8") + "\n" + (src / "present.js").read_text(encoding="utf-8") + "\n" + (src / "export.js").read_text(encoding="utf-8")
+    js = (src / "lib.js").read_text(encoding="utf-8") + "\n" + (src / "sections.js").read_text(encoding="utf-8") + "\n" + (src / "palettes.js").read_text(encoding="utf-8") + "\n" + (src / "beams.js").read_text(encoding="utf-8") + "\n" + (src / "particles.js").read_text(encoding="utf-8") + "\n" + (src / "skyline.js").read_text(encoding="utf-8") + "\n" + (src / "lab.js").read_text(encoding="utf-8") + "\n" + (src / "explorer.js").read_text(encoding="utf-8") + "\n" + (src / "present.js").read_text(encoding="utf-8") + "\n" + (src / "export.js").read_text(encoding="utf-8")
     safe = payload.replace("</", "<\\/")
     head = ('<title>Streaming Ops Simply.TV</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
             f'<link rel="stylesheet" href="{FONTS}">\n<style>\n{css}\n</style>')

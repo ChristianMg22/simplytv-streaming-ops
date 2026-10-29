@@ -17,3 +17,7 @@ Original React component. In the dashboard it is ported to vanilla canvas (`dash
 
 ## donut-chart.tsx
 Original React component (framer-motion). In the dashboard it is ported to vanilla SVG (`donut()` in `dashboard/src/lib.js`): the hero SLA donut and the three "Composition of the slice" donuts in the Explorer use the same staggered draw-in, hover glow and live center text.
+
+
+## beams-background.tsx
+Original React component (motion). In the dashboard it is ported to a fixed vanilla canvas behind the whole page (`dashboard/src/beams.js`), tinted by the active palette and theme, at half resolution with CSS blur, paused when the tab is hidden.
