@@ -175,7 +175,10 @@
     const q = resolvedOf(rs), byC = {}; q.forEach(r => { if (r[6] === 1) byC[r[4]] = (byC[r[4]] || 0) + 1; });
     const topC = Object.entries(byC).sort((a, b) => b[1] - a[1])[0];
     $('#sankT').textContent = br ? `${nf(br)} breaches out of ${nf(N)} incidents${topC ? `: ${CAT[dims.category[topC[0]]]} is the largest source (${pct(sh(topC[1], br), 0)})` : ''}` : `No breaches among ${nf(N)} incidents`;
-    if (!RM) {
+    playSankey();
+    if (!box.__sk) { box.__sk = 1; onVisible(box, playSankey); }
+    function playSankey() {
+      if (RM) return;
       $$('.sk-l', box).forEach((p, i) => p.animate([{ strokeDasharray: '1 1', strokeDashoffset: 1 }, { strokeDasharray: '1 1', strokeDashoffset: 0 }], { duration: 900, delay: Math.min(i * 12, 400), easing: 'cubic-bezier(.3,.6,.2,1)', fill: 'backwards' }));
       $$('.sk-nodes rect', box).forEach((r, i) => r.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: i * 25, fill: 'backwards' }));
     }

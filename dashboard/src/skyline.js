@@ -131,7 +131,9 @@
   new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style'] });
   // 3D rises out of the flat view the first time it scrolls into sight
   tg.classList.add('is3'); tg.querySelector('[data-v="3d"]').classList.add('on'); setHint();
+  // ... and folds back flat when it leaves the screen, so it rises again every time you scroll back to it
   const enter = () => { if (entered) return; entered = true; if (reduce) t = 1; kick(); };
-  'IntersectionObserver' in window ? new IntersectionObserver((es, io) => { if (es.some(e => e.isIntersecting)) { enter(); io.disconnect(); } }, { threshold: .35 }).observe(stage) : enter();
+  const leave = () => { entered = false; t = 0; target = 0; yG = eG = yaw = elev = 0; kick(); };
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (e.intersectionRatio >= .35) enter(); else if (e.intersectionRatio === 0 && entered) leave(); }), { threshold: [0, .35] }).observe(stage); else enter();
   retheme(); window.STV_SKY = { set: setRows };
 })();

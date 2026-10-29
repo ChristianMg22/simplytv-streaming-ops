@@ -802,9 +802,13 @@ document.documentElement.addEventListener('pointerleave', hideTip);
 
 /* ===== animation on entering the viewport (the resting state is already the final one) ===== */
 const io = ('IntersectionObserver' in window) ? new IntersectionObserver(es => {
-  es.forEach(en => { if (en.isIntersecting) { io.unobserve(en.target); (en.target.__cbs || []).forEach(f => f()); } });
-}, { threshold: .15 }) : null;
-function onVisible(el, cb) { if (RM || !io) return; (el.__cbs = el.__cbs || []).push(cb); io.observe(el); }
+  es.forEach(en => {
+    const t = en.target;
+    if (en.intersectionRatio >= .15) { if (!t.__in) { t.__in = true; (t.__cbs || []).forEach(f => f()); } }       // entering: play (every time)
+    else if (en.intersectionRatio === 0 && t.__in) { t.__in = false; (t.__rs || []).forEach(f => f()); }          // fully left: reset to the start state
+  });
+}, { threshold: [0, .15] }) : null;
+function onVisible(el, cb, reset) { if (RM || !io) return; (el.__cbs = el.__cbs || []).push(cb); if (reset) (el.__rs = el.__rs || []).push(reset); io.observe(el); }
 function playBars(el) {
   $$('.bar', el).forEach((b, i) => b.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
     { duration: 800, delay: i * 40, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
@@ -959,7 +963,10 @@ function donut(el, o) {
   circles.forEach((c, i) => { c.addEventListener('mouseenter', () => setActive(i)); c.addEventListener('mouseleave', () => setActive(-1)); });
   text(); legend();
   if (RM || !io) { shown = true; paint(false); }
-  else { circles.forEach(c => { c.style.transition = 'none'; c.setAttribute('stroke-dasharray', `0 ${C.toFixed(2)}`); c.setAttribute('stroke-dashoffset', 0); }); onVisible(el, () => { shown = true; paint(true); }); }
+  else {
+    const zero = () => circles.forEach(c => { c.style.transition = 'none'; c.setAttribute('stroke-dasharray', `0 ${C.toFixed(2)}`); c.setAttribute('stroke-dashoffset', 0); });
+    zero(); onVisible(el, () => { shown = true; requestAnimationFrame(() => requestAnimationFrame(() => paint(true))); }, () => { shown = false; zero(); });
+  }
   return { set(ns, nc) { segs = ns; if (nc) center = nc; setActive(-1); legend(); if (shown || RM || !io) paint(false); } };
 }
 
@@ -1575,8 +1582,10 @@ $$('.cnt').forEach(countUp);
   new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'style'] });
   // 3D rises out of the flat view the first time it scrolls into sight
   tg.classList.add('is3'); tg.querySelector('[data-v="3d"]').classList.add('on'); setHint();
+  // ... and folds back flat when it leaves the screen, so it rises again every time you scroll back to it
   const enter = () => { if (entered) return; entered = true; if (reduce) t = 1; kick(); };
-  'IntersectionObserver' in window ? new IntersectionObserver((es, io) => { if (es.some(e => e.isIntersecting)) { enter(); io.disconnect(); } }, { threshold: .35 }).observe(stage) : enter();
+  const leave = () => { entered = false; t = 0; target = 0; yG = eG = yaw = elev = 0; kick(); };
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (e.intersectionRatio >= .35) enter(); else if (e.intersectionRatio === 0 && entered) leave(); }), { threshold: [0, .35] }).observe(stage); else enter();
   retheme(); window.STV_SKY = { set: setRows };
 })();
 
@@ -1851,7 +1860,10 @@ $$('.cnt').forEach(countUp);
     const q = resolvedOf(rs), byC = {}; q.forEach(r => { if (r[6] === 1) byC[r[4]] = (byC[r[4]] || 0) + 1; });
     const topC = Object.entries(byC).sort((a, b) => b[1] - a[1])[0];
     $('#sankT').textContent = br ? `${nf(br)} breaches out of ${nf(N)} incidents${topC ? `: ${CAT[dims.category[topC[0]]]} is the largest source (${pct(sh(topC[1], br), 0)})` : ''}` : `No breaches among ${nf(N)} incidents`;
-    if (!RM) {
+    playSankey();
+    if (!box.__sk) { box.__sk = 1; onVisible(box, playSankey); }
+    function playSankey() {
+      if (RM) return;
       $$('.sk-l', box).forEach((p, i) => p.animate([{ strokeDasharray: '1 1', strokeDashoffset: 1 }, { strokeDasharray: '1 1', strokeDashoffset: 0 }], { duration: 900, delay: Math.min(i * 12, 400), easing: 'cubic-bezier(.3,.6,.2,1)', fill: 'backwards' }));
       $$('.sk-nodes rect', box).forEach((r, i) => r.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: i * 25, fill: 'backwards' }));
     }

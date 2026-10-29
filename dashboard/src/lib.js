@@ -39,9 +39,13 @@ document.documentElement.addEventListener('pointerleave', hideTip);
 
 /* ===== animation on entering the viewport (the resting state is already the final one) ===== */
 const io = ('IntersectionObserver' in window) ? new IntersectionObserver(es => {
-  es.forEach(en => { if (en.isIntersecting) { io.unobserve(en.target); (en.target.__cbs || []).forEach(f => f()); } });
-}, { threshold: .15 }) : null;
-function onVisible(el, cb) { if (RM || !io) return; (el.__cbs = el.__cbs || []).push(cb); io.observe(el); }
+  es.forEach(en => {
+    const t = en.target;
+    if (en.intersectionRatio >= .15) { if (!t.__in) { t.__in = true; (t.__cbs || []).forEach(f => f()); } }       // entering: play (every time)
+    else if (en.intersectionRatio === 0 && t.__in) { t.__in = false; (t.__rs || []).forEach(f => f()); }          // fully left: reset to the start state
+  });
+}, { threshold: [0, .15] }) : null;
+function onVisible(el, cb, reset) { if (RM || !io) return; (el.__cbs = el.__cbs || []).push(cb); if (reset) (el.__rs = el.__rs || []).push(reset); io.observe(el); }
 function playBars(el) {
   $$('.bar', el).forEach((b, i) => b.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
     { duration: 800, delay: i * 40, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
@@ -196,7 +200,10 @@ function donut(el, o) {
   circles.forEach((c, i) => { c.addEventListener('mouseenter', () => setActive(i)); c.addEventListener('mouseleave', () => setActive(-1)); });
   text(); legend();
   if (RM || !io) { shown = true; paint(false); }
-  else { circles.forEach(c => { c.style.transition = 'none'; c.setAttribute('stroke-dasharray', `0 ${C.toFixed(2)}`); c.setAttribute('stroke-dashoffset', 0); }); onVisible(el, () => { shown = true; paint(true); }); }
+  else {
+    const zero = () => circles.forEach(c => { c.style.transition = 'none'; c.setAttribute('stroke-dasharray', `0 ${C.toFixed(2)}`); c.setAttribute('stroke-dashoffset', 0); });
+    zero(); onVisible(el, () => { shown = true; requestAnimationFrame(() => requestAnimationFrame(() => paint(true))); }, () => { shown = false; zero(); });
+  }
   return { set(ns, nc) { segs = ns; if (nc) center = nc; setActive(-1); legend(); if (shown || RM || !io) paint(false); } };
 }
 
