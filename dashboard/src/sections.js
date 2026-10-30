@@ -170,6 +170,20 @@ lineChart($('#chCal'), {
   tip: x => { const d = dc[x - 1]; return `<b>Group ${x}</b>` + row('var(--s1)', 'Predicted', pct(100 * d.pred, 0)) + row('var(--s2)', 'Observed', pct(100 * d.obs, 0)) + row('', 'Incidents', nf(d.n)); }, aria: 'Calibration by decile'
 });
 
+
+/* ----- robustness ----- */
+(function () {
+  const R = C.robustness, el = $('#rob'); if (!R || !el) return;
+  const p1 = v => nf(100 * v, 1) + '%', a3 = v => nf(v, 3);
+  const roll = R.rolling.map(r => `<tr><td>${r.window}</td><td style="text-align:right">${nf(r.n)}</td><td style="text-align:right">${a3(r.baseline)}</td><td style="text-align:right"><b>${a3(r.auc)}</b></td><td style="text-align:right">+${a3(r.auc - r.baseline)}</td></tr>`).join('');
+  el.innerHTML = `<div class="two">
+    <div class="vb"><b>1 · Is the lift real?</b><p class="sub">Bootstrap (1,000 resamples) of the test set. Model AUC ${a3(C.models[C.best_model].auc)} [${a3(R.auc_ci[0])}–${a3(R.auc_ci[1])}] vs baseline [${a3(R.baseline_auc_ci[0])}–${a3(R.baseline_auc_ci[1])}]. Difference +${a3(R.diff_mean)} with a 95% interval of ${a3(R.diff_ci[0])} to ${a3(R.diff_ci[1])}, which excludes zero. The model beat the baseline in ${p1(R.p_model_better)} of resamples.</p></div>
+    <div class="vb"><b>2 · Calibration</b><p class="sub">When the model says 40%, about 40% breach: average gap ${p1(R.ece)} (ECE). Brier score ${a3(R.brier)} vs ${a3(R.brier_naive)} for always predicting the base rate.</p></div></div>
+  <table class="tbl" style="margin-top:12px"><caption class="sub" style="text-align:left;caption-side:top"><b>3 · Does it hold over time?</b> Retrained on the past each time and tested on the next 120 days.</caption><thead><tr><th>Window</th><th style="text-align:right">Incidents</th><th style="text-align:right">Baseline AUC</th><th style="text-align:right">Model AUC</th><th style="text-align:right">Gain</th></tr></thead><tbody>${roll}</tbody></table>
+  <div class="two" style="margin-top:12px"><div class="vb"><b>4 · Does acting on it pay off?</b><p class="sub">Threshold ${nf(R.cost.threshold, 2)} chosen on validation data, with ${R.cost.ratio}. Test cost: model ${nf(R.cost.model)} vs ${nf(R.cost.never_alert)} if never alerting and ${nf(R.cost.always_alert)} if always alerting (${nf(100 * (1 - R.cost.model / Math.min(R.cost.never_alert, R.cost.always_alert)), 0)}% lower than the best of those).</p></div>
+    <div class="vb"><b>What did not help</b><p class="sub">${R.tried_without_gain.map(esc).join('; ')}. ${esc(R.note)}</p></div></div>`;
+})();
+
 /* ----- simulator ----- */
 const S = C.simulator, base = K.sla_breach_pct / 100;
 const opt = (arr, sel) => arr.map(a => `<option value="${esc(a[0])}"${a[0] === sel ? ' selected' : ''}>${esc(a[1])}</option>`).join('');

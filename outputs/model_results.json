@@ -990,6 +990,109 @@
    "r2_log_baseline": 0.6472,
    "baseline": "Historical median by severity × tier"
   },
+  "robustness": {
+   "auc_ci": [
+    0.6985,
+    0.7509
+   ],
+   "baseline_auc_ci": [
+    0.6614,
+    0.7189
+   ],
+   "diff_mean": 0.0362,
+   "diff_ci": [
+    0.0169,
+    0.0561
+   ],
+   "p_model_better": 1.0,
+   "rolling": [
+    {
+     "window": "2025-01-01 + 120 d",
+     "n": 512,
+     "auc": 0.7383,
+     "baseline": 0.6873
+    },
+    {
+     "window": "2025-07-01 + 120 d",
+     "n": 663,
+     "auc": 0.666,
+     "baseline": 0.6308
+    },
+    {
+     "window": "2026-01-01 + 120 d",
+     "n": 698,
+     "auc": 0.7399,
+     "baseline": 0.6957
+    },
+    {
+     "window": "2026-05-01 + 120 d",
+     "n": 708,
+     "auc": 0.7068,
+     "baseline": 0.6975
+    }
+   ],
+   "calibration": [
+    {
+     "bin": "(-0.001, 0.1]",
+     "pred": 0.0725,
+     "obs": 0.0924,
+     "n": 249
+    },
+    {
+     "bin": "(0.1, 0.2]",
+     "pred": 0.148,
+     "obs": 0.1437,
+     "n": 480
+    },
+    {
+     "bin": "(0.2, 0.3]",
+     "pred": 0.2469,
+     "obs": 0.2733,
+     "n": 344
+    },
+    {
+     "bin": "(0.3, 0.4]",
+     "pred": 0.3463,
+     "obs": 0.3487,
+     "n": 238
+    },
+    {
+     "bin": "(0.4, 0.5]",
+     "pred": 0.4446,
+     "obs": 0.4692,
+     "n": 130
+    },
+    {
+     "bin": "(0.5, 0.6]",
+     "pred": 0.549,
+     "obs": 0.5181,
+     "n": 83
+    },
+    {
+     "bin": "(0.6, 1.0]",
+     "pred": 0.6794,
+     "obs": 0.6404,
+     "n": 89
+    }
+   ],
+   "ece": 0.016,
+   "brier": 0.1701,
+   "brier_naive": 0.1963,
+   "cost": {
+    "ratio": "missed breach = 3 x false alarm",
+    "threshold": 0.19,
+    "model": 816,
+    "never_alert": 1290,
+    "always_alert": 1183
+   },
+   "tried_without_gain": [
+    "client/feed breach history (leak-safe)",
+    "cyclical hour",
+    "severity x tier and category x feed-type interactions",
+    "rank-average ensembles of LR + RF + GB (0.720-0.723)"
+   ],
+   "note": "Extra features and ensembles did not beat the logistic regression: the ceiling is set by noise in the (synthetic) outcome, so the honest claim is a stable, calibrated, modest lift."
+  },
   "simulator": {
    "intercept": -0.5477,
    "cat": {

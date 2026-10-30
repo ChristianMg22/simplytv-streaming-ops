@@ -242,6 +242,47 @@ def classification(con):
                       r2_log_baseline=r2_score(np.log(te["resolution_hours"]), np.log(pbm)),
                       baseline="Historical median by severity × tier")
 
+    # ---- robustness: is the lift over the baseline real, stable over time, and calibrated? ----
+    rng = np.random.default_rng(SEED)
+    yv, pm = te["y"].values, pt
+    for_ci = []
+    for _ in range(1000):
+        i = rng.integers(0, len(yv), len(yv))
+        if yv[i].min() == yv[i].max():
+            continue
+        for_ci.append((roc_auc_score(yv[i], pm[i]), roc_auc_score(yv[i], pb[i])))
+    a = np.array(for_ci)
+    diff = a[:, 0] - a[:, 1]
+    roll = []
+    for cut in ("2025-01-01", "2025-07-01", "2026-01-01", "2026-05-01"):
+        c0 = pd.Timestamp(cut)
+        a_, b_ = d[d["opened_at"] < c0], d[(d["opened_at"] >= c0) & (d["opened_at"] < c0 + pd.Timedelta(days=120))]
+        pipe_r = candidates()[best].fit(a_[X], a_["y"])
+        r_rate = a_.groupby(key)["y"].mean().rename("r")
+        pbr = b_.join(r_rate, on=key)["r"].fillna(a_["y"].mean()).values
+        roll.append(dict(window=f"{cut} + 120 d", n=len(b_), auc=roc_auc_score(b_["y"], pipe_r.predict_proba(b_[X])[:, 1]),
+                         baseline=roc_auc_score(b_["y"], pbr)))
+    bins = pd.cut(pm, [0, .1, .2, .3, .4, .5, .6, 1.0], include_lowest=True)
+    cal = pd.DataFrame({"p": pm, "y": yv, "b": bins}).groupby("b", observed=True).agg(p=("p", "mean"), y=("y", "mean"), n=("y", "size"))
+    ece = float((cal["n"] * (cal["p"] - cal["y"]).abs()).sum() / cal["n"].sum())
+    # cost-based threshold chosen on validation only (a missed breach costs 3x a false alarm)
+    pv_best = candidates()[best].fit(fit[X], fit["y"]).predict_proba(val[X])[:, 1]
+    grid_t = np.linspace(.1, .7, 61)
+    cost = lambda yy, pp, t: 3 * ((pp < t) & (yy == 1)).sum() + 1 * ((pp >= t) & (yy == 0)).sum()
+    t_cost = float(grid_t[np.argmin([cost(val["y"].values, pv_best, t) for t in grid_t])])
+    c_model, c_never, c_always = cost(yv, pm, t_cost), cost(yv, np.zeros(len(yv)), .5), cost(yv, np.ones(len(yv)), .5)
+    res["robustness"] = dict(
+        auc_ci=[float(np.percentile(a[:, 0], 2.5)), float(np.percentile(a[:, 0], 97.5))],
+        baseline_auc_ci=[float(np.percentile(a[:, 1], 2.5)), float(np.percentile(a[:, 1], 97.5))],
+        diff_mean=float(diff.mean()), diff_ci=[float(np.percentile(diff, 2.5)), float(np.percentile(diff, 97.5))],
+        p_model_better=float((diff > 0).mean()), rolling=roll,
+        calibration=[dict(bin=str(i), pred=float(r.p), obs=float(r.y), n=int(r.n)) for i, r in cal.iterrows()],
+        ece=ece, brier=float(brier_score_loss(yv, pm)), brier_naive=float(brier_score_loss(yv, np.full(len(yv), tr["y"].mean()))),
+        cost=dict(ratio="missed breach = 3 x false alarm", threshold=t_cost, model=int(c_model), never_alert=int(c_never), always_alert=int(c_always)),
+        tried_without_gain=["client/feed breach history (leak-safe)", "cyclical hour", "severity x tier and category x feed-type interactions",
+                            "rank-average ensembles of LR + RF + GB (0.720-0.723)"],
+        note="Extra features and ensembles did not beat the logistic regression: the ceiling is set by noise in the (synthetic) outcome, so the honest claim is a stable, calibrated, modest lift.")
+
     # Risk simulator (logistic regression with few variables -> exportable to JavaScript)
     SC = ["tier", "severity", "category", "detection"]
     SN = ["is_weekend", "is_night", "log_feed_age", "load_24h"]

@@ -125,3 +125,6 @@ docs/prompt_playbook.md   diagnosis prompt templates and how I verify the answer
 - `python src/10_alert_simulation.py` — compares three alert rules (`outputs/alert_sim.json`).
 - `python src/11_runbook.py` — generates `docs/runbook.md` from the investigator rules.
 - `python -m pytest tests -q` — runs in CI (`.github/workflows/ci.yml`).
+
+## Model robustness
+Beyond the test AUC (0.726 vs 0.690 baseline), `src/05_models.py` reports: a 1,000-resample bootstrap of the lift (difference +0.036, 95% interval 0.017–0.056), four rolling-origin windows (model wins in all), calibration (ECE 1.6%) and a cost-based threshold chosen on validation data. Leak-safe history features, cyclical hour, interactions and ensembles were tried and did not help; the ceiling comes from noise in the synthetic outcome. `tests/test_model_robustness.py` guards these claims.
