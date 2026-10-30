@@ -33,3 +33,15 @@ def test_validation_errors():
     assert c.get("/feeds/not-a-feed/diagnosis").status_code == 422
     assert c.get("/feeds/F-9999/diagnosis").status_code == 404
     assert c.get("/feeds/F-0062/diagnosis", params={"as_of": "yesterday"}).status_code == 422
+
+
+def test_security_inputs_are_rejected_cleanly():
+    from fastapi.testclient import TestClient
+    from src.api import app
+    c = TestClient(app, raise_server_exceptions=False)
+    assert c.get("/feeds/F-0062/diagnosis?as_of=2026-02-30").status_code == 422     # impossible date, was a 500
+    assert c.get("/feeds/F-0001'; DROP TABLE fact_incident;--/diagnosis").status_code in (404, 422)
+    assert c.get("/feeds?feed_type=' OR 1=1--").status_code == 422
+    assert c.get("/feeds?limit=99999999").status_code == 422
+    assert c.post("/feeds").status_code == 405
+    assert c.get("/health").headers["x-content-type-options"] == "nosniff"

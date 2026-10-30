@@ -12,6 +12,7 @@ api.py -- a small read-only HTTP API over the investigator (FastAPI). Runs local
 
 It reuses src/07_investigate.py, so the CLI, the dashboard lab and the API give the same answer.
 """
+import datetime
 import importlib.util
 import json
 import re
@@ -39,8 +40,13 @@ def _con():
 def _check(feed_id, as_of=None):
     if not FEED.match(feed_id):
         raise HTTPException(422, "feed_id must look like F-0062")
-    if as_of is not None and not DATE.match(as_of):
-        raise HTTPException(422, "as_of must be YYYY-MM-DD")
+    if as_of is not None:
+        try:
+            if not DATE.match(as_of):
+                raise ValueError
+            datetime.date.fromisoformat(as_of)   # rejects impossible dates such as 2026-02-30
+        except ValueError:
+            raise HTTPException(422, "as_of must be a real date, YYYY-MM-DD")
     with _con() as con:
         if con.execute("SELECT 1 FROM dim_feed WHERE feed_id = ?", (feed_id,)).fetchone() is None:
             raise HTTPException(404, f"unknown feed {feed_id}")
@@ -59,7 +65,7 @@ def kpis():
 
 
 @app.get("/feeds")
-def feeds(feed_type: str | None = None, limit: int = Query(20, ge=1, le=200)):
+def feeds(feed_type: str | None = Query(None, pattern=r"^[A-Z_]{3,20}$"), limit: int = Query(20, ge=1, le=200)):
     q = ("SELECT f.feed_id, f.client_id, f.feed_type, COUNT(i.incident_id) AS incidents FROM dim_feed f "
          "LEFT JOIN fact_incident i ON i.feed_id = f.feed_id WHERE (? IS NULL OR f.feed_type = ?) "
          "GROUP BY f.feed_id ORDER BY incidents DESC LIMIT ?")
@@ -84,3 +90,11 @@ def ticket(feed_id: str, as_of: str | None = None, days: int = Query(14, ge=1, l
     with _con() as con:
         r = inv.investigate(feed_id, as_of, days, con)
     return r["ticket"] + "\n\n## Client message\n\n> " + r["client_message"] + "\n"
+
+
+@app.middleware("http")
+async def security_headers(request, call_next):
+    r = await call_next(request)
+    r.headers["X-Content-Type-Options"] = "nosniff"
+    r.headers["Cache-Control"] = "no-store"
+    return r

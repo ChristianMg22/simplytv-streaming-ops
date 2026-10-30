@@ -124,6 +124,7 @@ docs/prompt_playbook.md   diagnosis prompt templates and how I verify the answer
 - `python src/09_xmltv_validate.py [file.xml]` — EPG validator for the XMLTV format (sample file is synthetic, with planted defects).
 - `python src/10_alert_simulation.py` — compares three alert rules (`outputs/alert_sim.json`).
 - `python src/11_runbook.py` — generates `docs/runbook.md` from the investigator rules.
+- `docs/SECURITY.md` — security review and fixes.
 - `python -m pytest tests -q` — runs in CI (`.github/workflows/ci.yml`).
 
 ## Model robustness

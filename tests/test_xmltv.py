@@ -20,3 +20,13 @@ def test_clean_file_has_no_issues(tmp_path):
     f = tmp_path / "ok.xml"
     f.write_text('<tv><channel id="a"/><programme start="20260101080000 +0000" stop="20260101090000 +0000" channel="a"><title>X</title></programme></tv>')
     assert xv.validate(f) == []
+
+
+def test_entity_expansion_and_xxe_are_refused(tmp_path):
+    bomb = tmp_path / "bomb.xml"
+    bomb.write_text('<?xml version="1.0"?><!DOCTYPE l [<!ENTITY a "aaaaaaaaaa"><!ENTITY b "&a;&a;&a;&a;&a;&a;&a;&a;"><!ENTITY c "&b;&b;&b;&b;&b;&b;&b;&b;">]><tv>&c;</tv>')
+    xxe = tmp_path / "xxe.xml"
+    xxe.write_text('<?xml version="1.0"?><!DOCTYPE t [<!ENTITY x SYSTEM "file:///etc/passwd">]><tv>&x;</tv>')
+    for f in (bomb, xxe):
+        out = xv.validate(f)
+        assert out and out[0]["rule"] == "unsafe_xml"

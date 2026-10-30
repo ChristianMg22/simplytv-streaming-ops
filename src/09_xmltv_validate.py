@@ -10,7 +10,9 @@ Checks, in the order an analyst would run them when "the EPG looks wrong":
 The sample file is hand-written to the XMLTV structure and has 3 planted defects (it is NOT real broadcaster data).
 """
 import sys
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # element types only; parsing goes through defusedxml
+from defusedxml import ElementTree as SafeET
+from defusedxml.common import DefusedXmlException
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -27,9 +29,9 @@ def parse_ts(v):
 
 def validate(path):
     try:
-        root = ET.parse(path).getroot()
-    except ET.ParseError as e:
-        return [dict(rule="well_formed", where="file", detail=str(e))]
+        root = SafeET.parse(path).getroot()   # refuses entity expansion (billion laughs) and external entities (XXE)
+    except (ET.ParseError, DefusedXmlException) as e:
+        return [dict(rule="well_formed" if isinstance(e, ET.ParseError) else "unsafe_xml", where="file", detail=str(e)[:200])]
     issues, channels, by_ch = [], {c.get("id") for c in root.iter("channel")}, {}
     for i, p in enumerate(root.iter("programme"), 1):
         ch, title = p.get("channel"), (p.findtext("title") or "").strip()

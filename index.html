@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="description" content="Streaming data and operations analytics: SQL star schema, NLP triage, SLA-risk model, forecasting and an investigator. Synthetic data.">
 <meta name="theme-color" content="#070b1c">
 <meta property="og:type" content="website">
@@ -2056,7 +2058,8 @@ $$('.cnt').forEach(countUp);
    in the local HTML file it downloads directly through a temporary link. */
 (function () {
   const BOM = '﻿';
-  const csvCell = v => { if (v == null) return ''; const s = String(v); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const csvCell = v => { if (v == null) return ''; let s = String(v); if (/^[=+\-@\t\r]/.test(s) && isNaN(Number(s))) s = "'" + s;   // neutralise spreadsheet formulas (CSV injection)
+    return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
   const toCSV = (rows, cols) => { cols = cols || Object.keys(rows[0] || {}); return BOM + [cols.join(',')].concat(rows.map(r => cols.map(c => csvCell(r[c])).join(','))).join('\r\n') + '\r\n'; };
   const kv = o => Object.entries(o).map(([k, v]) => ({ metric: k, value: v }));
   const stamp = () => new Date().toISOString().slice(0, 10);

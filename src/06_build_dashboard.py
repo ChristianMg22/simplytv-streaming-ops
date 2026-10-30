@@ -113,6 +113,8 @@ def main():
     (DASH / "artifact.html").write_text(f"{head}\n{html}\n{script}\n", encoding="utf-8")
     full = ("<!doctype html>\n<html lang=\"en\" data-theme=\"dark\">\n<head>\n<meta charset=\"utf-8\">\n"
             "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\">\n"
+            "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'\">\n"
+            "<meta name=\"referrer\" content=\"no-referrer\">\n"
             "<meta name=\"description\" content=\"Streaming data and operations analytics: SQL star schema, NLP triage, SLA-risk model, forecasting and an investigator. Synthetic data.\">\n"
             "<meta name=\"theme-color\" content=\"#070b1c\">\n"
             "<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:title\" content=\"Streaming Ops: Data and Operations Analytics\">\n"
