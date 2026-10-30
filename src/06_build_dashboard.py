@@ -79,7 +79,10 @@ def main():
         if ln.strip() and cur["items"] and not ln.startswith("---") and not ln.startswith("#"): cur["items"][-1]["a"] += (" " if cur["items"][-1]["a"] else "") + ln.strip()
     qa = [x for x in qa if x["items"]]
     lab = dict(qa=qa, sql=lab_sql, py=lab_py, cases=json.loads(inv_p.read_text(encoding="utf-8")) if inv_p.exists() else [],
-               eval=json.loads(ev_p.read_text(encoding="utf-8")) if ev_p.exists() else None)
+               eval=json.loads(ev_p.read_text(encoding="utf-8")) if ev_p.exists() else None,
+               dq=json.loads((ROOT / "outputs" / "dq_report.json").read_text(encoding="utf-8")),
+               alert=json.loads((ROOT / "outputs" / "alert_sim.json").read_text(encoding="utf-8")),
+               runbook=json.loads((ROOT / "outputs" / "runbook.json").read_text(encoding="utf-8")))
     world = json.loads((src_dir / "worlddots.json").read_text(encoding="utf-8"))
 
     data = dict(
@@ -102,7 +105,7 @@ def main():
     src = DASH / "src"
     css = (src / "style.css").read_text(encoding="utf-8")
     html = (src / "body.html").read_text(encoding="utf-8")
-    js = (src / "lib.js").read_text(encoding="utf-8") + "\n" + (src / "sections.js").read_text(encoding="utf-8") + "\n" + (src / "palettes.js").read_text(encoding="utf-8") + "\n" + (src / "beams.js").read_text(encoding="utf-8") + "\n" + (src / "particles.js").read_text(encoding="utf-8") + "\n" + (src / "skyline.js").read_text(encoding="utf-8") + "\n" + (src / "lab.js").read_text(encoding="utf-8") + "\n" + (src / "explorer.js").read_text(encoding="utf-8") + "\n" + (src / "present.js").read_text(encoding="utf-8") + "\n" + (src / "export.js").read_text(encoding="utf-8")
+    js = (src / "lib.js").read_text(encoding="utf-8") + "\n" + (src / "sections.js").read_text(encoding="utf-8") + "\n" + (src / "palettes.js").read_text(encoding="utf-8") + "\n" + (src / "beams.js").read_text(encoding="utf-8") + "\n" + (src / "particles.js").read_text(encoding="utf-8") + "\n" + (src / "skyline.js").read_text(encoding="utf-8") + "\n" + (src / "lab.js").read_text(encoding="utf-8") + "\n" + (src / "explorer.js").read_text(encoding="utf-8") + "\n" + (src / "tour.js").read_text(encoding="utf-8") + "\n" + (src / "present.js").read_text(encoding="utf-8") + "\n" + (src / "export.js").read_text(encoding="utf-8")
     safe = payload.replace("</", "<\\/")
     head = ('<title>Streaming Ops Simply.TV</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
             f'<link rel="stylesheet" href="{FONTS}">\n<style>\n{css}\n</style>')

@@ -52,6 +52,13 @@
       <div class="seg" id="samples" style="margin:8px 0"><button type="button" data-s="0">Healthy line</button><button type="button" data-s="1">Schema change</button><button type="button" data-s="2">Heartbeat (junk)</button><button type="button" data-s="3">Truncated line</button></div>
       <div id="lineOut" class="doc"></div>`,
     qa: () => qaView(),
+    dq: () => `<p class="sub">What the ETL cleaned before anything was analysed (<code>outputs/dq_report.json</code>). Every rejected or fixed row is counted, not silently dropped.</p>
+      <table class="tbl"><thead><tr><th>Step</th><th>Metric</th><th style="text-align:right">Value</th></tr></thead><tbody>${L.dq.map(r => `<tr><td>${esc(r.step)}</td><td>${esc(String(r.metric).replace(/_/g, ' '))}</td><td style="text-align:right">${nf(r.value)}</td></tr>`).join('')}</tbody></table>`,
+    alert: () => { const a = L.alert; return `<p class="sub">If we had alerted on every delivery over ${nf(a.period_days)} days, how many alerts would the team get, and how many would be real? An alert counts as real when an incident opened on the same feed within 72 h.</p>
+      <table class="tbl"><thead><tr><th>Rule</th><th style="text-align:right">Alerts</th><th style="text-align:right">Per day</th><th style="text-align:right">Precision</th></tr></thead><tbody>${a.rules.map(r => `<tr><td>${esc(r.rule)}</td><td style="text-align:right">${nf(r.alerts)}</td><td style="text-align:right">${r.alerts_per_day}</td><td style="text-align:right">${Math.round(r.precision * 100)}%</td></tr>`).join('')}</tbody></table>
+      <p class="take"><b>Trade-off:</b> adding softer signals (completeness, schema change, checksum) raises coverage but lowers precision and adds alert load. ${esc(a.note)}</p>`; },
+    rb: () => { const r = L.runbook; return `<p class="sub">Generated from the investigator rules by <code>src/11_runbook.py</code>, so the docs cannot drift from the code.</p>
+      <div class="two">${Object.entries(r.families).map(([f, v]) => `<div class="vb"><b>${esc(f)} · owner: ${esc(v.owner)}</b><p class="sub">${esc(v.meaning)}.</p><ol>${v.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>`).join('')}</div>`; },
     val: () => { const e = L.eval; if (!e) return '<p class="sub">Run <code>python src/08_validate_investigator.py</code>.</p>';
       const bars = (o, t) => `<div class="vb"><b>${t}</b>${Object.entries(o).map(([k, v]) => `<div class="vrow"><span>${k}</span><div class="vbar"><i style="width:${Math.round(v * 100)}%"></i></div><em>${Math.round(v * 100)}%</em></div>`).join('')}</div>`;
       return `<p class="sub">I tested the investigator against the ${nf(e.n)} sampled incidents whose real cause is known (simulation ground truth). Honest result:</p>

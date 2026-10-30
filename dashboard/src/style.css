@@ -406,3 +406,5 @@ html { background: var(--bg); }
 body { background: transparent !important; }
 .beams { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; filter: blur(26px); opacity: .9; }
 body.present .beams { opacity: .6; }
+.tourbox{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;max-width:min(640px,calc(100vw - 32px));background:var(--card,#101a2a);color:var(--ink,#fff);border:1px solid var(--line,#345);border-radius:14px;padding:12px 16px;box-shadow:0 10px 40px #0008;font-size:14px}
+.tourbox b{color:var(--accent,#0ff);margin-right:6px}.tourbox button{margin-left:10px;background:none;border:1px solid currentColor;color:inherit;border-radius:8px;padding:2px 10px;cursor:pointer}

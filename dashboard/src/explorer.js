@@ -24,10 +24,11 @@
       `<button type="button" data-k="${key}" data-v="" aria-pressed="${f[key] == null}">All</button>` +
       vals.map((v, i) => `<button type="button" data-k="${key}" data-v="${i}" aria-pressed="${f[key] === i}">${esc(v)}</button>`).join('') + '</div></div>';
     fbox.innerHTML = grp('region', 'Region', dims.region) + grp('segment', 'Segment', dims.segment) + grp('tier', 'Tier', dims.tier) +
-      `<div class="fg frs"><button type="button" class="reset" id="fReset" ${f.region == null && f.segment == null && f.tier == null ? 'disabled' : ''}>Clear filters</button></div>`;
+      `<div class="fg frs"><button type="button" class="reset" id="fReset" ${f.region == null && f.segment == null && f.tier == null ? 'disabled' : ''}>Clear filters</button><button type="button" class="reset" id="fLink">Copy link to this view</button></div>`;
   }
   fbox.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
+    if (b.id === 'fLink') { const u = location.href; (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(() => { b.textContent = 'Link copied'; }, () => { b.textContent = 'Copy from address bar'; }); return; }
     if (b.id === 'fReset') { f.region = f.segment = f.tier = null; }
     else if (b.dataset.k) { const v = b.dataset.v === '' ? null : Number(b.dataset.v); f[b.dataset.k] = (f[b.dataset.k] === v) ? null : v; }
     update();
@@ -194,7 +195,10 @@
     DN.sev.set(dims.severity.map((l, k) => ({ label: l, value: c(5, 4)[k], color: SEVC[k] })), ctr);
     DN.tier.set(dims.tier.map((l, k) => ({ label: l, value: c(3, 3)[k], color: TIERC[k] })), ctr);
   }
-  function update() {
+  const K = ['region', 'segment', 'tier'];
+  function saveHash() { try { const h = K.filter(k => f[k] != null).map(k => k + '=' + f[k]).join('&'); history.replaceState(null, '', h ? '#f&' + h : location.pathname + location.search); } catch (e) { } }
+  (function loadHash() { try { const m = /^#f&(.*)$/.exec(location.hash); if (m) m[1].split('&').forEach(p => { const [k, v] = p.split('='); if (K.includes(k) && dims[k] && +v >= 0 && +v < dims[k].length) f[k] = +v; }); } catch (e) { } })();
+  function update() { saveHash();
     renderFilters();
     const rs = inRows(), rsMap = inRows('region');
     window.STV_SKY && window.STV_SKY.set(rs);

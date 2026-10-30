@@ -1,0 +1,29 @@
+{
+ "period_days": 1218,
+ "incidents": 5485,
+ "client_detected": 851,
+ "rules": [
+  {
+   "rule": "R1 status FAILED only",
+   "alerts": 1588,
+   "alerts_per_day": 1.3,
+   "precision": 0.985,
+   "alerts_followed_by_incident": 1564
+  },
+  {
+   "rule": "R2 FAILED or DEGRADED",
+   "alerts": 5411,
+   "alerts_per_day": 4.4,
+   "precision": 0.942,
+   "alerts_followed_by_incident": 5095
+  },
+  {
+   "rule": "R3 R2 + completeness<92% + schema change + checksum mismatch",
+   "alerts": 6604,
+   "alerts_per_day": 5.4,
+   "precision": 0.787,
+   "alerts_followed_by_incident": 5197
+  }
+ ],
+ "note": "Precision = share of alerts followed by a real incident on the same feed within 72 h. Synthetic data."
+}

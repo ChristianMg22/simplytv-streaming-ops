@@ -1,0 +1,71 @@
+{
+ "symptoms": {
+  "schema_change": {
+   "family": "schema",
+   "weight": 3
+  },
+  "checksum_mismatch": {
+   "family": "schema",
+   "weight": 2
+  },
+  "failed_deliveries": {
+   "family": "transport",
+   "weight": 3
+  },
+  "latency_spike": {
+   "family": "transport",
+   "weight": 2
+  },
+  "completeness_drop": {
+   "family": "content",
+   "weight": 2
+  },
+  "missing_days": {
+   "family": "content",
+   "weight": 1
+  }
+ },
+ "families": {
+  "schema": {
+   "owner": "Development",
+   "meaning": "the payload structure changed (new schema version / checksum mismatch) and the mapping was not updated",
+   "candidate_causes": [
+    "schema_drift"
+   ],
+   "steps": [
+    "Compare the last two schema versions of the feed and list added/removed/renamed fields.",
+    "Check the checksum status of the affected deliveries.",
+    "Open a Development ticket with the diff; tell the client a fix is being prepared."
+   ]
+  },
+  "transport": {
+   "owner": "Operations",
+   "meaning": "the data did not arrive or arrived extremely late: upstream source or delivery endpoint problem",
+   "candidate_causes": [
+    "source_outage",
+    "delivery_endpoint"
+   ],
+   "steps": [
+    "Check whether other feeds from the same source also failed (source outage vs endpoint).",
+    "Re-trigger the delivery once; if it fails again, escalate to Operations.",
+    "Tell the client delivery is delayed and give the next checkpoint time."
+   ]
+  },
+  "content": {
+   "owner": "Development",
+   "meaning": "data arrived but incomplete: a mapping, artwork, schedule or ID problem inside the payload",
+   "candidate_causes": [
+    "mapping_error",
+    "stale_schedule",
+    "image_gap",
+    "duplicate_ids",
+    "client_config"
+   ],
+   "steps": [
+    "Measure which field is missing (artwork, schedule, IDs) using completeness by field.",
+    "If artwork: request assets from the client; if schedule: refresh the EPG source.",
+    "Escalate to Development only if the mapping itself is wrong."
+   ]
+  }
+ }
+}

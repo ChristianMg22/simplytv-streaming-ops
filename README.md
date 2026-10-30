@@ -109,3 +109,10 @@ docs/prompt_playbook.md   diagnosis prompt templates and how I verify the answer
 - Vestel: https://digitaltveurope.com/2021/11/23/vestel-partners-with-simply-tv-for-metadata-services
 - Deutsche TV-Plattform: https://www.simply.tv/insights/simply.tv-joins-deutsche-tv-plattform
 - Founding (2019): https://rethinkresearch.biz/articles/simply-tv-buys-its-own-metadata-grandmother/
+
+## API, alerting, XMLTV and runbook (extras)
+- `uvicorn src.api:app --reload` — local read-only API (`/docs` for Swagger): `/health`, `/kpis`, `/feeds`, `/feeds/{id}/diagnosis`, `/feeds/{id}/ticket`. Runs locally; nothing is hosted.
+- `python src/09_xmltv_validate.py [file.xml]` — EPG validator for the XMLTV format (sample file is synthetic, with planted defects).
+- `python src/10_alert_simulation.py` — compares three alert rules (`outputs/alert_sim.json`).
+- `python src/11_runbook.py` — generates `docs/runbook.md` from the investigator rules.
+- `python -m pytest tests -q` — runs in CI (`.github/workflows/ci.yml`).

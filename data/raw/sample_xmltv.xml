@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tv SYSTEM "xmltv.dtd">
+<tv generator-info-name="synthetic-sample (format-compatible, not real data)">
+  <channel id="mx.canal1"><display-name>Canal Uno</display-name></channel>
+  <channel id="mx.deportes"><display-name>Deportes HD</display-name></channel>
+  <channel id="dk.nordic1"><display-name>Nordic One</display-name></channel>
+  <programme start="20260930060000 +0000" stop="20260930070000 +0000" channel="mx.canal1">
+    <title lang="en">Quiz Hour</title>
+    <desc lang="en">Episode 1.</desc>
+  </programme>
+  <programme start="20260930070000 +0000" stop="20260930080000 +0000" channel="mx.canal1">
+    <title lang="en">Drama Series</title>
+    <desc lang="en">Episode 2.</desc>
+  </programme>
+  <programme start="20260930080000 +0000" stop="20260930083000 +0000" channel="mx.canal1">
+    <title lang="en">Football Live</title>
+    <desc lang="en">Episode 3.</desc>
+  </programme>
+  <programme start="20260930083000 +0000" stop="20260930100000 +0000" channel="mx.canal1">
+    <title lang="en">Documentary</title>
+    <desc lang="en">Episode 4.</desc>
+  </programme>
+  <programme start="20260930100000 +0000" stop="20260930104500 +0000" channel="mx.canal1">
+    <title lang="en">Late Show</title>
+    <desc lang="en">Episode 5.</desc>
+  </programme>
+  <programme start="20260930104500 +0000" stop="20260930111500 +0000" channel="mx.canal1">
+    <title lang="en">Kids Club</title>
+    <desc lang="en">Episode 6.</desc>
+  </programme>
+  <programme start="20260930111500 +0000" stop="20260930120000 +0000" channel="mx.canal1">
+    <title lang="en">Weather</title>
+    <desc lang="en">Episode 7.</desc>
+  </programme>
+  <programme start="20260930120000 +0000" stop="20260930123000 +0000" channel="mx.canal1">
+    <title lang="en">Morning News</title>
+    <desc lang="en">Episode 8.</desc>
+  </programme>
+  <programme start="20260930123000 +0000" stop="20260930133000 +0000" channel="mx.canal1">
+    <title lang="en">Quiz Hour</title>
+    <desc lang="en">Episode 9.</desc>
+  </programme>
+  <programme start="20260930133000 +0000" stop="20260930150000 +0000" channel="mx.canal1">
+    <title lang="en">Drama Series</title>
+    <desc lang="en">Episode 10.</desc>
+  </programme>
+  <programme start="20260930060000 +0000" stop="20260930064500 +0000" channel="mx.deportes">
+    <title lang="en">Football Live</title>
+    <desc lang="en">Episode 1.</desc>
+  </programme>
+  <programme start="20260930064500 +0000" stop="20260930081500 +0000" channel="mx.deportes">
+    <title lang="en">Documentary</title>
+    <desc lang="en">Episode 2.</desc>
+  </programme>
+  <programme start="20260930081500 +0000" stop="20260930084500 +0000" channel="mx.deportes">
+    <title lang="en">Late Show</title>
+    <desc lang="en">Episode 3.</desc>
+  </programme>
+  <programme start="20260930084500 +0000" stop="20260930093000 +0000" channel="mx.deportes">
+    <title lang="en">Kids Club</title>
+    <desc lang="en">Episode 4.</desc>
+  </programme>
+  <programme start="20260930093000 +0000" stop="20260930100000 +0000" channel="mx.deportes">
+    <title lang="en">Weather</title>
+    <desc lang="en">Episode 5.</desc>
+  </programme>
+  <programme start="20260930100000 +0000" stop="20260930104500 +0000" channel="mx.deportes">
+    <title lang="en">Morning News</title>
+    <desc lang="en">Episode 6.</desc>
+  </programme>
+  <programme start="20260930104500 +0000" stop="20260930121500 +0000" channel="mx.deportes">
+    <title lang="en">Quiz Hour</title>
+    <desc lang="en">Episode 7.</desc>
+  </programme>
+  <programme start="20260930121500 +0000" stop="20260930131500 +0000" channel="mx.deportes">
+    <title lang="en">Drama Series</title>
+    <desc lang="en">Episode 8.</desc>
+  </programme>
+  <programme start="20260930131500 +0000" stop="20260930140000 +0000" channel="mx.deportes">
+    <title lang="en">Football Live</title>
+    <desc lang="en">Episode 9.</desc>
+  </programme>
+  <programme start="20260930140000 +0000" stop="20260930153000 +0000" channel="mx.deportes">
+    <title lang="en">Documentary</title>
+    <desc lang="en">Episode 10.</desc>
+  </programme>
+  <programme start="20260930060000 +0000" stop="20260930064500 +0000" channel="dk.nordic1">
+    <title lang="en">Drama Series</title>
+    <desc lang="en">Episode 1.</desc>
+  </programme>
+  <programme start="20260930064500 +0000" stop="20260930071500 +0000" channel="dk.nordic1">
+    <title lang="en">Football Live</title>
+    <desc lang="en">Episode 2.</desc>
+  </programme>
+  <programme start="20260930071500 +0000" stop="20260930080000 +0000" channel="dk.nordic1">
+    <title lang="en">Documentary</title>
+    <desc lang="en">Episode 3.</desc>
+  </programme>
+  <programme start="20260930080000 +0000" stop="20260930093000 +0000" channel="dk.nordic1">
+    <title lang="en">Late Show</title>
+    <desc lang="en">Episode 4.</desc>
+  </programme>
+  <programme start="20260930093000 +0000" stop="20260930101500 +0000" channel="dk.nordic1">
+    <title lang="en">Kids Club</title>
+    <desc lang="en">Episode 5.</desc>
+  </programme>
+  <programme start="20260930101500 +0000" stop="20260930110000 +0000" channel="dk.nordic1">
+    <title lang="en">Weather</title>
+    <desc lang="en">Episode 6.</desc>
+  </programme>
+  <programme start="20260930110000 +0000" stop="20260930113000 +0000" channel="dk.nordic1">
+    <title lang="en">Morning News</title>
+    <desc lang="en">Episode 7.</desc>
+  </programme>
+  <programme start="20260930113000 +0000" stop="20260930120000 +0000" channel="dk.nordic1">
+    <title lang="en">Quiz Hour</title>
+    <desc lang="en">Episode 8.</desc>
+  </programme>
+  <programme start="20260930120000 +0000" stop="20260930124500 +0000" channel="dk.nordic1">
+    <title lang="en">Drama Series</title>
+    <desc lang="en">Episode 9.</desc>
+  </programme>
+  <programme start="20260930124500 +0000" stop="20260930133000 +0000" channel="dk.nordic1">
+    <title lang="en">Football Live</title>
+    <desc lang="en">Episode 10.</desc>
+  </programme>
+  <programme start="20260930083000 +0000" stop="20260930080000 +0000" channel="mx.canal1"><title lang="en">Stop before start</title></programme>
+  <programme start="20260930100000 +0000" stop="20260930110000 +0000" channel="mx.deportes"><desc lang="en">Missing title</desc></programme>
+  <programme start="20260930100000 +0000" stop="20260930110000 +0000" channel="xx.unknown"><title lang="en">Unknown channel</title></programme>
+</tv>
