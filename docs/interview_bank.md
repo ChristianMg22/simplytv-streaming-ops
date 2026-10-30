@@ -170,6 +170,88 @@ Project facts to keep in your head: 120 clients, 191 feeds, 160,527 feed-days, 5
 
 ---
 
+## 9. Coding drills (Python + SQL)
+
+**45. list, tuple, set, dict: when do you use each?**
+*Tests:* basics. *Answer:* list for ordered, changeable sequences; tuple for fixed records; set for membership and dedupe (O(1) lookup); dict for key to value lookups. *Project:* `02_etl.py` maps messy labels to clean categories with a dict (`norm_cat`), and checks membership against sets instead of scanning lists.
+
+**46. What is a generator and why use it?**
+*Tests:* memory awareness. *Answer:* it yields one item at a time, so a huge file never sits in memory; it is lazy and can be consumed once. *Project:* `read_feed_log()` streams a gzipped log of 162,958 lines and keeps only one feed's window, so memory stays flat.
+
+**47. How do you handle errors without hiding them?**
+*Tests:* robustness. *Answer:* catch specific exceptions, handle only what you can recover from, count or log the rest, never a bare `except: pass`. *Project:* `parse_line()` returns `None` for junk lines and the ETL counts them (322 malformed rejected) instead of crashing or silently dropping. In the API I found that `as_of=2026-02-30` passed my regex and caused a 500; the fix was real date validation returning 422.
+
+**48. What is a context manager and why `with`?**
+*Answer:* it guarantees cleanup (close file, release connection) even if an error happens. *Project:* `read_feed_log()` opens the gzipped log with `with gzip.open(...)`, so the file closes even if parsing fails.
+
+**49. merge, join, concat in pandas: what is the difference and what goes wrong?**
+*Answer:* `merge` is SQL-style on keys, `concat` stacks, `join` is merge on index. Typical bugs: duplicated keys multiply rows; wrong `how` drops rows; silent dtype mismatches. *Project:* I check row counts before and after each merge, and the ETL logs counts in `dq_log` so a bad join shows up as a number.
+
+**50. What is `merge_asof` and when do you need it?**
+*Answer:* a join to the nearest previous (or next) row by time, within a tolerance. It is the right tool for 'the state at the moment of the event'. *Project:* In `05_models.py` each incident gets the last delivery of its feed before it opened (`direction='backward'`, 3-day tolerance), so the model only sees information available at ticket opening.
+
+**51. Vectorized code vs `apply` vs loops?**
+*Answer:* vectorize first (NumPy/pandas operations); `apply` is a hidden loop; use real loops only when the logic is sequential. Measure before optimizing. *Project:* The 'incidents on the same client in the previous 7 days' feature uses `np.searchsorted` per group, O(n log n), instead of a nested loop over all pairs, O(n²).
+
+**52. What is data leakage and how did you avoid it?**
+*Answer:* using information that would not exist at prediction time. Split by time, not randomly, and exclude columns created after the event. *Project:* The SLA model trains on incidents before 2026-01-01 and tests after. I excluded `escalated`, `team`, `first_response_min` and resolution time because they only exist after the ticket is handled.
+
+**53. Explain a regex you wrote.**
+*Answer:* walk through the groups, anchors and why it is safe. *Project:* `LINE` in `07_investigate.py` uses named groups (`feed`, `status`, `records`, `schema`, `checksum`) so the parser reads like the log format. I tested it on a 200,000-character line: 0.19 s, no catastrophic backtracking, because the pattern has no nested quantifiers.
+
+**54. How do you make a project reproducible?**
+*Answer:* pinned dependencies, fixed random seeds, one command to rebuild, tests in CI. *Project:* `requirements.txt`, a fixed seed in the generator and models, `run_all.sh`, and a GitHub Actions workflow that runs `pytest` and rebuilds the dashboard.
+
+**55. How do you test code that reads files or a database?**
+*Answer:* small fixtures, temporary files (`tmp_path`), and testing behaviors, not implementation. *Project:* `tests/test_xmltv.py` writes malformed, clean and malicious XML to `tmp_path`; `tests/test_api.py` uses FastAPI's `TestClient` against the real SQLite file.
+
+**56. print vs logging?**
+*Answer:* logging has levels, timestamps and destinations; print is fine for a CLI result. For data pipelines, also persist counters. *Project:* The ETL writes every cleaning step to a `dq_log` table (duplicates removed, formats fixed, rows rejected), which is queryable and shown in the dashboard's Data quality tab.
+
+**57. How do you deal with dates, formats and time zones?**
+*Answer:* parse once at the edge, store a single canonical form (UTC or naive UTC), and test the odd formats. *Project:* `parse_ts()` handles four formats (day-first `dd/mm/yyyy`, ISO, epoch and text) and logs how many rows used each; deliveries are parsed as UTC and stored without time zone.
+
+**58. Is your script idempotent?**
+*Answer:* running it twice gives the same result and no duplicates. *Project:* The pipeline rebuilds the database from the raw files with a fixed seed, and deliveries are deduplicated by `(feed_id, ts)` and then by `(feed_id, delivery_date)` so a re-delivered file cannot double count.
+
+**59. What is the time complexity of deduplicating a large list?**
+*Answer:* hashing gives O(n); sorting gives O(n log n); comparing every pair gives O(n²), which is what to avoid. *Project:* `drop_duplicates` removed 529 duplicate log lines and 96 duplicate tickets (by ticket id) without any pairwise comparison.
+
+**60. INNER vs LEFT JOIN, and the WHERE trap?**
+*Answer:* INNER keeps matches only; LEFT keeps every left row. Filtering the right table in `WHERE` turns a LEFT JOIN into an INNER one; put the condition in `ON`. *Project:* `event_impact` LEFT JOINs the before/after windows on `side = 'before'` / `'after'` inside the `ON` clause, so events with no incidents still appear with zeros.
+
+**61. WHERE vs HAVING?**
+*Answer:* `WHERE` filters rows before grouping; `HAVING` filters groups after aggregation. *Project:* Filtering to resolved incidents is a `WHERE` (applied before grouping); a `HAVING` would be the way to hide categories with too few incidents to trust a rate, a guard I would add on real data.
+
+**62. How do NULLs behave?**
+*Answer:* `NULL = NULL` is not true; `COUNT(*)` counts rows, `COUNT(col)` skips NULLs; `NOT IN` with a NULL in the list returns nothing. Prefer `NOT EXISTS` / anti-joins. *Project:* `missed_failures` uses `EXISTS` for the anti-join, which is NULL-safe: 316 FAILED/DEGRADED deliveries never produced an incident within 72 h.
+
+**63. ROW_NUMBER vs RANK vs DENSE_RANK?**
+*Answer:* ROW_NUMBER is unique; RANK leaves gaps after ties; DENSE_RANK does not. Use ROW_NUMBER to pick one row per group. *Project:* `detection_delay` matches each incident to the feed's most recent faulty delivery with `ROW_NUMBER() OVER (PARTITION BY i.incident_id ORDER BY d.delivery_ts DESC)` and keeps rank 1; that is how I measured 0.23 h automatic vs 12.7 h client-detected.
+
+**64. How do you compute a running total, a moving average or a percentage of total?**
+*Answer:* window functions with a frame: `SUM(x) OVER (ORDER BY d ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)`; share of total with `x * 1.0 / SUM(x) OVER ()`. *Project:* The Pareto query computes the cumulative share with `SUM(n) OVER (ORDER BY n DESC ROWS UNBOUNDED PRECEDING)`, and `client_pareto` does the same by client decile.
+
+**65. SQLite has no MEDIAN. How do you get one?**
+*Answer:* order the values and take the middle row(s) with `ROW_NUMBER`/`COUNT` in a CTE, or use `NTILE` for deciles. *Project:* The KPI query computes the 19.05 h median with `ROW_NUMBER() OVER (ORDER BY resolution_hours)` and `COUNT(*) OVER ()` in a CTE; `client_pareto` uses `NTILE(10)` to split clients into deciles.
+
+**66. How do you pivot rows into columns in SQL?**
+*Answer:* conditional aggregation: `SUM(CASE WHEN ... THEN 1 ELSE 0 END)`. *Project:* The recurrence query counts incidents on the same feed and category within 14 days with `SUM(CASE WHEN julianday(opened_at) - julianday(prev) <= 14 ...)`, using `LAG` to get `prev`; recurrence is about 15% for schema drift.
+
+**67. What would you index and how do you check it?**
+*Answer:* columns used in joins and filters (`feed_id`, `opened_at`); check the plan with `EXPLAIN QUERY PLAN`. Indexes speed reads and slow writes. *Project:* Honest answer: at 5,485 incidents and 160k deliveries I did not need them. In production I would index `fact_delivery(feed_id, delivery_ts)` and `fact_incident(feed_id, opened_at)`, since the investigator filters by feed and date.
+
+**68. What makes a query slow and how do you fix it?**
+*Answer:* scanning too much (`SELECT *`, no filter), functions on indexed columns, joins that multiply rows, correlated subqueries. Filter early, select only needed columns, aggregate before joining. *Project:* `baseline()` in the investigator fetches only the last 60 OK deliveries of one feed with a parameterised, ordered, `LIMIT`ed query, and never loads the whole delivery table.
+
+**69. How do you find gaps in a time series with SQL?**
+*Answer:* `LAG` the date and compare the difference, or left join a calendar table. *Project:* The investigator's `missing_days` symptom is the same idea: days without a delivery in the feed's window. The anomaly model also flags days that look fine but have completeness below 92%.
+
+**70. Star schema, a view and a CTE: how do they fit together?**
+*Answer:* the schema organizes data, a view fixes a business definition, CTEs structure one query. *Project:* `v_incident` defines 'SLA breach' once on top of `fact_incident` and the dimensions; every query and model reads the same 24.7%, and complex queries use CTEs for readability.
+
+---
+
 ## Quick answers to hard follow-ups
 
 - **"Is this real data?"** No. It is simulated and anchored on public milestones, because Simply.TV's operational logs are not public. The value is the method; I would re-validate everything on real data.

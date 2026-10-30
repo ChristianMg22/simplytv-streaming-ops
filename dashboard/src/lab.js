@@ -29,7 +29,7 @@
     ['Meet SLA deadlines, manage priorities', 'SLA-breach risk model, 13-week forecast, anomaly detection (sections above)', null],
     ['Data accuracy and attention to detail', 'One SLA definition (v_incident), data-quality log, unit tests, a measured validation', 'val'],
     ['Document findings and recurring problems', 'Case files as .md, README, playbook, recurrence query', 'sql'],
-    ['Be ready to explain all of this in a technical interview', '44 likely questions answered with examples from this project', 'qa']];
+    ['Be ready to explain all of this in a technical interview', '70 likely questions, incl. Python + SQL drills answered with examples from this project', 'qa']];
   document.getElementById('labCov').innerHTML = COV.map(c => `<div class="cv"><b>${c[0]}</b><span>${c[1]}</span>${c[2] ? `<button type="button" class="link" data-go="${c[2]}">See it →</button>` : ''}</div>`).join('');
   function caseView(i) {
     const c = L.cases[i]; if (!c) return '<p class="sub">Run <code>python src/07_investigate.py --top 4</code> to generate case files.</p>';
