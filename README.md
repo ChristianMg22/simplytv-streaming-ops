@@ -1,5 +1,14 @@
 # Streaming Ops · Simply.TV case
 
+![Dashboard tour](docs/img/tour.gif)
+
+| Explorer | Diagnosis |
+|---|---|
+| ![Explorer](docs/img/explorer.png) | ![Diagnosis](docs/img/diagnosis.png) |
+| **Risk model** | **Investigation lab** |
+| ![Risk](docs/img/risk.png) | ![Lab](docs/img/lab.png) |
+
+
 End-to-end data project (data engineering + machine learning) for the
 **Streaming Data & Operations Analyst** profile at Simply.TV: extract and transform with Python and SQL, take the
 result to an executive dashboard, and close with predictive models.

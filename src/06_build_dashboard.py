@@ -113,6 +113,12 @@ def main():
     (DASH / "artifact.html").write_text(f"{head}\n{html}\n{script}\n", encoding="utf-8")
     full = ("<!doctype html>\n<html lang=\"en\" data-theme=\"dark\">\n<head>\n<meta charset=\"utf-8\">\n"
             "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\">\n"
+            "<meta name=\"description\" content=\"Streaming data and operations analytics: SQL star schema, NLP triage, SLA-risk model, forecasting and an investigator. Synthetic data.\">\n"
+            "<meta name=\"theme-color\" content=\"#070b1c\">\n"
+            "<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:title\" content=\"Streaming Ops: Data and Operations Analytics\">\n"
+            "<meta property=\"og:description\" content=\"Interactive dashboard with Python + SQL pipeline, predictive models and a feed-incident investigator (synthetic data).\">\n"
+            "<meta property=\"og:image\" content=\"https://christianmg22.github.io/simplytv-streaming-ops/docs/preview.png\">\n"
+            "<meta name=\"twitter:card\" content=\"summary_large_image\">\n"
             f"{head}\n<style>html{{color-scheme:dark}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>\n"
             f"</head>\n<body>\n{html}\n{script}\n</body>\n</html>\n")
     (DASH / "index.html").write_text(full, encoding="utf-8")
