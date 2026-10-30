@@ -2,7 +2,7 @@
   <div class="nav-in">
     <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span><span>Streaming Ops · Simply.TV case</span></a>
     <div class="links">
-      <a href="#explorador">Explorer</a><a href="#contexto">Context</a><a href="#diagnostico">Diagnosis</a><a href="#riesgo">Risk model</a>
+      <a href="#negocio">Business</a><a href="#explorador">Explorer</a><a href="#contexto">Context</a><a href="#diagnostico">Diagnosis</a><a href="#riesgo">Risk model</a>
       <a href="#pronostico">Forecast</a><a href="#anomalias">Anomalies</a><a href="#lab">Lab</a><a href="#acciones">Actions</a>
     </div>
     <div class="xmenu-wrap"><button class="iconbtn" id="exportBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="exportMenu">Export</button>
@@ -29,6 +29,33 @@
     </div>
   </header>
   <section class="kpis" id="kpis" aria-label="Key indicators"></section>
+
+  <!-- ===================== BUSINESS CASE ===================== -->
+  <section class="sec" id="negocio">
+    <div class="sec-h">
+      <div class="eyebrow">Business case</div>
+      <h2 id="bcT"></h2>
+      <p>The decision, the evidence behind it and the expected return, in one screen. Every step links to the technical analysis that supports it.</p>
+    </div>
+    <div class="story" id="story"></div>
+    <div class="grid" style="margin-top:20px">
+      <div class="card s7">
+        <h3>What is the return? Change the assumptions</h3>
+        <p class="sub">Uses the model's test-period results (Jan–Sep 2026) scaled to 12 months. The money and hours below are <b>illustrative assumptions</b>: replace them with the real cost of a breach in your operation.</p>
+        <div class="roi">
+          <div class="field"><label>Flagged incidents (highest risk)</label><div class="seg" id="roiTop" role="group" aria-label="Percentage of incidents flagged"></div></div>
+          <div class="field"><label for="roiRed">Resolution time cut for flagged incidents: <span id="roiRedV" class="mono"></span></label><input type="range" id="roiRed" min="10" max="50" step="10" value="30"></div>
+          <div class="field"><label for="roiCost">Cost of one SLA breach (credits, churn risk, escalation): <span id="roiCostV" class="mono"></span></label><input type="range" id="roiCost" min="100" max="2000" step="100" value="500"></div>
+          <div class="field"><label for="roiHrs">Analyst hours per breach: <span id="roiHrsV" class="mono"></span></label><input type="range" id="roiHrs" min="1" max="12" step="1" value="4"></div>
+        </div>
+        <div class="stats" id="roiOut"></div>
+      </div>
+      <div class="card s5">
+        <h3>Plan: 30 / 60 / 90 days on real data</h3>
+        <ol class="plan" id="plan"></ol>
+      </div>
+    </div>
+  </section>
 
   <!-- ===================== EXPLORER ===================== -->
   <section class="sec" id="explorador">

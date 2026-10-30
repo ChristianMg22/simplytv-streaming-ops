@@ -316,3 +316,33 @@ const srcExtra = [['', 'Simply.TV website: segments, products and platforms', 'h
 $('#sources').innerHTML = D.events.map(e => `<li><span class="dt">${fdate(e.event_date)}</span><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a></li>`).join('') + srcExtra.map(s => `<li><span class="dt">${s[0]}</span><a href="${s[2]}" target="_blank" rel="noopener">${s[1]}</a></li>`).join('');
 $('#foot1').textContent = `Data through ${fdate(D.meta.cutoff)} · generated ${fdate(D.meta.generated)} · Python, SQLite and scikit-learn.`;
 $$('.cnt').forEach(countUp);
+
+/* ===== Business case: storyline + ROI + plan ===== */
+(function () {
+  const root = $('#story'); if (!root) return;
+  const sch = par.schema_drift, g20 = C.top20_capture, miss = D.missed.reduce((a, r) => a + r.no_incident, 0), badTot = D.missed.reduce((a, r) => a + r.bad_deliveries, 0);
+  const dA = dl.auto, dC = dl.client;
+  $('#bcT').textContent = `${pct(K.sla_breach_pct, 1)} of incidents breach the SLA, and the biggest lever is schema changes`;
+  const S = [
+    ['1', 'Problem', `${nf(K.sla_breaches)} of ${nf(K.incidents_resolved)} resolved incidents missed their SLA. Median fix ${nf(K.median_resolution_h, 0)} h, but the slowest 10% take over ${nf(K.p90_resolution_h, 0)} h.`, '#contexto', 'See the context'],
+    ['2', 'Cause', `Schema changes are ${pct(sch.share_pct, 0)} of incidents but ${pct(sch.breach_share_pct, 0)} of breaches (${pct(sch.breach_pct, 0)} breach rate). ${nf(miss)} of ${nf(badTot)} bad deliveries never opened an incident, and client-detected issues take ${nf(dC.mean_detection_delay_h, 0)} h to surface vs ${nf(dA.mean_detection_delay_h, 1)} h when automatic.`, '#diagnostico', 'See the diagnosis'],
+    ['3', 'Action', `Alert on schema change and completeness drops, and flag the riskiest 20% of tickets at opening: the model captures ${pct(100 * g20, 0)} of breaches and beats the baseline in every time window.`, '#riesgo', 'See the model'],
+    ['4', 'Next step', 'Run a 90-day pilot on real data with a control group, so the effect is measured and not assumed. The plan is on this screen.', '#lab', 'See how the investigator works']];
+  root.innerHTML = S.map(s => `<a class="step" href="${s[3]}"><span class="n">${s[0]}</span><b>${s[1]}</b><p>${s[2]}</p><em>${s[4]} →</em></a>`).join('');
+  const grid2 = C.whatif.grid, scale = 12 / 9, st = { top: 20 };
+  $('#roiTop').innerHTML = [10, 20, 30].map(v => `<button type="button" data-v="${v}" aria-pressed="${v === st.top}">${v}%</button>`).join('');
+  function roi() {
+    const red = +$('#roiRed').value, cost = +$('#roiCost').value, hrs = +$('#roiHrs').value, g = grid2.find(x => x.topk === st.top && x.reduction === red);
+    const yr = Math.round(g.avoided * scale);
+    $('#roiRedV').textContent = '−' + red + '%'; $('#roiCostV').textContent = '€' + nf(cost); $('#roiHrsV').textContent = hrs + ' h';
+    $('#roiOut').innerHTML = `<div class="stat"><div class="k">Breaches avoided / year</div><div class="v">${nf(yr)}</div><div class="d">${pct(g.avoided_pct)} of breaches</div></div>
+      <div class="stat"><div class="k">Estimated savings / year</div><div class="v">€${nf(yr * cost)}</div><div class="d">${nf(yr)} × €${nf(cost)}</div></div>
+      <div class="stat"><div class="k">Analyst hours freed / year</div><div class="v">${nf(yr * hrs)}</div><div class="d">${nf(yr)} × ${hrs} h</div></div>`;
+  }
+  $$('#roiTop button').forEach(b => b.addEventListener('click', () => { st.top = +b.dataset.v; $$('#roiTop button').forEach(x => x.setAttribute('aria-pressed', x === b)); roi(); }));
+  ['#roiRed', '#roiCost', '#roiHrs'].forEach(s => $(s).addEventListener('input', roi)); roi();
+  const P = [['Days 1–30 · Connect and measure', 'Read the real delivery logs and ticket history into the same star schema. Re-compute the baseline: breach rate, detection delay, silent failures.'],
+    ['Days 31–60 · Alert and validate', 'Turn on the schema-change and completeness alerts in shadow mode. Re-train the risk model on real data and check calibration before trusting any probability.'],
+    ['Days 61–90 · Pilot with a control group', 'Flag the riskiest 20% for half of the team and compare breach rate and resolution time with the other half. Decide to scale from the measured effect.']];
+  $('#plan').innerHTML = P.map(p => `<li><b>${p[0]}</b><span>${p[1]}</span></li>`).join('');
+})();

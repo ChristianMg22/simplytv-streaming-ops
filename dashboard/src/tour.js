@@ -2,6 +2,7 @@
 (function () {
   const btn = document.getElementById('tourBtn'); if (!btn) return;
   const STEPS = [['kpis', 'The headline numbers: 5,485 incidents, 24.7% SLA breaches, median fix 19 h.'],
+    ['negocio', 'The business case: problem, cause, action and the return, with editable assumptions.'],
     ['explorador', 'Filter by region, segment and tier: every chart below follows.'],
     ['diagnostico', 'Where the problem is: schema changes break SLA 40% of the time.'],
     ['riesgo', 'A model flags the riskiest 20% of incidents and catches ~40% of breaches.'],

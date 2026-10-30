@@ -1,5 +1,7 @@
 # Streaming Ops · Simply.TV case
 
+> **One project, two readings.** The dashboard opens with the **business case** (problem, cause, action, return with editable assumptions, and a 30/60/90-day plan); every step links to the **technical analysis** that proves it (SQL, models, investigator, tests). Extras: [`docs/one_pager.pdf`](docs/one_pager.pdf) and [`docs/presentation_script.md`](docs/presentation_script.md) (2 and 5-minute scripts plus answers to hard objections).
+
 ![Dashboard tour](docs/img/tour.gif)
 
 | Explorer | Diagnosis |
